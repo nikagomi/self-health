@@ -1,0 +1,16 @@
+#Remember: AllowOverride All is required in the web root directory index section (httpd.conf)
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	#RewriteCond %{REQUEST_URI} !^/pdfs
+        
+	RewriteCond %{REQUEST_FILENAME} !-f
+
+	RewriteCOnd %{REQUEST_FILENAME} !-d
+	#RewriteRule . /index.php [L]
+	RewriteRule ^(.*)$ index.php/$1 [L]
+        #The [L] on the above line is removed for https redirect and the following
+        # two lines uncommented. (When nginx not in use).
+        #RewriteCond %{HTTPS}  !=on 
+        #RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
+</IfModule>
+

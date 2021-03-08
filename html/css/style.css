@@ -1,0 +1,384 @@
+/* CSS Document */
+/** Page container elements **/
+
+ html, body {
+    height: 100%;
+    padding:0px;
+    margin:0px;
+    font-size: 1rem;
+    font-family:"verdana";
+    background-color:#FDFDFE; /*#ffffe5;*/
+
+    /*background-image:url('/edur/images/stripped_background.png');*/
+    background-repeat: repeat;
+    color:#000;
+}
+
+
+
+#wrap {
+    min-height: 90%;
+    padding:0px 0px 10px 0px;
+    /*
+    width:80%;
+    margin-left:10%;
+    background-color:#FAFAFA;
+    border-top:solid 2px #506070;
+    border-right:solid 2px #506070;
+    border-left:solid 2px #506070;
+    */
+    position: static;
+}
+
+#header{
+    padding:0px;
+    position: relative;
+/*    background-color: #708090;
+        border: 2px solid yellow;*/
+}
+
+#header2{
+    padding:5px 10px;
+    position: relative;
+    font-size: 0.9rem;
+    font-weight:normal;
+    text-align: right;
+    font-variant: normal;
+    color: #006699;
+    font-family: 'Poppins', sans-serif;
+    
+    margin: 0px;
+}
+
+#header2 span{
+    color: #AAA;
+}
+
+#main {
+    overflow:visible; /* was auto and cut off the chosen list dropdown*/
+    padding-bottom: -45px;/* must be same height as the footer */
+    margin:0px;
+    width:100%;
+    padding-top:10px; /*35px*/
+}  
+
+#footer {
+    position: relative;
+    margin-top: -45px; /* negative value of footer height */
+    height: 20px; /* 43px;*/
+    clear:both;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    background-color: #FDFDFE;/*#708090;*/
+    text-align:center;
+    color:#464646;
+    font-size:11px;
+    font-weight: normal;
+    vertical-align: bottom;
+    line-height: 12px;
+} 
+
+
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;
+}
+
+/***************************************************************/
+h1{text-align:center;
+    color:#CC3333;
+}
+	
+h4{
+    color:#003399;}
+	
+.table_header{
+	 background-color:#003333; /*#006699;*/
+	 height: 20px;
+	 font-size:14px;
+	 color:  #FFFFFF;
+	 font-family:Arial, Helvetica, sans-serif;
+         font-variant:small-caps;
+}
+
+/*.formTable{
+    border:none;
+    margin-top:15px;
+    border-radius:0px;
+    color:#000000;
+    font-size:15px;
+    font-family:'Arial';
+}
+
+.formTable td.labelCell{
+    font-weight:bold;
+    color:#676767;
+}*/
+
+.display{
+    border:1px solid #405060;
+    margin-top:15px;
+    border-radius:0px;
+    color:#000;
+    font-size:16px;
+    font-family:'Trebuchet MS';
+    font-weight:bold;
+}
+
+.display td.labelCell{
+    font-size:14px;
+    font-style: normal;
+    font-weight:normal;
+    color:#333;
+    font-family:'Trebuchet MS';
+}
+
+.titleRow{
+     font-size:23px;
+     font-variant:small-caps;
+     font-family:'Verdana';
+     background:#FFFFFF;
+     color:#304050;
+     text-align:left;
+     font-weight:bold;
+}
+
+.imageRowLogin{
+     padding-bottom: 10px;
+   
+}
+
+.titleRowLogin{
+     font-size:larger;
+     font-variant:small-caps;
+     font-family:'Verdana';
+     font-size:16px;
+     background-color:#506070;
+     color:#FFFFFF;
+     text-align:left;
+     font-weight:bold;
+     padding: 7px 0 0 4px;
+     margin:0px;
+     height: 45px;
+     vertical-align: middle;
+     border-top-right-radius: 4px;
+     border-top-left-radius: 4px;
+}
+
+div#err{
+    height: 35px;
+    margin: 0px;
+}
+
+.listTableCaption{
+    font-variant:small-caps;
+    margin-left:10px; /* Should coincide with displayTable left margin */
+    font-weight:bold;
+    color:#999;
+    font-size:15px;
+    text-align:left;
+    margin-top: 30px;
+    margin-bottom: 8px;
+    font-family: "Arial";
+}
+
+.listTableCaption_simpleTable{
+    font-variant:small-caps;
+    margin-left:10px; /* Should coincide with displayTable left margin */
+    font-weight:bold;
+    color:#BBB;
+    font-size:15px;
+    text-align:left;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    font-family: "Arial";
+}
+
+.displayTable_simpleTable thead th{
+    
+    margin-left:10px; /* Should coincide with displayTable left margin */
+    font-weight:500;
+    color:#FFFFFF;
+    font-size:1rem;
+    text-align:left;
+    font-family: "Poppins", sans-serif;
+}
+
+.table_login{   
+   background-color: #ffffff;
+/*   border:1px #506070 solid;*/
+   border-radius: 4px;
+   font-family:"Verdana";
+   font-size: 12px;
+   font-weight:bold;
+   width: 33%;
+   text-align: left;
+   padding: 0 0 5px 0;
+}
+
+.bkgrd{
+    /*background-color:rgba(50,50,50,0.85);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f111111, endColorstr=#7f111111);*/
+    background-color: #FFFFFF;/*#fDFDFD;*/
+    height:100%;
+    margin-top:0%;
+    padding-top: 5%;
+}
+
+input[type=text].requiredHighlight,input[type=password].requiredHighlight,input[type=radio].requiredHighlight,
+input[type=checkbox].requiredHighlight,select.requiredHighlight,textarea.requiredHighlight{
+   
+    height:25px;
+    border-color:#DD0000;
+    background-color: #FFEEEE;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.errValidate{
+    color:#dd0000;/*cc000*/
+    font-size:12px;
+    font-family:"Verdana";
+    font-weight:bold;
+    font-variant:normal;
+    padding:3px 0px;
+}
+
+
+div.accessMenu{
+    height: 48px; /*was 27px without foundation */
+    padding: 10px 25px 10px 0px;
+    color:#464646;
+/*    background:#708090;*/
+background: transparent;
+    position: fixed;
+    width: 100%;
+    text-align:right;
+    z-index:8;
+}
+
+div.sfMenu{
+    position: fixed;
+    background:transparent;
+    z-index: 10;
+}
+
+div.accessMenu a{
+    font-size: 13px;
+    padding: 0px ;
+    text-decoration: none;
+    border-bottom: 1px #fff dotted;
+    color: #464646; /*#CCCC00;*/
+}
+
+div.accessMenu a:hover{
+    color:#ccffcc;
+    text-transform: uppercase;
+    border-bottom: 1px #ccffcc dotted;
+}
+
+div.accessMenuLink a{
+    height: 30px;
+    padding: 1px 5px;
+    color:#464646;
+}
+
+div.accessMenuLink a:hover{
+    color:#CCffcc;
+    border-bottom: 1px #CCffcc dotted;
+}
+
+div.accessLink a{
+    font-size: 10px;
+    padding: 0px;
+    text-decoration: none;
+    border-bottom: 1px #d19405 dotted;
+    color:#d19405;
+   
+    
+}
+
+div.accessLink a:hover{
+    font-size: 10px;
+    padding: 0px;
+    text-decoration: none;
+    border-bottom: 1px #d19405 dotted;
+    color: #d19405;
+}
+/** VERIFIED ABOVE **/
+
+.subtitle{
+   background-color:#E2E2E2;
+   color:#545429;
+   font:12px "Arial";
+   text-transform:uppercase; 
+}
+
+/*input[type=text]{ 
+  
+  font-size:16px;
+}*/
+
+
+.buttonImage{
+   background:repeat url(../images/cal.gif); 
+   height:19px;
+   width:19px;
+}
+
+.rounded{
+	border-radius:7px;
+        padding: 0px;
+        margin: 0px;
+}
+
+.letra{
+     font: 15px Arial, Helvetica, sans-serif;
+     color:  #272727;
+}
+
+.req{
+    font-weight: bold;
+    color:#770000;
+}
+
+.tooltip{
+    border-bottom: 1px dashed #ff0000;
+    cursor:pointer;
+}
+
+
+
+.bgtransparent{
+        position:fixed;
+        left:0;
+        top:0;
+        background-color:#000;
+        opacity:0.6;
+        filter:alpha(opacity=60);
+}
+
+.bgmodal{
+        position:fixed; 
+        font-family:arial;
+        font-size:1em;       
+        overflow:auto;
+        background-color:#fff;
+        border-radius:7px;
+}
+
+.letraTable{        
+        color:#381f00;
+        /*font-variant:small-caps;*/
+        font-size:15px;
+        font-family:Arial;
+        height:25px;   
+        border-radius:5px;
+}
+
+

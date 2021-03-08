@@ -1,0 +1,27 @@
+#To be run before anything else to create the indexes
+
+#For the 'survey_responses' index
+curl --user rneptune:nikagomi -X PUT "localhost:9200/survey_responses?pretty" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "properties": {
+      "survey year": {
+        "type":  "keyword"
+      }
+    }
+  }
+}
+'
+
+#For the 'survey_indicator_responses' index
+curl --user rneptune:nikagomi -X PUT "localhost:9200/survey_indicator_responses?pretty" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "properties": {
+      "survey year": {
+        "type":  "keyword"
+      }
+    }
+  }
+}
+'

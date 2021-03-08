@@ -1,0 +1,767 @@
+
+/* 
+    Created on : Nov 6, 2014, 11:46:13 AM
+    Author     : randal
+*/
+/* To specifically override Foundation classes */
+table{
+    font-size: 1rem;
+}
+
+ul {
+    
+}
+
+.fa-check, .fa-trash-alt {
+    font-size: 1rem;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #0a0a0a;
+  background: #fefefe;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  font-size:1rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+td,
+th {
+  padding: 0; }
+
+
+/*html, body {
+    height: 100%;
+    padding:0px;
+    margin:0px;
+    font-size: 1rem;
+    font-family:"verdana";
+    background-color:#FDFDFE; 
+
+    color: #777777;
+    background-repeat: repeat;
+} */
+
+.row{
+    margin-right: 0px;
+    margin-left: 5px;
+    max-width: 97%;
+    margin-bottom: 4px;
+}
+
+@media only screen and (min-width: 64.063em) {
+    .hide-for-small-down{
+        display: inline-block !important;
+    } 
+}
+
+@media only screen and (min-width: 40.063em) {
+     .hide-for-small-down{
+        display: inline-block !important;
+    } 
+}
+
+a {
+    line-height:inherit;
+    font-family: verdana;
+}
+
+a:hover, a:focus{
+    color: purple;
+    /*font-variant: small-caps;*/
+}
+
+select {
+    background-color: #FFFFFF;
+}
+
+select:hover {
+    background-color: #ffffff;
+}
+
+select, input, textarea{
+    color:#000;
+}
+
+textarea {
+    font-size: 0.95rem;
+}
+
+.accordion .accordion-navigation > a, .accordion dd > a {
+    background:#dfeffc /*url("/images/ui-bg_glass_85_dfeffc_1x400.png")*/ 50% 50% repeat-x;
+    color: #222222;
+    display: block;
+    font-family: Verdana;
+    font-size: 1rem;
+    padding: 1rem; 
+}
+
+form{
+    margin-top: 10px;
+}
+
+.table_login form, #basic-modal-content form{
+    margin-top:0px;
+}
+
+
+fieldset{
+    border-radius:3px;
+    border: 1px solid #bbbbbb !important;
+    background-color: transparent;/*#FFFFFF;*/
+    color: #381f00;
+    margin-left: 5px;
+}
+
+fieldset legend {
+    font-weight: normal;
+    background: transparent; /* Must be same as fieldset */
+    padding: 0 0.1875rem;
+    margin: 0;
+    margin-left: -0.1875rem; 
+    font-family:"Arial";
+    font-size: 1.1rem;
+    color:#999;
+    /*font-variant:small-caps;*/
+    text-transform: capitalize;
+}
+
+input[type="checkbox"]{
+    margin: 0 0.5rem 1rem 0;
+}
+
+input[type="text"], input[type="password"]{
+    font-size: 1rem;
+    color:#111;
+}
+
+.short{
+    width: 100px;
+}
+
+input[type="text"].short, small.error.short{
+    width: 100px;
+}
+
+input[type="text"].shortMedium, small.error.shortMedium{
+    width: 150px;
+}
+
+input[type="text"].medium, small.error.medium{
+    width: 200px;
+}
+
+.alert-box{
+    margin-top: 5px;
+}
+
+div#err > .alert-box {
+    margin-top: 1px;
+    height: 25px;
+    padding: 3px 2px;
+}
+
+label.error {
+/*    font-size: 14px;*/
+font-size: 0.9rem;
+color:#464646;
+}
+
+label{
+    font-size:0.9rem;
+    color:#888; /*#555*/
+    margin-bottom: 10px;
+}
+.alert-box.alert {
+    background-color: #FF7457;
+    border-color: #de2d0f;
+    color: white; 
+}
+
+.alert-box.success {
+    background-color: #76DF9D;
+    border-color: #3a945b;
+    color: white; 
+}
+
+.switch label {
+    background:#aaa;
+}
+
+.switch input:checked + label {
+    background: #76DF9D; 
+}
+
+[data-abide] .error small.error, [data-abide] .error span.error, [data-abide] span.error, [data-abide] small.error {
+ margin: 0;
+ background: white;
+ color: #f04124;
+ padding:0px;
+ float:right;
+ font-style:normal;
+ font-weight:normal;
+ background: transparent;
+}
+
+input.error,
+select.error,
+textarea.error,
+.error input, 
+.error select,
+.error textarea
+{
+    border: 1px solid #f04124;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.error label,
+.error label.error{
+  color: #777777;
+  font-size:0.9rem /*0.8375rem*/;
+}
+
+table thead {
+    background: transparent; 
+}
+
+.error > label > small, label small{
+    text-transform:none;
+}
+/*******************************
+ Datatables overrides
+*******************************/
+table.dataTable thead .sorting, 
+table.dataTable thead .sorting_asc, 
+table.dataTable thead .sorting_desc {
+    background : none;
+}
+
+/************************************/
+/* Specific to application */
+/************************************/
+
+
+button[type="button"], button[type="submit"], input[type="submit"], input[type="button"]{
+    border-radius: 3px;
+    width: 93px;
+    height: 33px;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+    background-color: #464646;
+}
+
+.button:hover {
+    background-color: #93c83e;
+}
+
+.required:before{
+   color: #DD0000;
+   content: '* ';
+   font-size:16px;
+   display:inline;
+   font-size: inherit;
+}
+
+.requiredLight:before{
+   color: #FFFFFF;
+   content: '* ';
+   font-size:16px;
+   display:inline;
+   font-size: inherit;
+}
+
+
+/* Hint box styles */
+#hintbox{
+    position:absolute;
+    top: 0;
+    background-color: #EFEFEF;/*#CDF8F6;F0F8FF*/
+    width: 150px; /*Default width of hint.*/ 
+/*    padding: 3px;*/
+/*    border:1px solid #304050;*/
+    font:normal 14px Arial;
+    line-height:20px;
+    z-index:100;
+/*    border-right: 1px solid #F9E98E;
+    border-bottom: 1px solid #F9E98E;*/
+    visibility: hidden;
+/*    border-radius: 3px;*/
+    
+    /** Taken from Bootstrap body */
+/*	font-size: 14px;*/
+	line-height: 20px;
+	color: #333333;
+
+	/** Taken from Bootstrap .popover */
+	padding: 3px;
+/*	background-color: #ffffff;*/
+	border: 2px solid #ccc;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+/*	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;*/
+	border-radius: 5px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+.hintanchor{
+    font-weight: normal;
+    font-size: 14px;
+    color: #fff;
+    margin: 0px 8px;
+    text-decoration: none;
+    font-family:"Arial";
+}
+
+.hintanchorRow{
+    font-weight: bold;
+    font-size: 11px;
+    color: #777;
+    margin: 0px 3px;
+    text-decoration: none;
+    font-size:13px;
+    font-family:"Arial";
+    padding: 6px 0px;
+    /*background: url("/images/info.png") 0px 5px no-repeat;*/
+
+}
+
+
+
+.emptyListMessage{
+    font-size:1.1rem;
+    font-weight:400;
+    color: orangered; /*#DD0000;*/
+    text-align:left;
+    font-family:"Poppins", sans-serif;
+    font-variant: normal;
+    padding-left: 10px;
+    margin-bottom:20px;
+    margin-top:15px;
+}
+
+/*.infoMessage{
+    font-size:16px;
+    font-weight:normal;
+    color:#003366;
+    font-variant: small-caps;
+    text-align:left;
+    font-family:"Arial";
+    padding-left: 10px;
+}*/
+.infoMessage{
+    background-color: #80bfff;
+    border: 1px solid #004d99;
+    padding: 10px 8px;
+    color: #111;
+    font-weight:normal;
+    font-size:1.0rem;
+    font-variant: normal;
+    margin:5px 2% 5px 10px;
+    font-family: Verdana;
+    line-height: 1.6rem;
+    text-align: left;
+}
+
+.delete{
+   /* border: 1px solid #aa0000;
+    background:#EE5555;*/
+    color:#EE5555;
+    size:15px;
+    /*padding:3px 8px;*/
+    text-align: center;
+    /*border-radius: 3px;*/
+	cursor: pointer;
+}
+
+.delete:hover{
+    color:#770000;
+	font-size:17px;
+}
+
+
+.success-label{
+    border: 1px solid green;
+    background-color:#FFF;
+    font-variant:small-caps;
+    padding: 2px 4px;
+    color: green;
+    font-size: 15px;
+    font-family: Arial;
+    font-weight:bold;
+}
+
+.info-label{
+    border: 1px solid #3071a9;
+    background-color:#FFF;
+    font-variant:small-caps;
+    padding: 2px 4px;
+    color: #3071a9;
+    font-size: 15px;
+    font-family: Arial;
+    font-weight:bold;
+}
+
+.non-success-label{
+    border: 1px solid #FF0000;
+    background-color:#FFF;
+    font-variant:small-caps;
+    padding: 2px 4px;
+    color: #FF0000;
+    font-size: 15px;
+    font-family: Arial;
+    font-weight:bold;
+}
+
+.viewLabel {
+    font-size: 1rem !important;
+    font-weight:normal;
+    color:#888;
+    font-family: verdana;
+}
+
+.infoLabel {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #102030;
+    font-family: verdana;
+}
+
+#err{
+    color: #FF0000;
+    font-size: 1.2rem;
+    font-family:sans-serif;
+    font-weight: bold;
+    font-variant:normal;
+}
+
+.errorMessage{
+/*    text-align: left;
+    width: 100%;*/
+    background-color:#FFCCCC;
+    border: 1px solid #DD0000;
+    padding: 10px 8px;
+    color: #222222;
+    font-variant:normal;
+    line-height: 1.6rem;
+    font-weight:normal;
+    font-size:1.0rem;
+    margin: 5px 2% 5px 10px;
+    font-family: Verdana;
+}
+
+.successMessage{
+/*    text-align: center;
+    width: 98%;*/
+    background-color: #96FFBD;
+    border: 1px solid #3a945b;
+    padding: 10px 8px;
+    color: #555555;
+    font-weight:normal;
+    font-size:1.0rem;
+    font-variant: normal;
+    margin: 5px 2% 5px 10px;
+    font-family: Verdana;
+    line-height: 1.6rem;
+}
+
+/*font-size:16px;
+    font-weight:normal;
+    color:#DD0000;
+    text-align:left;
+    font-family:"Arial";
+    font-variant: small-caps;
+    padding-left: 10px;*/
+
+.selectAll{
+    font-weight:bold;
+    font-size:14px;
+    font-variant:small-caps;
+    font-family:'Verdana';
+    color:#006699;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select{
+    margin-bottom: 0px;
+}
+
+.permBlock{
+    text-transform:capitalize;
+    margin-left:-20px;
+    color:#464646;
+    font-size:14px;
+    font-family:Verdana;
+    font-weight:bold;
+    text-align:left;
+}
+
+.missingGrades{
+    color:orangered;
+    font-weight: bold;
+    font-size:16px;
+    display:inline;
+    font-size: inherit;
+}
+
+.sectionHeading{
+    margin-top:0px;
+    font-size:1.0rem;
+    color:#787878;
+    margin-bottom:0px;
+    margin-left:20px;
+    text-shadow: 2px 2px #ededed;
+}
+
+div.paper {
+    padding-top:5px;
+    padding-left: 5px;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #CCC;
+    width: 98%;
+    background-color:#FFFFFF;
+    margin-left:10px;
+    text-align:center;
+    overflow: hidden;
+}
+
+div.paper-markReading {
+    padding-top:5px;
+    box-shadow: 5px 5px 3px #F9966B;
+    border:1px solid #CCC;
+    width: 98%;
+    background-color:#FFFFFF;
+    margin-left:10px;
+    text-align:center;
+}
+
+.overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background-color: #555555;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+    z-index: 700;
+    text-align: center;
+    color: #29d;
+    padding-top: 50%;
+}
+
+.reportScroll {
+    color:#AAAAAA;
+    font-size:0.85rem;
+}
+
+a.bullet:before{
+    content: "\2022 \00A0";
+}
+
+.pageTitle{
+    color:#BBBBBB;
+    margin-top:2px;
+    margin-left:2px;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+
+a.editRow {
+    /*background: url('/images/icons/mod_actions.png') no-repeat top left; 
+    content: "<i class='fas fa-pen-square'></i>";
+    width: 24px; 
+    height: 24px;
+    display: inline-block;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+a.del{
+    /*background: url('/images/icons/mod_actions.png') no-repeat top left; 
+    width: 24px; 
+    height: 24px;
+    background-position: -29px 0px;
+    display: inline-block;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+a.saveRow {
+    /*background: url('/images/icons/mod_actions.png') no-repeat top left; 
+    width: 24px; 
+    height: 24px;
+    background-position: -87px 0;*/
+    display: inline-block;
+}
+
+a.cancelRow{
+    /*background: url('/images/icons/mod_actions.png') no-repeat top left; 
+    width: 24px; 
+    height: 24px;
+    background-position: -58px 0px;
+    display: inline-block;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+a.rowView{
+    background: url('/images/icons/mod_actions.png') no-repeat top left; 
+    width: 24px; 
+    height: 24px;
+    background-position: -116px 0px;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.excelbtn, .excelbtn:hover{
+    background: url(/images/icons/excel.png) no-repeat left center;
+    color: transparent;
+    width: 50px;
+    margin:0px;
+}
+
+.pdfbtn, .pdfbtn:hover {
+    background: url(/images/icons/file_pdf.png) no-repeat left center;
+    color: transparent;
+    width: 50px;
+    margin:0px;
+}
+
+.printbtn, .printbtn:hover {
+    background: url(/images/icons/print.png) no-repeat left center;
+    color: transparent;
+    width: 50px;
+    margin:0px;
+}
+
+.searchbtn, .searchbtn:hover {
+    background: url(/images/icons/site_search.png) no-repeat left center;
+    color: transparent;
+    width: 40px;
+    margin:0px;
+}
+
+.exportImage {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    color: #0084ca;
+}
+
+div.table-toolbar {
+    font-size:1.4rem;
+    font-variant:normal;
+    font-family: Arial;
+    
+    color:#AAAAAA;
+    font-weight: bold;
+    padding: 1px 0px 0px 0px;
+}
+
+.intl-tel-input {
+    width: 100%;
+}
+
+.joyride-nub, .top {
+    font-size:0.8rem !important;
+}
+
+.joyride-content-wrapper {
+     font-size:0.6rem;
+}
+.joyride-next-tip, .joyride-prev-tip{
+    font-size:1rem !important;
+    
+}
+
+.joyride-tip-guide {
+    min-width: 400px !important;
+}
+
+.divisionHighlight {
+    background-color: lightgoldenrodyellow;
+    font-size:1rem;
+    font-variant:small-caps;
+    color:#888;
+    font-weight:bold;
+}
+
+
+/* Media Queries */
+@media only screen and (max-width: 40em) { 
+    fieldset{
+        width: 90%  !important;
+    }
+    
+    div.table_login{
+        width: 80%;
+    }
+    
+    div.medium-4{
+        width: 100%;
+    }
+}
+
+ @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+    div.medium-4{
+        /*width: 50%;*/
+    }
+    
+    fieldset{
+        width: 90% !important;
+    }
+}
+
+
+.my-floating-bar{
+    background: orangered;
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 5px;
+    height: 50px;
+    border-radius:5px;
+    display: none;
+}
+
+.my-floating-bar a.close {
+   /* background:url(/images/x.png) no-repeat*/; 
+    font-size:1.3rem;
+    color: #464646;
+    width:25px; 
+    height:29px; 
+    display:inline; 
+    z-index:3200; 
+    position:absolute; 
+    top:-14px; 
+    right:-14px; 
+    cursor:pointer;
+   
+}
+
+.fa-times-circle {
+  background: yellow;
+  border-radius: 50%;
+  height: 1.3rem;
+  width: 1.3rem;
+}

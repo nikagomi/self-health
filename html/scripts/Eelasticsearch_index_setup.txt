@@ -1,0 +1,52 @@
+#To be run before anything else to create the indexes
+
+#For the 'student_academic_period_subject_grades' index
+curl --user rneptune:nikagomi -X PUT "localhost:9200/student_academic_period_subject_grades?pretty" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "properties": {
+      "subject term grade": {
+        "type": "half_float"
+      },
+      "subject exam grade": {
+        "type": "half_float"
+      },
+      "subject final grade": {
+        "type": "half_float"
+      },
+      "class group": {
+        "type":  "keyword"
+      },
+      "subject": {
+        "type":  "keyword"
+      },
+      "academic period": {
+        "type":  "keyword"
+      },
+      "grade level": {
+        "type":  "keyword"
+      },
+      "academic year": {
+        "type":  "keyword"
+      }
+    }
+  }
+}
+'
+
+curl --user rneptune:nikagomi -X PUT "localhost:9200/student_school_assignments?pretty" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "properties": {
+      "modified time": {
+        "type":   "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "academic year": {
+        "type":  "keyword"
+      }
+    }
+  }
+}
+'
+

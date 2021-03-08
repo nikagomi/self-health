@@ -1,0 +1,198 @@
+/** ABOVE VALIDATED **/
+
+.displayEven td{
+/*background-color:#F1F8F8;#D2F0FF;*/
+border-bottom: 1px groove #8B8B8B;
+}
+
+.displayOdd{
+background-color:#E4F3F1;/*#EEEEEE;*/
+}
+
+.displayOdd td{
+border-bottom: 1px groove #E4F3F1;/*#8B8B8B;*/
+}
+
+.barra{
+    background-color: #464646;
+    font: 16px bold Arial;
+    height: 40px;
+    color: #ffffff;
+    text-align:right;
+    border-radius:7px;
+}
+
+
+/******
+ For the change password modal form on the login screen
+ after which a user's passsword jhas been reset.
+*******/
+/**/
+
+#basic-modal-content,#usr-reg-modal-content, #FA-content, #FA-backup-content, #camera, #register-modal-content {display:none;}
+
+
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+#simplemodal-container {
+    height:450px; 
+    width:700px; 
+    color:#203040; 
+    background-color:#FFF; 
+    border:1px solid #888888;
+    border-radius:0px; 
+    padding:0px;
+    font-family:"Verdana";
+    font-size: 13px;
+    font-weight:bold;
+   
+    
+}
+
+#simplemodal-container .simplemodal-data {
+    padding:0px;
+}
+
+#simplemodal-container a {
+    color:#ddd;
+}
+
+#simplemodal-container h3 {
+    color:#84b8d9;
+}
+
+/*.modalHeader{
+    background-color:#506070; 
+    color:#fff; 
+    font-size:16px; 
+    font-weight:bold;
+    height:40px; 
+    padding-top:5px;
+    font-family:"Verdana";
+    vertical-align: bottom;
+    font-variant:small-caps;
+}*/
+
+#simplemodal-container a.modalCloseImg {
+    background:url(/images/x.png) no-repeat; 
+    width:25px; 
+    height:29px; 
+    display:inline; 
+    z-index:3200; 
+    position:absolute; 
+    top:-15px; 
+    right:-16px; 
+    cursor:pointer;
+    
+}
+/**** END OF CHANGE PASSWORD MODAL FORM STYLE ****/
+
+/*** File input style *******/
+.inputfile { /*.js*/
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 90%;
+    font-size: 0.9rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.0rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 0.9em;
+    height: 0.9em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+/* style 6 */
+
+.inputfile-6 + label {
+    color: #d3394c;
+}
+
+.inputfile-6 + label {
+    border: 1px solid #006432/*#d3394c*/;
+    background-color: #EEEEEE /*#f1e5e6*/;
+    padding: 0;
+}
+
+.inputfile-6 + label.error {
+    border: 1px solid #FF0000/*#d3394c*/;
+    background-color: #EEEEEE /*#f1e5e6*/;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+    border-color: #722040;
+}
+
+.inputfile-6 + label span,
+.inputfile-6 + label strong {
+    padding: 0.625rem 1.0rem;
+    color: #464646;
+    /* 10px 20px */
+}
+
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 1em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.inputfile-6 + label strong {
+    height: 100%;
+    color: #ffffff;
+    background-color: #006432;;
+    display: inline-block;
+}
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+    background-color: #722040;
+}
+
+@media screen and (max-width: 50em) {
+    .inputfile-6 + label strong {
+            display: block;
+    }
+}
