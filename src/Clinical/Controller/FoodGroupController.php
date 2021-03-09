@@ -26,7 +26,7 @@ class FoodGroupController extends BaseController {
       
         try {
 
-            if (($request->files->get("foodGroupFile")->getSize() / 1024) <= 1024) {
+            if (($request->files->get("foodGroupFile")->getClientSize() / 1024) <= 1024) {
                 $imagick = new \Imagick();
                 $imagick->readimage($request->files->get("foodGroupFile"));
 

@@ -134,16 +134,12 @@ class UserController extends \Neptune\BaseController{
         $this->_health->assign('user',$obj);
         $this->_health->assign('categories',(new \Authentication\Model\MenuCategory())->getAllOrderBy('name', 'ASC'));
         
-        
         $this->_health->assign('prm',new \Authentication\Model\Permission());
-        
         $this->_health->assign('selectedPerms',(new \Authentication\Model\UserPermission())->getPermissionsIdsByUserId($obj->getId()));
 
         $this->_health->assign('groups',  DbMapperUtility::convertObectArrayToCheckBoxArray((new \Authentication\Model\Group())->getAllOrderBy("name")));
         $this->_health->assign('selectedGrps',(new \Authentication\Model\UserGroup())->getGroupIdsByUserId($obj->getId()));
 
-        
-       
         $this->_health->assign('yesNo',array("" => "","1"=>"Yes", "0" =>"No"));
         
         $currentUser = (new \Authentication\Model\User())->getEntityById($_SESSION['userId']);
@@ -294,7 +290,7 @@ class UserController extends \Neptune\BaseController{
 
                             $mailer = new \Swift_Mailer($transport);
                             $message = (new \Swift_Message("Self-Health Reporting Two Factor Authentication Backup Code"))
-                                ->setFrom(array($transport->getUsername() => " SLASPA GTMA"));
+                                ->setFrom(array($transport->getUsername() => " Self-Health Tracker"));
                             $message->setTo(array($user->getEmail() => $user->getLabel()));
 
                             $bodyText = "Dear ".$user->getLabel().",";
@@ -418,6 +414,18 @@ class UserController extends \Neptune\BaseController{
     }
     
     
+    public function checkRegistrationCapture(Request $request) {
+        /*$request = Request::create(
+            '/user/registration/capture/check',
+            'POST',
+            array('captchaText' => 'SABCDEF')
+        );*/
+        $captcha = \trim($request->request->get("captchaText"));
+        $captchaValid = ($captcha == $_SESSION['captcha_text']) ? true: false;
+        $response = new Response(json_encode($captchaValid ));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;    
+    }
     
     public function registerPatientUser (Request $request) {
         //throw  new Exception("I got here");

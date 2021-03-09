@@ -146,6 +146,9 @@ $routes->add('force_user_log_out', new Routing\Route('/force/user/log/out/{userI
 $routes->add('register_user', new Routing\Route('/register/user', 
     array('_controller' => 'Authentication\\Controller\\UserController::registerPatientUser')
 ));
+$routes->add('register_user_check_capture', new Routing\Route('/user/registration/capture/check', 
+    array('_controller' => 'Authentication\\Controller\\UserController::checkRegistrationCapture')
+));
 
 //Physical Activity Actions
 $routes->add('physical_activity_form', new Routing\Route('/physical/activity', 

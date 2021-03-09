@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-01 16:13:51
+/* Smarty version 3.1.34-dev-7, created on 2021-03-09 17:17:46
   from '/var/www/oecs/src/smarty/templates/start/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_603d12bf17dff3_79722501',
+  'unifunc' => 'content_6047adba1540c9_59589436',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '92738a5c02663ddf1e5917355498cc5f5cad09c3' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/start/login.tpl',
-      1 => 1614082915,
+      1 => 1615310263,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_603d12bf17dff3_79722501 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6047adba1540c9_59589436 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/smarty/libs/plugins/function.html_options.php','function'=>'smarty_function_html_options',),));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -202,6 +202,12 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
              color: #DD0000;
         }
         
+        .err {
+            color:#FF0000;
+            font-family: 'Poppins', sans-serif;
+            font-size:0.9rem;
+        }
+        
         .error span {
             /*color: #ff8080 !important;*/
         }
@@ -241,8 +247,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
     var scaleFactor = <?php echo \Neptune\PropertyService::getProperty("password.strength.scale.factor",0.7);?>
 ;
     var smallScreen = window.matchMedia("(max-width: 40.0625em)");
-    var chgPwdWidth = (smallScreen.matches) ? "100%" : "400px";
-    
+    var chgPwdWidth = (smallScreen.matches) ? "97%" : "500px";
+    var regFormWidth = (smallScreen.matches) ? "97%" : "650px";
     //Function to animate email and password buttons
     /*loginAnimate = function(e) {
         $(this).prev('span').css({'font-size':'0.9rem','color':'#008cba','font-weight':'normal'});
@@ -299,7 +305,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         $("#regUsr").click(function(e){
             $.modal($('div#register-modal-content'), {
             close:true,
-            containerCss: {'width':chgPwdWidth, 'min-height':'600px'},
+            containerCss: {'width':regFormWidth, 'min-height':'450px'},
                 onOpen: function (dialog) {
                     dialog.overlay.fadeIn('slow', function () {
                         dialog.data.hide();
@@ -559,27 +565,34 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         /*****************************************
          Interrupt form submit to show spinner
         ******************************************/
-        $("form").on('valid.fndtn.abide', function(e) {
-            if ($(this).find(".wait_tip").length > 0) {
-                $(this).find("button[type='submit']").css("display","none");
-                $(this).find(".wait_tip").css("display","inline-block");
-            }
-            $(this).submit();
-        }).on('invalid.fndtn.abide', function () {
-            $(this).find("button[type='submit']").css("display","inline-block");
-            $(this).find(".wait_tip").css("display","none");
+        $("form#userRegistrationForm").submit(function(e) {
+            var self = $(this);
+            self.find("div.err").html("");
+            self.find("button[type='submit']").css("display","none");
+            self.find(".wait_tip").css("display","inline-block");
+           
+            e.preventDefault();
+            
+            $.ajax({
+                type: "POST",
+                url: "/user/registration/capture/check",
+                dataType: "json",
+                data: {captchaText: $("#captcha").val()}
+            }).done(function(status){
+                if (status) {
+                    self[0].submit();
+                } else {
+                    e.preventDefault();
+                    self.find("div.err").html("Invalid CAPTCHA text");
+                    self.find("button[type='submit']").css("display","inline-block");
+                    self.find(".wait_tip").css("display","none");
+                }
+            });
         });
-        
-        /*$('input.login').on({
-            focus: loginAnimate,
-            click: loginAnimate,
-            input: loginAnimate,
-            mouseover: loginAnimate
+
+        $(".refresh-captcha").click(function() {
+            $("img.captcha-image").attr("src", '/utility/captcha.php?' + Math.random());
         });
-        
-        $('span.login').on({
-            mouseover: openLoginInputs
-        });*/
         
     });//end of document get ready
     
@@ -867,64 +880,78 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         <form data-abide name="userRegistrationForm" id="userRegistrationForm" action="/register/user" method="post">
                         <br/>
             <div class='row'>
-                <div class="small-12 end columns">
+                <div class="small-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.email");?>
 <small class="error">invalid format</small></span>
                         <input tabindex="11" type="email" name="regEmail" id="regEmail" autocomplete="off" value="" required/>
                     </label>
                 </div>
-            </div>
-            <div class='row'>
-                <div class="small-12 end columns">
-                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.first.name");?>
-<small class="error">required</small></span>
-                        <input tabindex="12" type="text" name="regFirstName" id="regFirstName" autocomplete="off" value="" required/>
-                    </label>
-                </div>
-            </div>
-            <div class='row'>
-                <div class="small-12 end columns">
-                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.last.name");?>
-<small class="error">required</small></span>
-                        <input tabindex="13" type="text" name="regLastName" id="regLastName" autocomplete="off" value="" required/>
-                    </label>
-                </div>
-            </div>
-            <div class='row'>
-                <div class="small-12 end columns">
-                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.genderId");?>
-<small class="error">required</small></span>
-                        <select tabindex="14" name="regGenderId" id="regGenderId" required>
-                            <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['genderIds']->value),$_smarty_tpl);?>
-
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div class='row'>
-                <div class="small-12 end columns">
-                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.dob");?>
-<small class="error">required</small></span>
-                        <input tabindex="15" type="text" class="medium" name="regDob" id="regDob" autocomplete="off" value="" required placeholder="mmm dd, yyyy"/>
-                    </label>
-                </div>
-            </div>
-            <div class='row'>
-                <div class="small-12 end columns">
+                <div class="small-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.countryId");?>
 <small class="error">required</small></span>
-                        <select tabindex="16" name="regCountryId" id="regCountryId" required>
+                        <select tabindex="12" name="regCountryId" id="regCountryId" required>
                             <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['countryIds']->value),$_smarty_tpl);?>
 
                         </select>
                     </label>
                 </div>
             </div>
+            <div class='row'>
+                <div class="small-6 end columns">
+                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.first.name");?>
+<small class="error">required</small></span>
+                        <input tabindex="13" type="text" name="regFirstName" id="regFirstName" autocomplete="off" value="" required/>
+                    </label>
+                </div>
+                <div class="small-6 end columns">
+                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.last.name");?>
+<small class="error">required</small></span>
+                        <input tabindex="14" type="text" name="regLastName" id="regLastName" autocomplete="off" value="" required/>
+                    </label>
+                </div>
+            </div>
+            
+            <div class='row'>
+                <div class="small-6 end columns">
+                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.genderId");?>
+<small class="error">required</small></span>
+                        <select tabindex="15" name="regGenderId" id="regGenderId" required>
+                            <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['genderIds']->value),$_smarty_tpl);?>
+
+                        </select>
+                    </label>
+                </div>
+                <div class="small-6 end columns">
+                    <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.dob");?>
+<small class="error">required</small></span>
+                        <input tabindex="16" type="text" class="medium" name="regDob" id="regDob" autocomplete="off" value="" required placeholder="mmm dd, yyyy"/>
+                    </label>
+                </div>
+            </div>
+            <div class='row'>
+                
+            </div>
+            <div class='row'>
+                <div class="small-6 end columns" style="padding-top:8px;">
+                    <img src="/utility/captcha.php" alt="CAPTCHA" class="captcha-image"/>
+                    <i class="fas fa-sync refresh-captcha" style="cursor:pointer;font-size:1.4rem;color:#008cba;"></i>
+                </div>
+                <div class="small-6 end columns">
+                    <label>
+                        <span class="required"><?php echo \Neptune\MessageResources::i18n("user.registration.captcha.label");?>
+<small class="error captchaError">invalid text</small></span>
+                        <input type="text" id="captcha" maxlength="6" name="captcha_challenge" pattern="" required />
+                    </label>
+                </div>
+            </div>
             <div class="row" >
-                <div class="medium-12 columns">
+                <div class="medium-6 columns end">
                     <?php echo \Neptune\HtmlElementTag::submitBtn(17,'Register');?>
 
-                                        <span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>
+                    <span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>
+                </div>
+                <div class="medium-6 columns end">
+                    <div class="err"></div>
                 </div>
             </div>
         </form>			
@@ -962,6 +989,9 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                         }
                         return true;
                     }
+                },
+                patterns: {
+                    capcha_pattern: /^[A-Z]+$/
                 }
             }
             

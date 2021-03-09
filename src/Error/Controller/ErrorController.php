@@ -33,7 +33,7 @@ class ErrorController extends BaseController{
     
     public function processErrorDetails(Request $request){
         //Get user and date/time here
-        $user = (new \Authentication\Model\EduUser())->getObjectById($_SESSION['userId']);
+        $user = (new \Authentication\Model\User())->getObjectById($_SESSION['userId']);
         $time = \date("l M j, Y g:i:s a");
         $details = $request->request->get("details");
         $code = $request->request->get("code");
@@ -41,8 +41,8 @@ class ErrorController extends BaseController{
         $line = $request->request->get("line");
         $file = $request->request->get("file");
         
-        $supportEmail = PropertyService::getProperty("admin.support.email","randal.neptune@proteustechinc.com");
-        $facility = (new \Admin\Model\EduFacility())->getByFacilityCode(EduPropertyService::getProperty("facility.code"));
+        $supportEmail = PropertyService::getProperty("admin.support.email","randalneptune@gmail.com");
+       // $facility = (new \Admin\Model\Facility())->getByFacilityCode(PropertyService::getProperty("facility.code"));
        
 
         $userName = ($user->isIdEmpty()) ? "System (No login)" : $user->getLabel();
@@ -50,7 +50,7 @@ class ErrorController extends BaseController{
         $body = "Error encountered by ".$userName." at ".$time." when attempting the following: <br/>".$details."<br/><br/>";
         $body .= " <b>Error details:</b> <br/><br/>Code: ".$code. "<br/>Message: ".$message."<br/>Line: ".$line."<br/>File: ".$file;
 
-        $mailerEvent = new \Neptune\Event\MailerEvent("Application Error", $body, array($supportEmail => "Support"), $facility->getName());
+        $mailerEvent = new \Neptune\Event\MailerEvent("Application Error", $body, array($supportEmail => "Support"), 'Self-health Tracker');
         $this->sc->get('event.dispatcher')->dispatch('listener.mailer',$mailerEvent);
         
         return new Response($this->_health->display("security/error/processError.tpl"));

@@ -20,7 +20,8 @@ class AccessControlListener implements EventSubscriberInterface{
         
         if(($request->getRequestUri() != "/login" && $request->getRequestUri() != "/" && $request->getRequestUri() != "/reset" && $request->getRequestUri() != "/register/user" 
                 && $request->getRequestUri() != "/user/forgot/password" && $request->getRequestUri() != "/tfa/verify" 
-                && $request->getRequestUri() != "/tfa/backup/code/login" && $request->getRequestUri() != "/tfa/verify/backup/code" && $request->getRequestUri() != "/tfa/verify/code") 
+                && $request->getRequestUri() != "/tfa/backup/code/login" && $request->getRequestUri() != "/tfa/verify/backup/code" && $request->getRequestUri() != "/tfa/verify/code"
+                && $request->getRequestUri() != "/user/registration/capture/check" && $request->getRequestUri() != "/utility/captcha.php") 
             && $_SESSION['userId'] == "" ){
                 $event->setResponse(new RedirectResponse("/"));
         } /*elseif (empty($_SESSION['menu']) and $appUsr->getId() != "") { //user just logged in.
