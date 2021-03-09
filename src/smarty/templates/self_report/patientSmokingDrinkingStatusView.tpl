@@ -42,7 +42,7 @@
                     <ul class="medium-block-grid-2 small-block-grid-1">
                         <li>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smoker")}</span>
                                     </label>
                                 </div>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingSince")}</span>
                                     </label>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingFrequency")}</span>
                                     </label>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedSmoking")}</span>
                                     </label>
                                 </div>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stopSmokingDate")}</span>
                                     </label>
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingComments")}</span>
                                     </label>
@@ -102,7 +102,7 @@
                         </li>
                         <li>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinker")}</span><br/>
                                     </label>
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingSince")}</span>
                                     </label>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingFrequency")}</span>
                                     </label>
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedDrinking")}</span>
                                     </label>
                                 </div>
@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stopDrinkingDate")}</span>
                                     </label>
@@ -151,7 +151,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns text-right">
+                                <div class="medium-6 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingComments")}</span>
                                     </label>

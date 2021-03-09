@@ -6,6 +6,9 @@
 {block name=scripts}
     {literal}
         var canvasDrawn = false;
+        
+        var smallScreen = window.matchMedia("(max-width: 40.0625em)");
+        var tfaWidth = (smallScreen.matches) ? "95%" : "550px";
     {/literal}
 {/block}
 
@@ -234,7 +237,7 @@
                 if ($(this).prop("checked")){
                     $.modal($('div#FA-content'), {
                         close:false,
-                        containerCss: {'width':'100%', "max-width":"500px"},
+                        containerCss: {'width':tfaWidth, "max-width":"500px"},
                         onOpen: function (dialog) {
                             $("div#chk").html("");
                             

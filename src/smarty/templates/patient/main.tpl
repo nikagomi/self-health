@@ -14,6 +14,7 @@
         .viewLabel, .infoLabel{
             font-size: 0.9rem !important;
             color: #111111 !important;
+            font-family: 'Poppins', sans-serif !important;
         
         }
         
@@ -408,6 +409,8 @@
 
 {block name="scripts"}
     {literal}
+        var smallScreen = window.matchMedia("(max-width: 40.0625em)");
+        var emailWidth = (smallScreen.matches) ? "95%" : "550px";
         
         var canvasDrawn = false;
         
@@ -562,7 +565,7 @@
                    },
                     style: {
                        classes: 'qtip-bootstrap',
-                       width:'550px'
+                       width:emailWidth
                    },
                    position: {
                        my: "top right",
@@ -654,6 +657,12 @@
 
     <input type="hidden" id="patientId" value="{$patient->getId()}"/>
     <input type="hidden" id="patientName" value="{$patient->getFullName()}"/>
+    <div class="row show-for-small-down" style="margin-left:5px;width:90%;color:#444444;border:1px solid #464646; background-color:#ffc42c !important;padding:5px 1px;font-weight:500;font-family:'Poppins', sans-serif;">
+        
+        <div class="small-9 columns end">
+           <b><a style="color:#008cba;" href="/patient/summary/{$patient->getId()}">{$patient->getFullName()}</a></b><br/>{$patient->getGender()->getName()} - {$patient->displayAge()}
+        </div>
+    </div>
     <div class="row">
        
         <div class="medium-10 ends columns">
@@ -795,7 +804,7 @@
                                     <div class="medium-7 end columns">
                                         <label class="infoLabel text-left">
                                             <span {if $patient->getUser()->getEmail() != ''} class="hotspot" title="{$patient->getUser()->getEmail()}" {/if}>
-                                                {$html->truncateString($patient->getUser()->getEmail(),20)}
+                                                {$html->truncateString($patient->getUser()->getEmail(),17)}
                                             </span>
                                         </label>
                                     </div>
@@ -851,7 +860,7 @@
         </div>
          {***************************** SEPARATOR ********************}
         
-        <div id="summary" class="medium-2 small-10 end columns">
+        <div id="summary" class="medium-2 small-10 end columns show-for-medium-up show-for-landscape">
             
             <div align="center" class="" style="color:#444444;border:1px solid #464646; background-color:#ffc42c !important;padding:5px 1px;font-weight:500;font-family:'Poppins', sans-serif;">
                 Patient Summary
