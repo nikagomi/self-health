@@ -85,26 +85,29 @@
                     <div class="medium-4 end columns" style="margin-top:3px;">
                         <label>
                             <span style="color:#777;">Age range (yrs): <small class="error" id="ageRangeError"></small></span>&ensp;<br>
-                            <input style="display:inline-block;float:left;margin-right:16px;" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aStart" name="aStart" value="{$aStart}" placeholder=""/> 
+                            <input style="display:inline-block;float:left;margin-right:16px;" tabindex="{$tabindex}" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aStart" name="aStart" value="{$aStart}" placeholder=""/> 
+                            {assign var="tabindex" value="{$tabindex + 1}"}
                             <span style="display:inline-block;float:left;margin-right:16px;"> - </span>
-                            <input style="display:inline-block;float:left;" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aEnd" name="aEnd" value="{$aEnd}" placeholder=""/> 
+                            <input style="display:inline-block;float:left;" tabindex="{$tabindex}" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aEnd" name="aEnd" value="{$aEnd}" placeholder=""/> 
+                            {assign var="tabindex" value="{$tabindex + 1}"}
                             </label>
                     </div>
-                    
-                    <div class="medium-4 end columns">
+                     <div class="medium-4 end columns">
                         <label><span class="">Country:</span>
-                            <select name="countryId">
+                            <select name="countryId" id="countryId" style="max-width:80%;" tabindex="{$tabindex}">
                                 {html_options options=$countries selected=$countryId}
                             </select>
                         </label>
+                        {assign var="tabindex" value="{$tabindex + 1}"}
                     </div>
-
                 </div>
+                
                 <br/>
                 <div class="row">
                     <div class="medium-5 end columns" style="">
-                        <a href="/patient/search/form" tabindex="8" class="reset">Reset</a>
-                        <input tabindex="7" type="submit" name="submit" class="button" value="Search"/>&nbsp;
+                        <a href="/patient/search/form" tabindex="{$tabindex}" class="reset">Reset</a>
+                        {assign var="tabindex" value="{$tabindex + 1}"}
+                        <input tabindex="{$tabindex}" type="submit" name="submit" class="button" value="Search"/>&nbsp;
                     </div>
                     <div class="medium-7 end columns medium-text-right small-text-left" style="padding-top:7px;">
                         <span style="font-size:0.9rem;color:#555; font-variant:small-caps;">

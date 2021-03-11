@@ -113,6 +113,28 @@ $routes->add('enable_2fa-pwd', new Routing\Route('/verify/pwd',
 $routes->add('preference_update', new Routing\Route('/security/user/preferences/save', 
     array('_controller' => 'Authentication\\Controller\\UserController::updatePreferences'))
 );
+$routes->add('verify_unique_user_email', new Routing\Route('/ajax/user/verify/unique/email', 
+    array('_controller' => 'Authentication\\Controller\\UserController::ajaxIsUserEmailUnique'))
+);
+
+/* Group Actions */
+$routes->add('group_form', new Routing\Route('/security/group', 
+        array('_controller' => 'Authentication\\Controller\\GroupController::form')
+        )
+);
+$routes->add('group_edit', new Routing\Route('/security/group/edit/{id}', 
+        array('_controller' => 'Authentication\\Controller\\GroupController::edit'),
+        array("id" => "[A-Z0-9]+")
+        )
+);
+$routes->add('group_save', new Routing\Route('/security/group/save', 
+        array('_controller' => 'Authentication\\Controller\\GroupController::save')
+));
+$routes->add('group_delete', new Routing\Route('/security/group/delete/{id}', 
+        array('_controller' => 'Authentication\\Controller\\GroupController::delete'),
+        array("id" => "[A-Z0-9]+")
+        )
+);
 
 /* User Actions */
 $routes->add('user_form', new Routing\Route('/security/user', 

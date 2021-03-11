@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-09 16:33:29
+/* Smarty version 3.1.34-dev-7, created on 2021-03-11 17:11:13
   from '/var/www/oecs/src/smarty/templates/patient/search.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6047a3591ffa19_38032553',
+  'unifunc' => 'content_604a4f31202ac4_61328051',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c829fb25077b7ec8922dc04ffcb682d4dba2395' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/patient/search.tpl',
-      1 => 1613907948,
+      1 => 1615482672,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6047a3591ffa19_38032553 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604a4f31202ac4_61328051 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -29,39 +29,39 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21316328686047a3591e13f2_96699637', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_183096812604a4f311e6493_67930143', 'styles');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5337245196047a3591e25c4_53862097', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1238066807604a4f311e7be1_81328671', 'jquery');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10340988556047a3591e2d55_72415378', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_893818601604a4f311e88f2_87479747', 'dataTable');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6252073036047a3591e3433_42441868', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1785909878604a4f311e92f2_26964620', 'content');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8663128826047a3591fee54_34173007', "foundation");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_239947636604a4f31201fe4_66164217', "foundation");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'styles'} */
-class Block_21316328686047a3591e13f2_96699637 extends Smarty_Internal_Block
+class Block_183096812604a4f311e6493_67930143 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_21316328686047a3591e13f2_96699637',
+    0 => 'Block_183096812604a4f311e6493_67930143',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -80,12 +80,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block 'jquery'} */
-class Block_5337245196047a3591e25c4_53862097 extends Smarty_Internal_Block
+class Block_1238066807604a4f311e7be1_81328671 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_5337245196047a3591e25c4_53862097',
+    0 => 'Block_1238066807604a4f311e7be1_81328671',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -113,12 +113,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'dataTable'} */
-class Block_10340988556047a3591e2d55_72415378 extends Smarty_Internal_Block
+class Block_893818601604a4f311e88f2_87479747 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_10340988556047a3591e2d55_72415378',
+    0 => 'Block_893818601604a4f311e88f2_87479747',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -135,12 +135,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_6252073036047a3591e3433_42441868 extends Smarty_Internal_Block
+class Block_1785909878604a4f311e92f2_26964620 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_6252073036047a3591e3433_42441868',
+    0 => 'Block_1785909878604a4f311e92f2_26964620',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -204,29 +204,37 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <div class="medium-4 end columns" style="margin-top:3px;">
                         <label>
                             <span style="color:#777;">Age range (yrs): <small class="error" id="ageRangeError"></small></span>&ensp;<br>
-                            <input style="display:inline-block;float:left;margin-right:16px;" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aStart" name="aStart" value="<?php echo $_smarty_tpl->tpl_vars['aStart']->value;?>
+                            <input style="display:inline-block;float:left;margin-right:16px;" tabindex="<?php echo $_smarty_tpl->tpl_vars['tabindex']->value;?>
+" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aStart" name="aStart" value="<?php echo $_smarty_tpl->tpl_vars['aStart']->value;?>
 " placeholder=""/> 
+                            <?php $_smarty_tpl->_assignInScope('tabindex', ((string)($_smarty_tpl->tpl_vars['tabindex']->value+1)) ,true);?>
                             <span style="display:inline-block;float:left;margin-right:16px;"> - </span>
-                            <input style="display:inline-block;float:left;" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aEnd" name="aEnd" value="<?php echo $_smarty_tpl->tpl_vars['aEnd']->value;?>
+                            <input style="display:inline-block;float:left;" tabindex="<?php echo $_smarty_tpl->tpl_vars['tabindex']->value;?>
+" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aEnd" name="aEnd" value="<?php echo $_smarty_tpl->tpl_vars['aEnd']->value;?>
 " placeholder=""/> 
+                            <?php $_smarty_tpl->_assignInScope('tabindex', ((string)($_smarty_tpl->tpl_vars['tabindex']->value+1)) ,true);?>
                             </label>
                     </div>
-                    
-                    <div class="medium-4 end columns">
+                     <div class="medium-4 end columns">
                         <label><span class="">Country:</span>
-                            <select name="countryId">
+                            <select name="countryId" id="countryId" style="max-width:80%;" tabindex="<?php echo $_smarty_tpl->tpl_vars['tabindex']->value;?>
+">
                                 <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['countries']->value,'selected'=>$_smarty_tpl->tpl_vars['countryId']->value),$_smarty_tpl);?>
 
                             </select>
                         </label>
+                        <?php $_smarty_tpl->_assignInScope('tabindex', ((string)($_smarty_tpl->tpl_vars['tabindex']->value+1)) ,true);?>
                     </div>
-
                 </div>
+                
                 <br/>
                 <div class="row">
                     <div class="medium-5 end columns" style="">
-                        <a href="/patient/search/form" tabindex="8" class="reset">Reset</a>
-                        <input tabindex="7" type="submit" name="submit" class="button" value="Search"/>&nbsp;
+                        <a href="/patient/search/form" tabindex="<?php echo $_smarty_tpl->tpl_vars['tabindex']->value;?>
+" class="reset">Reset</a>
+                        <?php $_smarty_tpl->_assignInScope('tabindex', ((string)($_smarty_tpl->tpl_vars['tabindex']->value+1)) ,true);?>
+                        <input tabindex="<?php echo $_smarty_tpl->tpl_vars['tabindex']->value;?>
+" type="submit" name="submit" class="button" value="Search"/>&nbsp;
                     </div>
                     <div class="medium-7 end columns medium-text-right small-text-left" style="padding-top:7px;">
                         <span style="font-size:0.9rem;color:#555; font-variant:small-caps;">
@@ -314,12 +322,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 /* {/block 'content'} */
 /* {block "foundation"} */
-class Block_8663128826047a3591fee54_34173007 extends Smarty_Internal_Block
+class Block_239947636604a4f31201fe4_66164217 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'foundation' => 
   array (
-    0 => 'Block_8663128826047a3591fee54_34173007',
+    0 => 'Block_239947636604a4f31201fe4_66164217',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

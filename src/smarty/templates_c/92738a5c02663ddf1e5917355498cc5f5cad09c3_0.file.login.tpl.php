@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-09 17:17:46
+/* Smarty version 3.1.34-dev-7, created on 2021-03-11 15:20:21
   from '/var/www/oecs/src/smarty/templates/start/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6047adba1540c9_59589436',
+  'unifunc' => 'content_604a3535c63a17_52549133',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '92738a5c02663ddf1e5917355498cc5f5cad09c3' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/start/login.tpl',
-      1 => 1615310263,
+      1 => 1615467363,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6047adba1540c9_59589436 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604a3535c63a17_52549133 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/smarty/libs/plugins/function.html_options.php','function'=>'smarty_function_html_options',),));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,7 +57,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
  type="text/javascript" src="/js/jquery.qtip.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- type="text/javascript" src="/js/smart.js"><?php echo '</script'; ?>
+ type="text/javascript" src="/js/smart.js?1000"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  type="text/javascript" src="/js/fontawesome-all.min.js"><?php echo '</script'; ?>
@@ -249,20 +249,6 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
     var smallScreen = window.matchMedia("(max-width: 40.0625em)");
     var chgPwdWidth = (smallScreen.matches) ? "97%" : "500px";
     var regFormWidth = (smallScreen.matches) ? "97%" : "650px";
-    //Function to animate email and password buttons
-    /*loginAnimate = function(e) {
-        $(this).prev('span').css({'font-size':'0.9rem','color':'#008cba','font-weight':'normal'});
-        $(this).animate({
-            height: ['40px','linear']
-        }, 'fast');
-    };
-    
-    openLoginInputs = function () {
-        $(this).css({'font-size':'0.9rem','color':'#008cba','font-weight':'normal'});
-        $(this).next("input").animate({
-            height: ['40px','linear']
-        }, 'fast');
-    };*/
     
     
     
@@ -562,17 +548,44 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
             }
         });
         
-        /*****************************************
-         Interrupt form submit to show spinner
-        ******************************************/
-        $("form#userRegistrationForm").submit(function(e) {
+        /***************************************
+         To check if email address is available
+        ****************************************/
+        $("#regEmail").blur(function(e) {
+            var email = $.trim($(this).val());
             var self = $(this);
-            self.find("div.err").html("");
+            if (email != '' && validateEmail(email)) {
+                //do ajax ccheck for uniqueness
+                $.ajax({
+                    type: "POST",
+                    url: "/ajax/user/verify/unique/email",
+                    dataType: "json",
+                    data: {email: email}
+                }).done(function(status){
+                    if (!status) {
+                        self.addClass("error");
+                        self.closest("div").find("label").addClass("error");
+                        $("#emailError").html("already in use. enter another");
+                        self.val("");
+                    } else {
+                        self.removeClass("error");
+                        self.closest("div").find("label").removeClass("error");
+                        $("emailError").text("required");
+                    }
+                });
+            }
+        });
+        
+        /*****************************************
+         Interrupt form submit to validate captcha
+        ******************************************/
+        $("form#userRegistrationForm").on('valid.fndtn.abide', function() { 
+            var self = $(this);
+            self.find("#captchaError").text("");
             self.find("button[type='submit']").css("display","none");
             self.find(".wait_tip").css("display","inline-block");
            
-            e.preventDefault();
-            
+            //Do ajax to validate captcha test
             $.ajax({
                 type: "POST",
                 url: "/user/registration/capture/check",
@@ -580,14 +593,14 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                 data: {captchaText: $("#captcha").val()}
             }).done(function(status){
                 if (status) {
-                    self[0].submit();
+                    $("form#userRegistrationForm")[0].submit();
                 } else {
-                    e.preventDefault();
-                    self.find("div.err").html("Invalid CAPTCHA text");
+                    self.find("#captchaError").text("incorrect text");
                     self.find("button[type='submit']").css("display","inline-block");
                     self.find(".wait_tip").css("display","none");
                 }
             });
+            return false;
         });
 
         $(".refresh-captcha").click(function() {
@@ -877,12 +890,12 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         <div class='modalHeader' align="center"><?php echo \Neptune\MessageResources::i18n("registration.form.header");?>
 </div>      
         
-        <form data-abide name="userRegistrationForm" id="userRegistrationForm" action="/register/user" method="post">
+        <form data-abide="ajax" name="userRegistrationForm" id="userRegistrationForm" action="/register/user" method="post">
                         <br/>
             <div class='row'>
                 <div class="small-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.email");?>
-<small class="error">invalid format</small></span>
+<small class="error" id="emailError">invalid format</small></span>
                         <input tabindex="11" type="email" name="regEmail" id="regEmail" autocomplete="off" value="" required/>
                     </label>
                 </div>
@@ -939,16 +952,15 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                 <div class="small-6 end columns">
                     <label>
                         <span class="required"><?php echo \Neptune\MessageResources::i18n("user.registration.captcha.label");?>
-<small class="error captchaError">invalid text</small></span>
-                        <input type="text" id="captcha" maxlength="6" name="captcha_challenge" pattern="" required />
+<small class="error" id="captchaError">incorrect text</small></span>
+                        <input type="text" id="captcha" maxlength="6" name="captcha_challenge" pattern="[A-Z]+" required />
                     </label>
                 </div>
             </div>
             <div class="row" >
                 <div class="medium-6 columns end">
-                    <?php echo \Neptune\HtmlElementTag::submitBtn(17,'Register');?>
+                    <?php echo \Neptune\HtmlElementTag::submitBtn(17,'Register','reg_patient');?>
 
-                    <span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>
                 </div>
                 <div class="medium-6 columns end">
                     <div class="err"></div>
@@ -988,6 +1000,50 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                             return false;
                         }
                         return true;
+                    },
+                    emailUniqueness: function (el, required, parent) {
+                        var email = $.trim(el.value);
+                        
+                        if (email != '' && validateEmail(email)) {
+                            //do ajax ccheck for uniqueness
+                            $.ajax({
+                                type: "POST",
+                                url: "/ajax/user/verify/unique/email",
+                                dataType: "json",
+                                data: {email: email}
+                            }).done(function(status){
+                                if (!status) {
+                                    $("#emailError").text("email already in use");
+                                    return false;
+                                } else {
+                                    $("#emailError").text("invalid format");
+                                    return true;
+                                }
+                                
+                            });
+                        }
+                        return false;
+                    },
+                    validateCaptcha: function (el, required, parent) {
+                        var captcha = $.trim(el.value);
+                        
+                        if (captcha != '') {
+                            //Do ajax to validate captcha test
+                            $.ajax({
+                                type: "POST",
+                                url: "/user/registration/capture/check",
+                                dataType: "json",
+                                data: {captchaText: captcha}
+                            }).done(function(status){
+                                if (!status) {
+                                    $("#captchaError").text("incorrect CAPTCHA text");
+                                    return false;
+                                } else {
+                                    $("#captchaError").text("blah");
+                                    return true;
+                                }
+                            });
+                        }
                     }
                 },
                 patterns: {

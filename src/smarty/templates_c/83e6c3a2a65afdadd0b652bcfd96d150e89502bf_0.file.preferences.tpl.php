@@ -1,19 +1,99 @@
-{*Author: Randal Neptune*}
-{*Project: EduRecord*}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-03-11 17:15:35
+  from '/var/www/oecs/src/smarty/templates/security/preferences.tpl' */
 
-{extends file="base/body.tpl"}
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_604a50370e71b3_24483255',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '83e6c3a2a65afdadd0b652bcfd96d150e89502bf' => 
+    array (
+      0 => '/var/www/oecs/src/smarty/templates/security/preferences.tpl',
+      1 => 1615482930,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_604a50370e71b3_24483255 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
 
-{block name=scripts}
-    {literal}
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_667849371604a50370d3c12_81471922', 'scripts');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_23395403604a50370d53a9_10034777', 'jquery');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1348144715604a50370d9758_83567182', 'styles');
+?>
+
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1574925697604a50370da2e2_78098135', 'content');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_957263927604a50370e3376_23087642', "auxScripts");
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_548122630604a50370e59f5_42308965', "foundation");
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
+}
+/* {block 'scripts'} */
+class Block_667849371604a50370d3c12_81471922 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'scripts' => 
+  array (
+    0 => 'Block_667849371604a50370d3c12_81471922',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    
         var canvasDrawn = false;
         
         var smallScreen = window.matchMedia("(max-width: 40.0625em)");
         var tfaWidth = (smallScreen.matches) ? "95%" : "550px";
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'scripts'} */
+/* {block 'jquery'} */
+class Block_23395403604a50370d53a9_10034777 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'jquery' => 
+  array (
+    0 => 'Block_23395403604a50370d53a9_10034777',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=jquery}
-    {literal}
+    
         $("#sign-pad").on("mousemove touchmove",function(){
             canvasDrawn = true;
             
@@ -77,7 +157,8 @@
          Signature section - End
         ********************************/
         
-        var scaleFactor = {/literal}{nocache}{PropertyService::getProperty("password.strength.scale.factor",0.7)}{/nocache}{literal};
+        var scaleFactor = <?php echo \Neptune\PropertyService::getProperty("password.strength.scale.factor",0.7);?>
+;
         $("#newPassword").keyup(function(e){
             $(this).complexify({minimumChars: 8, strengthScaleFactor:scaleFactor, bannedPasswords:['pass','word','wel','come', 'password','welcome', '1234']}, function(valid, complexity){
                 var complex = Math.round(complexity, 0);
@@ -105,7 +186,8 @@
         //$('#contactNumber').mask("000-0000", {clearIfNotMatch: true});
         
         $(function(){
-            capsLockWarning("#currentPassword, #newPassword, #confirmPassword", "{/literal}{Messages::i18n("warning.caps.lock")}{literal}");
+            capsLockWarning("#currentPassword, #newPassword, #confirmPassword", "<?php echo \Neptune\MessageResources::i18n("warning.caps.lock");?>
+");
         });
         
         /*******************************************
@@ -229,10 +311,10 @@
             $("#twoFactorAuthEnabled").prop("checked", false);
             $.modal.close();
         });
-        {/literal}
-        {nocache}
-            {if $hasSecret}
-            {literal}
+        
+        
+            <?php if ($_smarty_tpl->tpl_vars['hasSecret']->value) {?>
+            
             $("#twoFactorAuthEnabled").click(function(e){
                 if ($(this).prop("checked")){
                     $.modal($('div#FA-content'), {
@@ -283,14 +365,27 @@
                     });
                 }
             });
-            {/literal}
-            {/if}
-        {/nocache}  
+            
+            <?php }?>
+          
     
-{/block}
+<?php
+}
+}
+/* {/block 'jquery'} */
+/* {block 'styles'} */
+class Block_1348144715604a50370d9758_83567182 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'styles' => 
+  array (
+    0 => 'Block_1348144715604a50370d9758_83567182',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=styles}
-    {literal}
+    
         #complexityContainer{
             width: 180px;
             height:35px;
@@ -409,14 +504,27 @@
         .sign-pad {
             border: none;
         }
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'styles'} */
+/* {block 'content'} */
+class Block_1574925697604a50370da2e2_78098135 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_1574925697604a50370da2e2_78098135',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
 
-{block name=content}
-{nocache}
 
-{$msg}
+<?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
+
   
     <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-bottom:15px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
         Update Preferences
@@ -426,7 +534,7 @@
             <div class="medium-6 end columns">
                 <label><span>Enable two-factor authentication?<a href="#" class="hintanchorRow" onMouseover="showhint('This option provides better security when compared to just a password.<br/>An external mobile device authenticator application is required.', this, event, '200px')">&nbsp;</a></span>
                     <div class="switch"> 
-                        <input name="twoFactorAuthEnabled" id="twoFactorAuthEnabled" type="checkbox" value="1" {if $user->isTwoFactorAuthEnabled()} checked {/if}> 
+                        <input name="twoFactorAuthEnabled" id="twoFactorAuthEnabled" type="checkbox" value="1" <?php if ($_smarty_tpl->tpl_vars['user']->value->isTwoFactorAuthEnabled()) {?> checked <?php }?>> 
                         <label for="twoFactorAuthEnabled"></label> 
                     </div> 
                 </label>
@@ -440,25 +548,30 @@
         </div>
         
         
-        <form data-abide name="preferenceForm" id="preferenceForm" action="{$actionPage}" method="POST" autocomplete="off">
-            <input type="hidden" name="id" id="id" value="{$user->getId()}"/>
+        <form data-abide name="preferenceForm" id="preferenceForm" action="<?php echo $_smarty_tpl->tpl_vars['actionPage']->value;?>
+" method="POST" autocomplete="off">
+            <input type="hidden" name="id" id="id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"/>
             
             <div class="row">
                 <div class="medium-4 end columns">
                     <label><span class="required">Contact number</span><br/>
-                        <input class="medium" tabindex="1" type="text" data-abide-validator="phoneValidator" id="contact" name="contact" value="{$user->getContactNumber()}" required autocomplete="off">
+                        <input class="medium" tabindex="1" type="text" data-abide-validator="phoneValidator" id="contact" name="contact" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getContactNumber();?>
+" required autocomplete="off">
                     </label>
                 </div>
             </div>
             <div class="row">
                 <div class="medium-4 end columns">
                     <label><span class="required">Email<small class="error">invalid format</small></span>
-                        <input tabindex="2" type="email" id="email" name="email" value="{$user->getEmail()}" required autocomplete="off">
+                        <input tabindex="2" type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>
+" required autocomplete="off">
                     </label>
                 </div>
                 <div class="medium-4 end columns">
                     <label style="padding-top:27px;">
-                        {ElementTag::submitBtn(3, "Update Contact", "submitEmail")}
+                        <?php echo \Neptune\HtmlElementTag::submitBtn(3,"Update Contact","submitEmail");?>
+
                     </label>
                 </div>
             </div>
@@ -471,8 +584,10 @@
             </div>
         </div>
                     
-        <form data-abide name="preferencePasswdForm" id="preferencePasswdForm" action="{$actionPage}" method="POST" autocomplete="off">
-            <input type="hidden" name="id" value="{$user->getId()}"/>
+        <form data-abide name="preferencePasswdForm" id="preferencePasswdForm" action="<?php echo $_smarty_tpl->tpl_vars['actionPage']->value;?>
+" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"/>
             <div class="row">
                 <div class="medium-4 end columns">
                     <label><span class="required">Current Password</span>
@@ -503,7 +618,8 @@
                 </div>
                 <div class="medium-4 end columns">
                     <label style="padding-top:27px;">
-                        {ElementTag::submitBtn(8, "Update Password", "submitPwd")}
+                        <?php echo \Neptune\HtmlElementTag::submitBtn(8,"Update Password","submitPwd");?>
+
                     </label>
                 </div>
             </div>
@@ -517,9 +633,11 @@
     <div class='modalHeader' style="font-family:'Poppins', sans-serif !important;font-variant:normal !important;" align="center">
         STEP 2: Scan to setup
     </div>      
-    {$msgReset}
+    <?php echo $_smarty_tpl->tpl_vars['msgReset']->value;?>
+
     
-    <input type="hidden" name="userId" id="userId" value="{$user->getId()}"/>
+    <input type="hidden" name="userId" id="userId" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"/>
     <div class="instructions" align="left"  style='text-align: left !important;'>
        Download an authenticator app, like Authy&REG; or Google Authenticator&REG; onto your mobile device, hit "add" then scan this barcode
        to set up your account. 
@@ -531,12 +649,14 @@
         </div>
         <div class="medium-6 columns end text-center">
             <p>
-                <img width="150px" height="150px" src="{$tfa->getQRCodeImageAsDataUri($user->getLabel(), $secret)}">
+                <img width="150px" height="150px" src="<?php echo $_smarty_tpl->tpl_vars['tfa']->value->getQRCodeImageAsDataUri($_smarty_tpl->tpl_vars['user']->value->getLabel(),$_smarty_tpl->tpl_vars['secret']->value);?>
+">
             </p>
         </div>
     </div>
     <div id="errMsg2FA" style="display:none;min-height:30px;">
-        {$html->printMessageText(false,"Security code incorrect. Please scan and try again.")}
+        <?php echo $_smarty_tpl->tpl_vars['html']->value->printMessageText(false,"Security code incorrect. Please scan and try again.");?>
+
     </div>
     <div class="row">
         <div class="small-12 columns">
@@ -572,13 +692,14 @@
  </div> 
 <!-- Step 1 of 2FA -->
 <div id="FA-content">
-    {*<a href="#modalClose" title="close" class="close" id="close2FA">X</a>*}
-    <div class='modalHeader' style="font-family:'Poppins', sans-serif !important;font-variant:normal !important;" align="center">
+        <div class='modalHeader' style="font-family:'Poppins', sans-serif !important;font-variant:normal !important;" align="center">
         STEP 1: Authenticate with password
     </div>      
-    {$msgReset}
+    <?php echo $_smarty_tpl->tpl_vars['msgReset']->value;?>
+
     
-    <input type="hidden" name="userPwdId" id="userPwdId" value="{$user->getId()}"/>
+    <input type="hidden" name="userPwdId" id="userPwdId" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getId();?>
+"/>
     <div class="row">
         <div class="small-3 columns end text-center">
             &nbsp;
@@ -631,11 +752,24 @@
         </div>
     </div>
 </div>
-{/nocache}
-{/block}
 
-{block name="auxScripts"}
-    {literal}
+<?php
+}
+}
+/* {/block 'content'} */
+/* {block "auxScripts"} */
+class Block_957263927604a50370e3376_23087642 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'auxScripts' => 
+  array (
+    0 => 'Block_957263927604a50370e3376_23087642',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    
         const phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
         var primaryNumber = document.querySelector("#contact");
        
@@ -654,17 +788,32 @@
             autoHideDialCode: true
         });
         
-        var localCode = '{/literal}{PropertyService::getProperty("country.code","lc")}{literal}';
-    {/literal}
-{/block}
+        var localCode = '<?php echo \Neptune\PropertyService::getProperty("country.code","lc");?>
+';
+    
+<?php
+}
+}
+/* {/block "auxScripts"} */
+/* {block "foundation"} */
+class Block_548122630604a50370e59f5_42308965 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'foundation' => 
+  array (
+    0 => 'Block_548122630604a50370e59f5_42308965',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name="foundation"}
-    {literal}
+    
         abide: {
             validators: {
                 passwordComplexityValidator: function (el, required, parent){
                     var ok, complex;    
-                    var scaleFactor = {/literal}{nocache}{PropertyService::getProperty("password.strength.scale.factor",0.7)}{/nocache}{literal};
+                    var scaleFactor = <?php echo \Neptune\PropertyService::getProperty("password.strength.scale.factor",0.7);?>
+;
                     $("#"+el.id).complexify({minimumChars: 8, strengthScaleFactor: scaleFactor, bannedPasswords:['pass','word','wel','come','password','welcome', '1234']}, function(valid, complexity){
                         ok = valid;
                         complex = Math.round(complexity, 0);
@@ -698,5 +847,9 @@
                 }
             }
         }
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block "foundation"} */
+}

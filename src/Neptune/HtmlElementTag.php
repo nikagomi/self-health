@@ -13,12 +13,12 @@ class HtmlElementTag {
         
     }
     
-    public static function submitBtn ($tabIndex, $text = '' , $name = 'submit', $class = 'button') {
+    public static function submitBtn ($tabIndex, $text = '' , $name = 'submit', $class = 'button', $includeWaitTip = true) {
         $btnTxt = (\trim($text) == '') ? MessageResources::i18n("link.update") :  $text;
         $submitBtn = '<button style="width:auto;padding: 0px 6px;" type="submit" name="'.$name.'" id="'.$name.'" class="'.$class.'" tabindex="'.$tabIndex.'">' 
                         . '<i class="fas fa-save" style="font-size:1rem;font-weight:bold;"></i>&nbsp;&nbsp;'.$btnTxt
                     .'</button>';
-        $submitBtn .=  '<span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>'; 
+        $submitBtn .=  ($includeWaitTip) ? '<span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>' : ''; 
         return $submitBtn;                 
     }
     

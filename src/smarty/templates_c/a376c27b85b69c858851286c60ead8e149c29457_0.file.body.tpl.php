@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-09 16:33:29
+/* Smarty version 3.1.34-dev-7, created on 2021-03-11 17:23:47
   from '/var/www/oecs/src/smarty/templates/base/body.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6047a359228958_82890703',
+  'unifunc' => 'content_604a5223cd5909_49667788',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a376c27b85b69c858851286c60ead8e149c29457' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/base/body.tpl',
-      1 => 1615229535,
+      1 => 1615483425,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:base/header.tpl' => 1,
   ),
 ),false)) {
-function content_6047a359228958_82890703 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604a5223cd5909_49667788 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -48,7 +48,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     }
     
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17220718176047a3592109a2_00865025', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_733616332604a5223c9fb50_23929832', 'styles');
 ?>
 
 </style>
@@ -97,7 +97,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17220718176047a359
     
         
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16206931756047a359211480_22415201', 'scripts');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1966248371604a5223ca1667_45563401', 'scripts');
 ?>
 
         
@@ -288,7 +288,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16206931756047a359
             var dTable = $("#listTable, .listTable").DataTable({
                 
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21018224026047a359218ad1_59164729', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_626325195604a5223cb1f13_15246109', 'dataTable');
 ?>
 
                 
@@ -337,7 +337,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21018224026047a359
     
 
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4263830466047a35921a470_24347198', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_526742070604a5223cb2e15_27746008', 'jquery');
 ?>
 
      
@@ -349,7 +349,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4263830466047a3592
 
 <title>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8743837006047a35921af05_26152893', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1367684283604a5223cb3b51_75089500', 'title');
 ?>
 
 </title>
@@ -422,6 +422,25 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8743837006047a3592
                                 <li>
                                     <a href="/patient/lab/record/form">Lab Results</a>
                                 </li>
+                            </ul>
+                        </li>
+                    <?php }?>
+                    <?php if (\Authentication\Model\PermissionManager::userHasPermissionInList("MANAGE.USER.GROUPS,MANAGE.USERS",$_SESSION['userId'])) {?>
+                        <li>
+                            <a href="#secureSubmenu" onclick="toggleLinkState($(this));" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-user-shield" style="color:inherit;"></i>&ensp;Security
+                            </a>
+                            <ul class="collapse list-unstyled" id="secureSubmenu">
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.USER.GROUPS",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/security/group">Manage User Groups</a>
+                                    </li>
+                                <?php }?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.USERS",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/security/user">Manage Users</a>
+                                    </li>
+                                <?php }?>
                             </ul>
                         </li>
                     <?php }?>
@@ -513,7 +532,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8743837006047a3592
                 </div>
                 <div id="content-bar">
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13234859016047a359226f14_74113094', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1510748284604a5223ccee71_85023301', 'content');
 ?>
 
                 </div>
@@ -554,14 +573,14 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13234859016047a359
  type='text/javascript'>
             
                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8636039516047a3592277e9_08079299', "auxScripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_909426179604a5223cd20a2_53804902', "auxScripts");
 ?>
 
             
             $(document).foundation({
                    
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_54614966047a359227ee7_68042883', "foundation");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2040389336604a5223cd3dd2_74191180', "foundation");
 ?>
 
                 
@@ -575,12 +594,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_54614966047a359227
 </html>
 <?php }
 /* {block 'styles'} */
-class Block_17220718176047a3592109a2_00865025 extends Smarty_Internal_Block
+class Block_733616332604a5223c9fb50_23929832 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_17220718176047a3592109a2_00865025',
+    0 => 'Block_733616332604a5223c9fb50_23929832',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -592,12 +611,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block 'scripts'} */
-class Block_16206931756047a359211480_22415201 extends Smarty_Internal_Block
+class Block_1966248371604a5223ca1667_45563401 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_16206931756047a359211480_22415201',
+    0 => 'Block_1966248371604a5223ca1667_45563401',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -610,12 +629,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'scripts'} */
 /* {block 'dataTable'} */
-class Block_21018224026047a359218ad1_59164729 extends Smarty_Internal_Block
+class Block_626325195604a5223cb1f13_15246109 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_21018224026047a359218ad1_59164729',
+    0 => 'Block_626325195604a5223cb1f13_15246109',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -627,12 +646,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'jquery'} */
-class Block_4263830466047a35921a470_24347198 extends Smarty_Internal_Block
+class Block_526742070604a5223cb2e15_27746008 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_4263830466047a35921a470_24347198',
+    0 => 'Block_526742070604a5223cb2e15_27746008',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -645,12 +664,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'title'} */
-class Block_8743837006047a35921af05_26152893 extends Smarty_Internal_Block
+class Block_1367684283604a5223cb3b51_75089500 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'title' => 
   array (
-    0 => 'Block_8743837006047a35921af05_26152893',
+    0 => 'Block_1367684283604a5223cb3b51_75089500',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -663,12 +682,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'title'} */
 /* {block 'content'} */
-class Block_13234859016047a359226f14_74113094 extends Smarty_Internal_Block
+class Block_1510748284604a5223ccee71_85023301 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_13234859016047a359226f14_74113094',
+    0 => 'Block_1510748284604a5223ccee71_85023301',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -680,12 +699,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'content'} */
 /* {block "auxScripts"} */
-class Block_8636039516047a3592277e9_08079299 extends Smarty_Internal_Block
+class Block_909426179604a5223cd20a2_53804902 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'auxScripts' => 
   array (
-    0 => 'Block_8636039516047a3592277e9_08079299',
+    0 => 'Block_909426179604a5223cd20a2_53804902',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -697,12 +716,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "auxScripts"} */
 /* {block "foundation"} */
-class Block_54614966047a359227ee7_68042883 extends Smarty_Internal_Block
+class Block_2040389336604a5223cd3dd2_74191180 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'foundation' => 
   array (
-    0 => 'Block_54614966047a359227ee7_68042883',
+    0 => 'Block_2040389336604a5223cd3dd2_74191180',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

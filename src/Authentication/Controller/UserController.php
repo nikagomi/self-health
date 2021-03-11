@@ -413,6 +413,20 @@ class UserController extends \Neptune\BaseController{
         return ($countSent == 0) ? false : true;
     }
     
+    public function ajaxIsUserEmailUnique (Request $request) {
+        /*$request = Request::create(
+            '/user/registration/capture/check',
+            'POST',
+            array('captchaText' => 'SABCDEF')
+        );*/
+        $email = \trim($request->request->get("email"));
+        $usr = (new \Authentication\Model\User())->getByEmail($email);
+        $result = ($usr->isIdEmpty()) ? true : false;
+        
+        $response = new Response(json_encode($result));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;    
+    }
     
     public function checkRegistrationCapture(Request $request) {
         /*$request = Request::create(

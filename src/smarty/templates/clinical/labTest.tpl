@@ -19,8 +19,6 @@
     {literal}
         'iDisplayLength':25,
         paging: true,
-       
-        
         "dom": "<'row'<'large-4 medium-4 columns collapsed table-toolbar'><'large-3 medium-3 columns collapsed'l><'large-4 medium-4 columns end small-text-left medium-text-right collapsed 'f>>"+
             "t"+
             "<'row'<'small-12 medium-6 columns'><'small-12 medium-6 columns'p>>"
