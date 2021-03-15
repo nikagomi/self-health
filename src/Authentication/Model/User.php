@@ -302,11 +302,15 @@ class User extends Logger {
      * @return array
      */
     public function getNonSystemUsers() {
-        return $this->getObjectsByMultipleCriteria(["isSystem"], [FALSE], TRUE, "id", $this->className, TRUE, "name");
+        return $this->getObjectsByMultipleCriteria(["isSystem"], [FALSE], TRUE, "id", $this->className, TRUE, "lastName");
     }
     
     public function getPatientUsers() {
-        return $this->getObjectsByMultipleCriteria(["patient"], [TRUE], TRUE, "id", $this->className, TRUE, "name");
+        return $this->getObjectsByMultipleCriteria(["patient"], [TRUE], TRUE, "id", $this->className, TRUE, "lastName");
+    }
+    
+    public function getNonPatientUsers() {
+        return $this->getObjectsByMultipleCriteria(["isSystem","patient"], [FALSE, FALSE], TRUE, "id", $this->className, TRUE, "lastName");
     }
     
     /**

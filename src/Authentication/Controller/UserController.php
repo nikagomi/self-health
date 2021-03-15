@@ -2,10 +2,9 @@
 
 namespace Authentication\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response, RedirectResponse};
 use Neptune\{DbMapperUtility, Config, PropertyService, HtmlHelper};
-use Twilio\Rest\Client;
+
 
 /**
  * Description of UserController
@@ -140,11 +139,11 @@ class UserController extends \Neptune\BaseController{
         $this->_health->assign('currentUser',$currentUser);
         
         if($currentUser->isSystem()){
-            $this->_health->assign('list',$obj->getAll());
+            $this->_health->assign('list',$obj->getNonPatientUsers());
         }else{
-           $this->_health->assign('list',$obj->getNonSystemUsers()); 
+           $this->_health->assign('list',$obj->getNonPatientUsers()); 
         }
-        $this->_health->assign('msg',$msg, true);
+        $this->_health->assign('msg', $msg);
         $this->_health->assign('userGroup', new \Authentication\Model\UserGroup());
         $this->_health->assign('html',$this->html);
         $this->_health->assign('actionPage',$this->actionPage);
@@ -498,6 +497,18 @@ class UserController extends \Neptune\BaseController{
         $response = new Response($this->_health->display('start/login.tpl'));
         return $response;
         
+    }
+    
+    public function showPatientUsers() {
+        if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS", $_SESSION['userId'])) {
+            $this->_health->assign('patientUsers', (new $this->modelClass())->getPatientUsers());
+            $this->_health->assign('patient', new \Patient\Model\Patient());
+            $this->_health->assign('html',$this->html);
+            $this->_health->assign('title','Manage Patient Users');
+            return new Response($this->_health->display("security/patientUser.tpl"));
+        } else {
+            return new RedirectResponse("/access/denied");
+        }
     }
     
 }

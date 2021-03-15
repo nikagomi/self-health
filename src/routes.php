@@ -171,6 +171,9 @@ $routes->add('register_user', new Routing\Route('/register/user',
 $routes->add('register_user_check_capture', new Routing\Route('/user/registration/capture/check', 
     array('_controller' => 'Authentication\\Controller\\UserController::checkRegistrationCapture')
 ));
+$routes->add('patient_user_listing', new Routing\Route('/security/patient/user', 
+    array('_controller' => 'Authentication\\Controller\\UserController::showPatientUsers')
+));
 
 //Physical Activity Actions
 $routes->add('physical_activity_form', new Routing\Route('/physical/activity', 

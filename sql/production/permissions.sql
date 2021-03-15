@@ -37,6 +37,8 @@ INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, ca
 VALUES (12,  'menu.manage.users', 'perm.text.manage.users', '/security/user', 1, NULL, NULL, 'MANAGE.USERS', false, false, NULL, true);
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (13,  'menu.send.patient.email', 'perm.text.send.patient.email', NULL, 3, NULL, NULL, 'SEND.PATIENT.EMAILS', false, false, NULL, true);
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (14,  'menu.manage.patient.user', 'perm.text.manage.patient.user', '/security/patient/user', 3, NULL, NULL, 'MANAGE.PATIENT.USERS', false, false, NULL, true);
 
 
 
