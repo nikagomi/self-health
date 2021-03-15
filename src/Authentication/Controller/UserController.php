@@ -58,6 +58,7 @@ class UserController extends \Neptune\BaseController{
     public function save(Request $request){
         $user = new $this->modelClass();
         $pwd = DbMapperUtility::generateRandomPassword();
+        $msgArr = [];
         /** Work with the password **/
         if($request->request->get("id") != ''){//an update
             $tmpUsr = (new $this->modelClass())->getEntityById($request->request->get("id"));
@@ -93,39 +94,32 @@ class UserController extends \Neptune\BaseController{
         }
        
         $user->pushObjectToDB(true);     
-        $msg = $this->html->printMessageText($user->getOpStatus(),$user->getOpMessage());       
+        \array_push($msgArr, [$user->getOpStatus() => $user->getOpMessage()]);
+        //$msg = $this->html->printMessageText($user->getOpStatus(),$user->getOpMessage());       
         if($user->getOpStatus()){
-            //$permArr = (!\is_null($request->request->get("perm"))) ? $request->request->get("perm") : [];
+            $permArr = (!\is_null($request->request->get("perm"))) ? $request->request->get("perm") : [];
             $grpArr = (!\is_null($request->request->get("grp"))) ? $request->request->get("grp") : [];
-            $slArr = (!\is_null($request->request->get("sln"))) ? $request->request->get("sln") : [];
-            //print_r($slArr);
             
-            /*$result = (new \Authentication\Model\UserPermission())->assignPermissions($user->getId(), $permArr);
+            $result = (new \Authentication\Model\UserPermission())->assignPermissions($user->getId(), $permArr);
             $tmpMsg1 = ($result) ? "The permissions were successfully updated." : "The permissions could not be updated.";
-            $msg .= $this->html->printMessageText($result, $tmpMsg1);*/
+            \array_push($msgArr, [$result => $tmpMsg1]);
             
             $result1 = (new \Authentication\Model\UserGroup())->assignGroups($user->getId(), $grpArr);
             $tmpMsg = ($result1) ? "The groups were successfully updated." : "The groups could not be updated.";
-            $msg .= $this->html->printMessageText($result1, $tmpMsg);
-            
-            $result2 = (new \Admin\Model\UserServiceLocation())->assignServiceLocations($user->getId(), $slArr);
-            $tmpMsg2 = ($result2) ? "The service locations were successfully updated." : "The service locations could not be updated.";
-            $msg .= $this->html->printMessageText($result2, $tmpMsg2);
+            \array_push($msgArr, [$result1 => $tmpMsg]);
            
             if($request->request->get("id") == ''){
                 //Send email to notify new user
                 $emailSent = $this->generateNewUserEmailNotification($user, $pwd);
                 $emailSentMsg = ($emailSent) ? "User was notified via email." : "Could not notify user via email.";
-                $msg .= $this->html->printMessageText($emailSent, $emailSentMsg);
-                if ($emailSent && $user->isContactMobile()) {
-                    $this->sendSMS($user);
-                }
+                
+                \array_push($msgArr, [$emailSent => $emailSentMsg]);
             }
-            
             $user->clear(); 
         }else{
             $user->setPassword("");
         }
+        $msg = HtmlHelper::composeToastMessage($msgArr);
         $this->setUpTemplateVars($user, $msg);
         return new Response($this->_health->display($this->template));
     }

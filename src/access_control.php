@@ -58,7 +58,18 @@ $accessMap = array(
         "/ethnicity/edit" => "MANAGE.ETHNICITIES",
         "/ethnicity/save" => "MANAGE.ETHNICITIES",
         "/ethnicity/delete" => "MANAGE.ETHNICITIES",
+    
+        /* User Groups */
+        "/security/group" => "MANAGE.USER.GROUPS",
+        "/security/group/edit" => "MANAGE.USER.GROUPS",
+        "/security/group/save" => "MANAGE.USER.GROUPS",
+        "/security/group/delete" => "MANAGE.USER.GROUPS",
        
+        /* Users */
+        "/security/user" => "MANAGE.USERS",
+        "/security/user/edit" => "MANAGE.USERS",
+        "/security/user/save" => "MANAGE.USERS",
+        "/security/user/delete" => "MANAGE.USERS",
     
         /*Server admin functions / access */
         "/property/file/get" => "ADMIN.PROPERTY.FILE",

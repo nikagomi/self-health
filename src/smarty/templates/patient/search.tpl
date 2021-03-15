@@ -156,7 +156,7 @@
                     <td>{$patient->getUser()->getEmail()}</td>
                     
                     <td>
-                        <a class="" title="{Messages::i18n('link.view')}" href="/patient/summary/{$patient->getId()}">
+                        <a class="" style="color:#008cba;" title="{Messages::i18n('link.view')}" href="/patient/summary/{$patient->getId()}">
                             view
                         </a>
                     </td>

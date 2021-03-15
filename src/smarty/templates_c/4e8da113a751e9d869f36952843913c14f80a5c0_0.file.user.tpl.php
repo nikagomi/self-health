@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-11 17:17:16
+/* Smarty version 3.1.34-dev-7, created on 2021-03-15 14:14:39
   from '/var/www/oecs/src/smarty/templates/security/user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604a509c23ac43_17123003',
+  'unifunc' => 'content_604f6bcf248114_98736174',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e8da113a751e9d869f36952843913c14f80a5c0' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/security/user.tpl',
-      1 => 1612799445,
+      1 => 1615817678,
       2 => 'file',
     ),
   ),
@@ -20,48 +20,52 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604a509c23ac43_17123003 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604f6bcf248114_98736174 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1059477988604a509c1e8182_88418572', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1476609637604f6bcf22b1e8_87306259', 'jquery');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2035493045604a509c1ee463_30663932', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1334233046604f6bcf22d3d3_71633413', 'styles');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_913015947604a509c1ef6a0_66650516', 'dataTable');
-?>
-
-
-
-<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_682560047604a509c1f05f7_56453775', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_267338288604f6bcf22db51_55791153', 'dataTable');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_579941060604a509c239577_68811227', "foundation");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1636451684604f6bcf22e231_21872755', 'content');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_216693662604f6bcf247032_98470156', "auxScripts");
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1252085591604f6bcf2478d8_35793876', "foundation");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_1059477988604a509c1e8182_88418572 extends Smarty_Internal_Block
+class Block_1476609637604f6bcf22b1e8_87306259 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_1059477988604a509c1e8182_88418572',
+    0 => 'Block_1476609637604f6bcf22b1e8_87306259',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -100,6 +104,8 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             });
         });
         
+       
+        
         /*****************************************
          Interrupt form submit to make sure that 
          at least a permission or group selected
@@ -111,17 +117,18 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             }else{
                 $("div#err").html("");
             }
+            
+            /*var countryCode = itiContact.getSelectedCountryData().iso2;
+            var telContact = phoneUtil.parseAndKeepRawInput(itiContact.getNumber(), countryCode.toUpperCase());
+            if (localCode.toUpperCase() === countryCode.toUpperCase()) {
+                $("input[name='contactNumber']").val(phoneUtil.format(telContact, i18n.phonenumbers.PhoneNumberFormat.NATIONAL));
+            } else {*/
+                $("input[name='contactNumber']").val(phoneUtil.format(telContact, i18n.phonenumbers.PhoneNumberFormat.INTERNATIONAL));
+            //}
+            
         });
         
-        //$('#contactNumber').mask("000-0000", {clearIfNotMatch: true});
-        $('#contact').intlTelInput({
-            "hiddenInput": "contactNumber",
-            "allowDropdown": true,
-            "autoPlaceholder": "polite",
-            "initialCountry": countryCode.toLowerCase(),
-            "formatOnDisplay": true,
-            "separateDialCode": true
-        });
+        
         
         $(function(){
             capsLockWarning("#password, #cpassword", "<?php echo \Neptune\MessageResources::i18n("warning.caps.lock");?>
@@ -134,12 +141,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'styles'} */
-class Block_2035493045604a509c1ee463_30663932 extends Smarty_Internal_Block
+class Block_1334233046604f6bcf22d3d3_71633413 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_2035493045604a509c1ee463_30663932',
+    0 => 'Block_1334233046604f6bcf22d3d3_71633413',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -175,12 +182,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block 'dataTable'} */
-class Block_913015947604a509c1ef6a0_66650516 extends Smarty_Internal_Block
+class Block_267338288604f6bcf22db51_55791153 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_913015947604a509c1ef6a0_66650516',
+    0 => 'Block_267338288604f6bcf22db51_55791153',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -204,12 +211,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_682560047604a509c1f05f7_56453775 extends Smarty_Internal_Block
+class Block_1636451684604f6bcf22e231_21872755 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_682560047604a509c1f05f7_56453775',
+    0 => 'Block_1636451684604f6bcf22e231_21872755',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -237,9 +244,9 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                 </label>
             </div>
             <div class="medium-6 large-4 end columns">
-                <label><span class="required">Contact # <small class="error" id="contactNumberError"></small></span>
-                    <input tabindex="2" type="text" name="contact" id="contact" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getContactNumber();?>
-" data-abide-validator="phoneValidator" required/>
+                <label><span class="">Contact # <small class="error" id="phoneError"></small></span><br/>
+                    <input tabindex="2" type="text" class="medium" name="contact" id="contact" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->getContactNumber();?>
+" data-abide-validator="phoneValidator"/>
                 </label>
             </div>
         </div>
@@ -314,7 +321,7 @@ echo $_smarty_tpl->tpl_vars['user']->value->getTimeout();
         </div>
         <div class="grp">
             <ul class="large-block-grid-3 medium-block-grid-2 small-block-grid-1 block">
-                <?php echo smarty_function_html_checkboxes(array('separator'=>'','name'=>'grp','selected'=>$_smarty_tpl->tpl_vars['selectedGrps']->value,'options'=>$_smarty_tpl->tpl_vars['groups']->value,'assign'=>'grpOpts'),$_smarty_tpl);?>
+                <?php echo smarty_function_html_checkboxes(array('separator'=>'','name'=>'grp[]','selected'=>$_smarty_tpl->tpl_vars['selectedGrps']->value,'options'=>$_smarty_tpl->tpl_vars['groups']->value,'assign'=>'grpOpts'),$_smarty_tpl);?>
 
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['grpOpts']->value, 'grpOpt');
@@ -340,7 +347,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['ctg']->value) {
 ?>
-                <?php $_smarty_tpl->_assignInScope('perms', $_smarty_tpl->tpl_vars['prm']->value->getByCategoryIdForFacility($_smarty_tpl->tpl_vars['facilityPerms']->value,$_smarty_tpl->tpl_vars['ctg']->value->getId()) ,true);?>
+                <?php $_smarty_tpl->_assignInScope('perms', $_smarty_tpl->tpl_vars['prm']->value->getByCategoryId($_smarty_tpl->tpl_vars['ctg']->value->getId()) ,true);?>
                 <?php if (count($_smarty_tpl->tpl_vars['perms']->value) > 0) {?>
                     <div class="row">
                         <div class="medium-12 columns">
@@ -362,8 +369,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['perm']->value) {
 " <?php if (in_array($_smarty_tpl->tpl_vars['perm']->value->getId(),$_smarty_tpl->tpl_vars['selectedPerms']->value)) {?> checked="checked" <?php }?>/>
                                     <?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getPermTextKey());?>
 
-                                    <?php if ($_smarty_tpl->tpl_vars['perm']->value->getComments() != '') {?>
-                                        <a href="#" class="hintanchorRow" onclick="return false;" onMouseover='showhint("<?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getComments());?>
+                                    <?php if ($_smarty_tpl->tpl_vars['perm']->value->getCommentKey() != '') {?>
+                                        <a href="#" class="hintanchorRow" onclick="return false;" onMouseover='showhint("<?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getCommentKey());?>
 ", this, event, "180px")'>&nbsp;</a>
                                     <?php }?>
                                 </label> 
@@ -483,13 +490,48 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 }
 /* {/block 'content'} */
+/* {block "auxScripts"} */
+class Block_216693662604f6bcf247032_98470156 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'auxScripts' => 
+  array (
+    0 => 'Block_216693662604f6bcf247032_98470156',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    
+        const phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+        var contact = document.querySelector("#contact");
+        
+        var phoneErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+        
+        var itiContact = intlTelInput(contact,{
+            utilsScript: "/js/utils.js",
+            placeholderNumberType: "FIXED_LINE",
+            hiddenInput: "contactNumber",
+            "allowDropdown": true,
+            "autoPlaceholder": "polite",
+            "initialCountry": "lc",
+            "preferredCountries": ["lc", "us", "gb"],
+            "formatOnDisplay": true,
+            autoHideDialCode: true,
+        });
+       
+    
+<?php
+}
+}
+/* {/block "auxScripts"} */
 /* {block "foundation"} */
-class Block_579941060604a509c239577_68811227 extends Smarty_Internal_Block
+class Block_1252085591604f6bcf2478d8_35793876 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'foundation' => 
   array (
-    0 => 'Block_579941060604a509c239577_68811227',
+    0 => 'Block_1252085591604f6bcf2478d8_35793876',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -499,17 +541,25 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         abide: {
             validators: {
                 phoneValidator: function (el, required, parent) {
-                    var id = el.getAttribute("id");
-                    var isValid = $("#"+id).intlTelInput("isValidNumber");
-                    if (!isValid) {
-                        $("#"+id).addClass("error");
-                        $("#contactNumberError").text("Not a valid number").css("display","inline-block");
-                        return false;
-                    } else {
-                        $("#"+id).removeClass("error");
-                        $("#contactNumberError").text("").css("display","none");
-                        return true;
+                   
+                    if (el.getAttribute("id") == 'primaryNumber') {
+                        if (!itiPrimaryNumber.isValidNumber()) {
+                           /* var countryCode = itiPrimaryNumber.getSelectedCountryData().iso2;
+
+                            if (countryCode == "lc" && (itiPrimaryNumber.getNumber().indexOf("732") == 5 || itiPrimaryNumber.getNumber().indexOf("733") == 5) && phoneErrorMap[itiPrimaryNumber.getValidationError()] == "Invalid number") {
+                                $("#phoneError").text("");
+                                $("#primaryNumber").removeClass("error");
+                                return true;
+                            } */
+                            $("#phoneError").text(phoneErrorMap[itiPrimaryNumber.getValidationError()]).css("display","inline-block");
+                            $("#contact").addClass("error");
+                            return false;
+                        } else {
+                            $("#contact").removeClass("error");
+                        }
                     }
+                    $("#phoneError").css("display","none");
+                    return true;
                 },
                 timeoutRange: function (el, required, parent) {
                     try{

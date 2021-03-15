@@ -653,6 +653,7 @@
 {block name=content }
     {nocache}
 
+{if PermissionManager::userHasPermission("SEARCH.PATIENTS", $smarty.session.userId) || $smarty.session.isPatient}
     <span class="msg">{$msg}</span>
 
     <input type="hidden" id="patientId" value="{$patient->getId()}"/>
@@ -940,48 +941,50 @@
         {***************************** SEPARATOR ********************}
         
     </div> 
-{*    
-<!-- for image upload and cropping -->
-<div id="openModal" class="modalDialog">
-    <div>
-        <a href="#close" title="close" class="close">X</a>
-        <h5>Crop and/or upload photograph</h5>
-        <div class="container" >
-            <div class="imageBox">
-                <div class="thumbBox"></div>
-                <div class="spinner" style="display: none">Loading...</div>
+    {*    
+            <!-- for image upload and cropping -->
+            <div id="openModal" class="modalDialog">
+                <div>
+                    <a href="#close" title="close" class="close">X</a>
+                    <h5>Crop and/or upload photograph</h5>
+                    <div class="container" >
+                        <div class="imageBox">
+                            <div class="thumbBox"></div>
+                            <div class="spinner" style="display: none">Loading...</div>
+                        </div>
+                        <div class="action">
+                            <input type="file" id="file" style="float:left; width: 200px">
+                            <input type="button" id="btnCrop" value="Done" style="float: right;">
+                            <input type="button" id="btnZoomIn" value="+" style="float: right;">
+                            <input type="button" id="btnZoomOut" value="-" style="float: right;">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="action">
-                <input type="file" id="file" style="float:left; width: 200px">
-                <input type="button" id="btnCrop" value="Done" style="float: right;">
-                <input type="button" id="btnZoomIn" value="+" style="float: right;">
-                <input type="button" id="btnZoomOut" value="-" style="float: right;">
-            </div>
-        </div>
-    </div>
-</div>
 
-<!--For the camera -->
-<div id="videoModal" class="modalDialog smallModal">
-    <div>
-        <a href="#videoClose" title="close" class="close" id="closeVideo">X</a>
-        <h5>Capture photograph</h5>
-        <div id="">
-            <div class="camcontent" style="margin:0px;padding:0px;border:1px solid #464646;width:200px;height:200px;background-color:#bbbbbb;">
-                <video width="200" height="200" id="video" style="border: 1px solid red;" autoplay></video>
-                <canvas id="canvas" width="200" height="200"/>
+            <!--For the camera -->
+            <div id="videoModal" class="modalDialog smallModal">
+                <div>
+                    <a href="#videoClose" title="close" class="close" id="closeVideo">X</a>
+                    <h5>Capture photograph</h5>
+                    <div id="">
+                        <div class="camcontent" style="margin:0px;padding:0px;border:1px solid #464646;width:200px;height:200px;background-color:#bbbbbb;">
+                            <video width="200" height="200" id="video" style="border: 1px solid red;" autoplay></video>
+                            <canvas id="canvas" width="200" height="200"/>
+                        </div>
+                        <div style="width:200px;">
+                            <input type="button" id="snap" value="Capture" style="display:none;">
+                            <input type="button" id="reset" value="Reset" style="display:none;">
+                            <input type="button" id="next" value="Next" style="display:none;">
+                            <input type="button" id="endVideo" value="Close">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="width:200px;">
-                <input type="button" id="snap" value="Capture" style="display:none;">
-                <input type="button" id="reset" value="Reset" style="display:none;">
-                <input type="button" id="next" value="Next" style="display:none;">
-                <input type="button" id="endVideo" value="Close">
-            </div>
-        </div>
-    </div>
-</div>
-*}
-
+    *}
+{else}
+    <div class="emptyListMessage">You do not have permissions to see the content of this page</div>
+{/if}
 {/nocache} 
 {/block}
     

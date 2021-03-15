@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-11 19:46:09
+/* Smarty version 3.1.34-dev-7, created on 2021-03-15 12:43:48
   from '/var/www/oecs/src/smarty/templates/security/group.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604a7381ee8aa3_79805539',
+  'unifunc' => 'content_604f5684969fe1_04084827',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ce35e0916af7f3dd6e0bfe9e10abe675e09842a' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/security/group.tpl',
-      1 => 1615491966,
+      1 => 1615812228,
       2 => 'file',
     ),
   ),
@@ -20,41 +20,41 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604a7381ee8aa3_79805539 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604f5684969fe1_04084827 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1726775353604a7381ece9c2_56320492', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_544905498604f568494d150_47119008', 'jquery');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1211632361604a7381ed03b5_45395970', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1419585499604f568494ff99_91739257', 'styles');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1088813955604a7381ed0c86_08514203', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_335617818604f5684950ad6_10337573', 'dataTable');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1868948345604a7381ed13e6_27979900', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1309266294604f5684951745_31887713', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_1726775353604a7381ece9c2_56320492 extends Smarty_Internal_Block
+class Block_544905498604f568494d150_47119008 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_1726775353604a7381ece9c2_56320492',
+    0 => 'Block_544905498604f568494d150_47119008',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -114,12 +114,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'styles'} */
-class Block_1211632361604a7381ed03b5_45395970 extends Smarty_Internal_Block
+class Block_1419585499604f568494ff99_91739257 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_1211632361604a7381ed03b5_45395970',
+    0 => 'Block_1419585499604f568494ff99_91739257',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -137,18 +137,28 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         li > label {
             color: #777777 !important;
         }
+        
+        div#err {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .permBlock {
+            margin-left: 5px !important;
+        }
     
 <?php
 }
 }
 /* {/block 'styles'} */
 /* {block 'dataTable'} */
-class Block_1088813955604a7381ed0c86_08514203 extends Smarty_Internal_Block
+class Block_335617818604f5684950ad6_10337573 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_1088813955604a7381ed0c86_08514203',
+    0 => 'Block_335617818604f5684950ad6_10337573',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -165,12 +175,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_1868948345604a7381ed13e6_27979900 extends Smarty_Internal_Block
+class Block_1309266294604f5684951745_31887713 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1868948345604a7381ed13e6_27979900',
+    0 => 'Block_1309266294604f5684951745_31887713',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -206,7 +216,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                 <div class="medium-6 large-4 end columns">
                     <label><span class="required"><?php echo \Neptune\MessageResources::i18n("userGroupForm.description");?>
 </span>
-                        <textarea name="description" rows="2" id="description" style="resize:none;"> <?php echo $_smarty_tpl->tpl_vars['group']->value->getDescription();?>
+                        <textarea name="description" rows="2" id="description" style="resize:none;" required> <?php echo $_smarty_tpl->tpl_vars['group']->value->getDescription();?>
  </textarea>
                     </label>
                 </div>
@@ -216,7 +226,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['ctg']->value) {
 ?>
-                <?php $_smarty_tpl->_assignInScope('permisos', $_smarty_tpl->tpl_vars['prm']->value->getByCategoryIdForFacility($_smarty_tpl->tpl_vars['facilityPerms']->value,$_smarty_tpl->tpl_vars['ctg']->value->getId()) ,true);?>
+                <?php $_smarty_tpl->_assignInScope('permisos', $_smarty_tpl->tpl_vars['prm']->value->getByCategoryId($_smarty_tpl->tpl_vars['ctg']->value->getId()) ,true);?>
                 <?php if (count($_smarty_tpl->tpl_vars['permisos']->value) > 0) {?>
                     <div class="row">
                         <div class="medium-12 columns">
@@ -238,8 +248,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['perm']->value) {
 " <?php if (in_array($_smarty_tpl->tpl_vars['perm']->value->getId(),$_smarty_tpl->tpl_vars['selectedPerms']->value)) {?> checked="checked" <?php }?>/>
                                     <?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getPermTextKey());?>
 
-                                    <?php if ($_smarty_tpl->tpl_vars['perm']->value->getComments() != '') {?>
-                                        <a href="#" class="hintanchorRow" onclick="return false;" onMouseover='showhint("<?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getComments());?>
+                                    <?php if ($_smarty_tpl->tpl_vars['perm']->value->getCommentKey() != '') {?>
+                                        <a href="#" class="hintanchorRow" onclick="return false;" onMouseover='showhint("<?php echo \Neptune\MessageResources::i18n($_smarty_tpl->tpl_vars['perm']->value->getCommentKey());?>
 ", this, event, "180px")'>&nbsp;</a>
                                     <?php }?>
                                 </label> 
@@ -303,28 +313,26 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tr>
         </thead>
         <tbody>
-          <?php
+            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['list']->value, 'grp');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['grp']->value) {
 ?> 
-               <tr>                           
-                   <td><?php echo $_smarty_tpl->tpl_vars['grp']->value->getName();?>
+                <tr>                           
+                    <td><?php echo $_smarty_tpl->tpl_vars['grp']->value->getName();?>
 </td> 
-                   <td><span class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['grp']->value->getDescription();?>
+                    <td><span class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['grp']->value->getDescription();?>
 "><?php echo $_smarty_tpl->tpl_vars['html']->value->truncateString($_smarty_tpl->tpl_vars['grp']->value->getDescription(),80);?>
 </span></td>
-                   <td>
-                        <?php if ($_smarty_tpl->tpl_vars['grp']->value->getCreatedAtFacilityId() == $_SESSION['facilityId']) {?>
-                            <a title="<?php echo \Neptune\MessageResources::i18n("link.edit");?>
+                    <td>
+                        <a title="<?php echo \Neptune\MessageResources::i18n("link.edit");?>
 " class="editRow" href="/security/group/edit/<?php echo $_smarty_tpl->tpl_vars['grp']->value->getId();?>
 ">
-                                <i class='fas fa-edit' style='font-size:1.5rem;color:#008cba;'></i>
-                            </a>
-                        <?php }?>
-                   </td>
+                            <i class='fas fa-edit' style='font-size:1.5rem;color:#008cba;'></i>
+                        </a>
+                    </td>
                 </tr>
-           <?php
+            <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
