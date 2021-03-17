@@ -511,4 +511,48 @@ class UserController extends \Neptune\BaseController{
         }
     }
     
+    public function lockPatientUser($userId) {
+        $success = false;
+        $patientUsr = (new \Authentication\Model\User())->getObjectById($userId);
+        if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS", $_SESSION['userId'])) {
+            $patientUsr->setLocked(TRUE);
+            $patientUsr->update();
+            $success = $patientUsr->getOpStatus();
+        } 
+        $response = new Response(\json_encode($success));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
+    public function unlockPatientUser($userId) {
+        $success = false;
+        $patientUsr = (new \Authentication\Model\User())->getObjectById($userId);
+        if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS", $_SESSION['userId'])) {
+            $patientUsr->setLocked(FALSE);
+            $patientUsr->update();
+            $success = $patientUsr->getOpStatus();
+        } 
+        $response = new Response(\json_encode($success));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
+    public function deletePatientUser($userId) {
+        $success = false;
+        $patientUsr = (new \Authentication\Model\User())->getObjectById($userId);
+        if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS", $_SESSION['userId']) && $patientUsr->getId() != $_SESSION['userId']) {
+            $sql = "";
+            $patient = (new \Patient\Model\Patient())->getByUserId($patientUsr->getId());
+            $sql .= $patient->generateDeleteSql();
+            $sql .= $patientUsr->generateDeleteSql();
+            $result = DbMapperUtility::dbQuery("BEGIN TRANSACTION; " . $sql . " COMMIT;");
+            $success = ($result !== false) ? true : false;
+        } 
+        $res = [];
+        $res['status'] = $success;
+        $response = new Response(\json_encode($res));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
 }

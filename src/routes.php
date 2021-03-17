@@ -174,6 +174,18 @@ $routes->add('register_user_check_capture', new Routing\Route('/user/registratio
 $routes->add('patient_user_listing', new Routing\Route('/security/patient/user', 
     array('_controller' => 'Authentication\\Controller\\UserController::showPatientUsers')
 ));
+$routes->add('patient_user_lock', new Routing\Route('/security/patient/user/lock/{userId}', 
+        array('_controller' => 'Authentication\\Controller\\UserController::lockPatientUser'),
+        array("userId" => "[A-Z0-9]+")
+));
+$routes->add('patient_user_unlock', new Routing\Route('/security/patient/user/unlock/{userId}', 
+        array('_controller' => 'Authentication\\Controller\\UserController::unlockPatientUser'),
+        array("userId" => "[A-Z0-9]+")
+));
+$routes->add('patient_user_delete', new Routing\Route('/security/patient/user/delete/{userId}', 
+        array('_controller' => 'Authentication\\Controller\\UserController::deletePatientUser'),
+        array("userId" => "[A-Z0-9]+")
+));
 
 //Physical Activity Actions
 $routes->add('physical_activity_form', new Routing\Route('/physical/activity', 

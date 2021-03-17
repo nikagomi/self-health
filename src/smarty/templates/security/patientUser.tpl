@@ -3,8 +3,6 @@
 {block name=jquery}
     {literal}
         
-        
-        
         $(function(){
             $(".hotspot").tipTip({maxWidth: "400px", edgeOffset: 3, defaultPosition: "top", delay: 200, fadeOut: 400});   
         });
@@ -15,6 +13,95 @@
             "font-size" : "1.2rem",
             "font-weight" : 500,
             "color": "#464646"
+        });
+        
+        /*****************************************************
+         Lock a patient user
+        ******************************************************/
+        $("body").on("click","a.lockUsr",function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/lock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.find("td:first").html('<i class="fas fa-lock" style="font-size:1rem;color:#FF0000;" title="Account currently locked"></i>');
+                    self.replaceWith('<a href="#" data-id="'+id+'" onclick="return false;" class="unlockUsr" title="Un-lock the user account"><i class="fas fa-lock-open" style="font-size:1.4rem;color:#006423;"></i></a>');
+                } else {
+                    swal("Update Error", "An error occurred. Could not lock the user account. Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });
+        
+        /*****************************************************
+         Un-Lock a patient user
+        ******************************************************/
+        $("body").on("click","a.unlockUsr",function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/unlock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.find("td:first").html('<i class="fas fa-unlock-alt" style="font-size:1rem;color:#006432;" title="Account currently un-locked"></i>');
+                    self.replaceWith('<a href="#" data-id="'+id+'" onclick="return false;" class="lockUsr" title="Lock the user account"><i class="fas fa-user-lock" style="font-size:1.4rem;color:orangered;"></i></a>');
+                } else {
+                    swal("Update Error", "An error occurred. Could not un-lock the user account. Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });
+        
+        /*****************************************************
+         Delete a patient user (along with patient)
+        ******************************************************/
+        /*$("a.deleteUsr").click(function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/unlock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.remove();
+                } else {
+                    swal("Update Error", "An error occurred. Could not delete the user account (and associated patient record). Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });*/
+        
+        /*****************************************************
+         Delete a patient user (along with patient)
+        ******************************************************/
+        $("a.deleteUsr").click(function(){
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            
+            swal({
+                text: 'Are you sure you want to delete this user and the associated patient record?',
+                showCancelButton: true,
+              })
+            .then((value) => {
+                return fetch("/security/patient/user/delete/"+id, {method: 'GET'});
+            })
+            .then(results => {
+                return results.json();
+            })
+            .then(json => {
+                if (json.status) {
+                   parTr.remove();
+                } else {
+                    swal("Update Error", "An error occurred. Could not delete the user account (and associated patient record). Please try again later or contact the application HelpDesk", "error");
+                }
+            });
         });
         
     {/literal}
@@ -69,7 +156,7 @@
                         <th class='all'>&nbsp;</th>
                         <th class="all">Last name</th>
                         <th class="all">First name</th> 
-                        <th class="tablet-p">Email</th>
+                        <th class="tablet-l desktop">Email</th>
                         <th class="all">Patient Name</th>
                         <th class="">Patient Sex</th>
                         <th class="">Patient Age</th>
@@ -83,9 +170,9 @@
                         <tr>     
                             <td>
                                 {if $pUsr->isLocked()}
-                                    <i class="fas fa-lock" style='font-size:1rem;color:#FF0000;'></i>
+                                    <i class="fas fa-lock" style='font-size:1rem;color:#FF0000;' title="Account currently locked"></i>
                                 {else}
-                                    <i class="fas fa-unlock-alt" style='font-size:1rem;color:#006432;'></i>
+                                    <i class="fas fa-unlock-alt" style='font-size:1rem;color:#006432;' title="Account currently un-locked"></i>
                                 {/if}
                             </td>
                             <td>{$pUsr->getLastName()}</td>
@@ -104,11 +191,17 @@
                             <td>{$patient->displayAge()}</td> 
                             <td>{$patient->getCountry()->getLabel()}</td>
                             <td>
-                                <a href="#" onclick="return false;" class="lockUsr" title="Lock the user's account">
-                                    <i class="fas fa-lock" style='font-size:1.4rem;color:goldenrod;'></i>
-                                </a>
+                                {if $pUsr->isLocked()}
+                                    <a href="#" data-id="{$pUsr->getId()}" onclick="return false;" class="unlockUsr" title="Un-lock the user's account">
+                                        <i class="fas fa-lock-open" style="font-size:1.4rem;color:#006423;"></i>
+                                    </a>
+                                {else}
+                                    <a href="#" data-id="{$pUsr->getId()}" onclick="return false;" class="lockUsr" title="Lock the user's account">
+                                        <i class="fas fa-user-lock" style='font-size:1.4rem;color:orangered;'></i>
+                                    </a>
+                                {/if}
                                 &ensp;
-                                <a href="#" onclick="return false;" class="lockUsr" title="Delete the user's account. The associated patient record will be deleted as well.">
+                                <a href="#" data-id="{$pUsr->getId()}" onclick="return false;" class="deleteUsr" title="Delete the user's account. The associated patient record will be deleted as well.">
                                     <i class="fas fa-trash-alt" style='font-size:1.4rem;color:#ff0000;'></i>
                                 </a>
                             </td>

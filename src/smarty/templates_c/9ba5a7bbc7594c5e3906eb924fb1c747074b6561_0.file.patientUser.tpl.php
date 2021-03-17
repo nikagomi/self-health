@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-15 20:10:37
+/* Smarty version 3.1.34-dev-7, created on 2021-03-17 14:33:06
   from '/var/www/oecs/src/smarty/templates/security/patientUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604fbf3d2c8b43_38990857',
+  'unifunc' => 'content_605213223ec8a6_04355255',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9ba5a7bbc7594c5e3906eb924fb1c747074b6561' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/security/patientUser.tpl',
-      1 => 1615839034,
+      1 => 1615991582,
       2 => 'file',
     ),
   ),
@@ -20,56 +20,54 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604fbf3d2c8b43_38990857 (Smarty_Internal_Template $_smarty_tpl) {
+function content_605213223ec8a6_04355255 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1537963187604fbf3d2b8005_97237421', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1622466952605213223db635_19532046', 'jquery');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_173369910604fbf3d2b9c61_85885116', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_57476963605213223dc243_08293941', 'styles');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_948004633604fbf3d2ba694_46229918', 'scripts');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1611355057605213223dcb87_03658129', 'scripts');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1490784663604fbf3d2bb123_89295343', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_752650487605213223dd317_04475472', 'dataTable');
 ?>
 
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_629610100604fbf3d2bbee7_34384862', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_720647230605213223dda81_54438332', 'content');
 ?>
 
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_1537963187604fbf3d2b8005_97237421 extends Smarty_Internal_Block
+class Block_1622466952605213223db635_19532046 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_1537963187604fbf3d2b8005_97237421',
+    0 => 'Block_1622466952605213223db635_19532046',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     
-        
-        
         
         $(function(){
             $(".hotspot").tipTip({maxWidth: "400px", edgeOffset: 3, defaultPosition: "top", delay: 200, fadeOut: 400});   
@@ -83,18 +81,107 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             "color": "#464646"
         });
         
+        /*****************************************************
+         Lock a patient user
+        ******************************************************/
+        $("body").on("click","a.lockUsr",function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/lock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.find("td:first").html('<i class="fas fa-lock" style="font-size:1rem;color:#FF0000;" title="Account currently locked"></i>');
+                    self.replaceWith('<a href="#" data-id="'+id+'" onclick="return false;" class="unlockUsr" title="Un-lock the user account"><i class="fas fa-lock-open" style="font-size:1.4rem;color:#006423;"></i></a>');
+                } else {
+                    swal("Update Error", "An error occurred. Could not lock the user account. Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });
+        
+        /*****************************************************
+         Un-Lock a patient user
+        ******************************************************/
+        $("body").on("click","a.unlockUsr",function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/unlock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.find("td:first").html('<i class="fas fa-unlock-alt" style="font-size:1rem;color:#006432;" title="Account currently un-locked"></i>');
+                    self.replaceWith('<a href="#" data-id="'+id+'" onclick="return false;" class="lockUsr" title="Lock the user account"><i class="fas fa-user-lock" style="font-size:1.4rem;color:orangered;"></i></a>');
+                } else {
+                    swal("Update Error", "An error occurred. Could not un-lock the user account. Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });
+        
+        /*****************************************************
+         Delete a patient user (along with patient)
+        ******************************************************/
+        /*$("a.deleteUsr").click(function(e) {
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            $.ajax({
+                type: "GET",
+                url: "/security/patient/user/unlock/" + id,
+                dataType: "json"
+            }).done(function(success) {
+                if (success) {
+                    parTr.remove();
+                } else {
+                    swal("Update Error", "An error occurred. Could not delete the user account (and associated patient record). Please try again later or contact the application HelpDesk", "error");
+                }
+            })
+        });*/
+        
+        /*****************************************************
+         Delete a patient user (along with patient)
+        ******************************************************/
+        $("a.deleteUsr").click(function(){
+            var id = $(this).attr("data-id");
+            var self = $(this);
+            var parTr = $(this).closest("tr");
+            
+            swal({
+                text: 'Are you sure you want to delete this user and the associated patient record?',
+                showCancelButton: true,
+              })
+            .then((value) => {
+                return fetch("/security/patient/user/delete/"+id, {method: 'GET'});
+            })
+            .then(results => {
+                return results.json();
+            })
+            .then(json => {
+                if (json.status) {
+                   parTr.remove();
+                } else {
+                    swal("Update Error", "An error occurred. Could not delete the user account (and associated patient record). Please try again later or contact the application HelpDesk", "error");
+                }
+            });
+        });
+        
     
 <?php
 }
 }
 /* {/block 'jquery'} */
 /* {block 'styles'} */
-class Block_173369910604fbf3d2b9c61_85885116 extends Smarty_Internal_Block
+class Block_57476963605213223dc243_08293941 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_173369910604fbf3d2b9c61_85885116',
+    0 => 'Block_57476963605213223dc243_08293941',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -115,12 +202,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block 'scripts'} */
-class Block_948004633604fbf3d2ba694_46229918 extends Smarty_Internal_Block
+class Block_1611355057605213223dcb87_03658129 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_948004633604fbf3d2ba694_46229918',
+    0 => 'Block_1611355057605213223dcb87_03658129',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -136,12 +223,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'scripts'} */
 /* {block 'dataTable'} */
-class Block_1490784663604fbf3d2bb123_89295343 extends Smarty_Internal_Block
+class Block_752650487605213223dd317_04475472 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_1490784663604fbf3d2bb123_89295343',
+    0 => 'Block_752650487605213223dd317_04475472',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -158,12 +245,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_629610100604fbf3d2bbee7_34384862 extends Smarty_Internal_Block
+class Block_720647230605213223dda81_54438332 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_629610100604fbf3d2bbee7_34384862',
+    0 => 'Block_720647230605213223dda81_54438332',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -182,7 +269,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                         <th class='all'>&nbsp;</th>
                         <th class="all">Last name</th>
                         <th class="all">First name</th> 
-                        <th class="tablet-p">Email</th>
+                        <th class="tablet-l desktop">Email</th>
                         <th class="all">Patient Name</th>
                         <th class="">Patient Sex</th>
                         <th class="">Patient Age</th>
@@ -200,9 +287,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['pUsr']->value) {
                         <tr>     
                             <td>
                                 <?php if ($_smarty_tpl->tpl_vars['pUsr']->value->isLocked()) {?>
-                                    <i class="fas fa-lock" style='font-size:1rem;color:#FF0000;'></i>
+                                    <i class="fas fa-lock" style='font-size:1rem;color:#FF0000;' title="Account currently locked"></i>
                                 <?php } else { ?>
-                                    <i class="fas fa-unlock-alt" style='font-size:1rem;color:#006432;'></i>
+                                    <i class="fas fa-unlock-alt" style='font-size:1rem;color:#006432;' title="Account currently un-locked"></i>
                                 <?php }?>
                             </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['pUsr']->value->getLastName();?>
@@ -230,11 +317,20 @@ foreach ($_from as $_smarty_tpl->tpl_vars['pUsr']->value) {
                             <td><?php echo $_smarty_tpl->tpl_vars['patient']->value->getCountry()->getLabel();?>
 </td>
                             <td>
-                                <a href="#" onclick="return false;" class="lockUsr" title="Lock the user's account">
-                                    <i class="fas fa-lock" style='font-size:1.4rem;color:goldenrod;'></i>
-                                </a>
+                                <?php if ($_smarty_tpl->tpl_vars['pUsr']->value->isLocked()) {?>
+                                    <a href="#" data-id="<?php echo $_smarty_tpl->tpl_vars['pUsr']->value->getId();?>
+" onclick="return false;" class="unlockUsr" title="Un-lock the user's account">
+                                        <i class="fas fa-lock-open" style="font-size:1.4rem;color:#006423;"></i>
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="#" data-id="<?php echo $_smarty_tpl->tpl_vars['pUsr']->value->getId();?>
+" onclick="return false;" class="lockUsr" title="Lock the user's account">
+                                        <i class="fas fa-user-lock" style='font-size:1.4rem;color:orangered;'></i>
+                                    </a>
+                                <?php }?>
                                 &ensp;
-                                <a href="#" onclick="return false;" class="lockUsr" title="Delete the user's account. The associated patient record will be deleted as well.">
+                                <a href="#" data-id="<?php echo $_smarty_tpl->tpl_vars['pUsr']->value->getId();?>
+" onclick="return false;" class="deleteUsr" title="Delete the user's account. The associated patient record will be deleted as well.">
                                     <i class="fas fa-trash-alt" style='font-size:1.4rem;color:#ff0000;'></i>
                                 </a>
                             </td>
