@@ -145,9 +145,9 @@ class HtmlHelper {
 }
 
     public static function toastWrapperStart () {
-        $toastWrapper = '<div aria-live="polite"  aria-atomic="true" style="position: absolute; pointer-events:none; top: 0; right: 0; z-index:30; min-height: 200px; max-width:350px; min-width:300px;">';
+        $toastWrapper = '<div aria-live="polite"  aria-atomic="true" style="pointer-events:none; position: absolute; top: 0; right: 0; z-index:30; min-height: 200px; max-width:350px; min-width:300px;">';
         //<!-- Position it -->
-        $toastWrapper .= '<div style="position: absolute; top: 0; right: 0; pointer-events:auto;">';
+        $toastWrapper .= '<div style="position: absolute; top: 0; right: 0;pointer-events:auto;">';
         //$toastWrapper .= '<div style="">';
         return $toastWrapper;
     }
@@ -160,11 +160,18 @@ class HtmlHelper {
     public static function composeToastMessage (array $messages) {
         $toastContent = '';
         $toastMsg = "";
-        if (\count($messages) > 0) {
+        if (\count($messages) > 1) {
+            foreach ($messages as $msgArr) {
+                foreach ($msgArr as $flg => $msg) {
+                    $toastContent .= (\trim($msg) != '') ? self::generateToast($flg, $msg) : '';
+                }
+            }
+            $toastMsg .= (\trim($toastContent) != '') ? self::toastWrapperStart() . $toastContent . self::toastWrapperEnd() : '';
+        } elseif (\count($messages) == 1) {
             foreach ($messages as $flg => $msg) {
                 $toastContent .= (\trim($msg) != '') ? self::generateToast($flg, $msg) : '';
             }
-            $toastMsg .= (\trim($toastContent) != '') ? self::toastWrapperStart() . $toastContent . self::toastWrapperEnd() : '';
+            $toastMsg .= (\trim($toastContent) != '') ? self::toastWrapperStart() . $toastContent . self::toastWrapperEnd() : ''; 
         }
         return $toastMsg;
     }

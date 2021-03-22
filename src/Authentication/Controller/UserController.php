@@ -119,6 +119,7 @@ class UserController extends \Neptune\BaseController{
             $user->setPassword("");
         }
         $msg = HtmlHelper::composeToastMessage($msgArr);
+        print_r($msgArr);
         $this->setUpTemplateVars($user, $msg);
         return new Response($this->_health->display($this->template));
     }
@@ -130,7 +131,7 @@ class UserController extends \Neptune\BaseController{
         $this->_health->assign('prm',new \Authentication\Model\Permission());
         $this->_health->assign('selectedPerms',(new \Authentication\Model\UserPermission())->getPermissionsIdsByUserId($obj->getId()));
 
-        $this->_health->assign('groups',  DbMapperUtility::convertObectArrayToCheckBoxArray((new \Authentication\Model\Group())->getAllOrderBy("name")));
+        $this->_health->assign('groups',  (new \Authentication\Model\Group())->getAllOrderBy("name"));
         $this->_health->assign('selectedGrps',(new \Authentication\Model\UserGroup())->getGroupIdsByUserId($obj->getId()));
 
         $this->_health->assign('yesNo',array("" => "","1"=>"Yes", "0" =>"No"));

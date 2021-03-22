@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-11 15:20:21
+/* Smarty version 3.1.34-dev-7, created on 2021-03-18 15:02:31
   from '/var/www/oecs/src/smarty/templates/start/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604a3535c63a17_52549133',
+  'unifunc' => 'content_60536b87a9a581_11058152',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '92738a5c02663ddf1e5917355498cc5f5cad09c3' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/start/login.tpl',
-      1 => 1615467363,
+      1 => 1615999391,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604a3535c63a17_52549133 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60536b87a9a581_11058152 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/smarty/libs/plugins/function.html_options.php','function'=>'smarty_function_html_options',),));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -249,7 +249,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
     var smallScreen = window.matchMedia("(max-width: 40.0625em)");
     var chgPwdWidth = (smallScreen.matches) ? "97%" : "500px";
     var regFormWidth = (smallScreen.matches) ? "97%" : "650px";
-    
+    var regFormHgt = (smallScreen.matches) ? "715px" : "450px";
     
     
     
@@ -291,7 +291,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         $("#regUsr").click(function(e){
             $.modal($('div#register-modal-content'), {
             close:true,
-            containerCss: {'width':regFormWidth, 'min-height':'450px'},
+            containerCss: {'width':regFormWidth, 'min-height':regFormHgt},
                 onOpen: function (dialog) {
                     dialog.overlay.fadeIn('slow', function () {
                         dialog.data.hide();
@@ -893,13 +893,13 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
         <form data-abide="ajax" name="userRegistrationForm" id="userRegistrationForm" action="/register/user" method="post">
                         <br/>
             <div class='row'>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.email");?>
 <small class="error" id="emailError">invalid format</small></span>
                         <input tabindex="11" type="email" name="regEmail" id="regEmail" autocomplete="off" value="" required/>
                     </label>
                 </div>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.countryId");?>
 <small class="error">required</small></span>
                         <select tabindex="12" name="regCountryId" id="regCountryId" required>
@@ -910,22 +910,21 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                 </div>
             </div>
             <div class='row'>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.first.name");?>
 <small class="error">required</small></span>
                         <input tabindex="13" type="text" name="regFirstName" id="regFirstName" autocomplete="off" value="" required/>
                     </label>
                 </div>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.last.name");?>
 <small class="error">required</small></span>
                         <input tabindex="14" type="text" name="regLastName" id="regLastName" autocomplete="off" value="" required/>
                     </label>
                 </div>
             </div>
-            
             <div class='row'>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.genderId");?>
 <small class="error">required</small></span>
                         <select tabindex="15" name="regGenderId" id="regGenderId" required>
@@ -934,7 +933,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                         </select>
                     </label>
                 </div>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label style=""><span class="required"><?php echo \Neptune\MessageResources::i18n("user.register.dob");?>
 <small class="error">required</small></span>
                         <input tabindex="16" type="text" class="medium" name="regDob" id="regDob" autocomplete="off" value="" required placeholder="mmm dd, yyyy"/>
@@ -942,18 +941,15 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                 </div>
             </div>
             <div class='row'>
-                
-            </div>
-            <div class='row'>
-                <div class="small-6 end columns" style="padding-top:8px;">
+                <div class="medium-6 end columns" style="padding-top:8px;">
                     <img src="/utility/captcha.php" alt="CAPTCHA" class="captcha-image"/>
                     <i class="fas fa-sync refresh-captcha" style="cursor:pointer;font-size:1.4rem;color:#008cba;"></i>
                 </div>
-                <div class="small-6 end columns">
+                <div class="medium-6 end columns">
                     <label>
                         <span class="required"><?php echo \Neptune\MessageResources::i18n("user.registration.captcha.label");?>
 <small class="error" id="captchaError">incorrect text</small></span>
-                        <input type="text" id="captcha" maxlength="6" name="captcha_challenge" pattern="[A-Z]+" required />
+                        <input type="text" id="captcha" class="medium" maxlength="6" name="captcha_challenge" pattern="[A-Z]+" required />
                     </label>
                 </div>
             </div>
