@@ -79,6 +79,8 @@
         <thead>
             <tr>
                 <th>{Messages::i18n("ageRangeForm.name")}</th> 
+                <th>{Messages::i18n("ageRangeForm.lowerLimit")}</th> 
+                <th>{Messages::i18n("ageRangeForm.upperLimit")}</th> 
                 <th width="10%">&nbsp;</th>
             </tr>
         </thead>

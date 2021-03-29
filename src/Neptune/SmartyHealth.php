@@ -12,9 +12,9 @@ class SmartyHealth extends \Smarty{
         $this->setCacheDir("/var/www/oecs/src/smarty/cache/");
 
         
-        $this->caching = 0;
+        $this->caching = 1;
         $this->cache_lifetime = 432000;//432000; //14400
-        $this->compile_check = TRUE; //must never be set to TRUE for production*/
+        $this->compile_check = FALSE; //must never be set to TRUE for production*/
 
         /* Registering classes */
         $this->registerClass("DbMapperUtility","\Neptune\DbMapperUtility");

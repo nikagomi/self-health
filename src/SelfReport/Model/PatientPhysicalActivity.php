@@ -103,15 +103,15 @@ class PatientPhysicalActivity extends Logger implements Modifiable {
     }
 
     public function getPatient() {
-        return $this->patient;
+        return $this->patient->getObjectById($this->getPatientId());
     }
 
     public function getCreatedBy() {
-        return $this->createdBy;
+        return $this->createdBy->getObjectById($this->getCreatedById());
     }
 
     public function getModifiedBy() {
-        return $this->modifiedBy;
+        return $this->modifiedBy->getObjectById($this->getModifiedById());
     }
     
     public function getPhysicalActivity() {

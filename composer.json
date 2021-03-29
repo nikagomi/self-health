@@ -25,7 +25,7 @@
     "autoload": { 
         "psr-4": {"Neptune\\":"src/Neptune", "Authentication\\":"src/Authentication", "Admin\\":"src/Admin", 
                   "Utility\\":"src/Utility", "Error\\":"src/Error", "Patient\\":"src/Patient", "HR\\":"src/HR",
-                  "SelfReport\\":"src/SelfReport", "Clinical\\":"src/Clinical"
+                  "SelfReport\\":"src/SelfReport", "Clinical\\":"src/Clinical", "Report\\":"src/Report"
         }
     }
     

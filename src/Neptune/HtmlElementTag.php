@@ -31,10 +31,11 @@ class HtmlElementTag {
         return $deleteBtn;                 
     }
     
-    public static function customBtn ($tabIndex, $faIconName, $btnTxt, $name, $class, $type='button') {
+    public static function customBtn ($tabIndex, $faIconName, $btnTxt, $name, $class, $type='button', $includeWaitTip = true) {
         $customBtn = '<button style="width:auto;padding:auto 3px;" type="'.$type.'" name="'.$name.'" class="'.$class.'"  tabindex="'.$tabIndex.'" id="'.$name.'">'
                         . '&nbsp;<i class="fas fa-'.$faIconName.'" style="font-size:1rem;font-weight:bold;"></i>&nbsp;&nbsp;'.$btnTxt.'&nbsp'
                     .'</button>';
+        $customBtn .=  ($includeWaitTip) ? '<span class="wait_tip" style="display:none;"><img src="/images/newloader.gif" width="24px" height="24px" id="loading_img"/> Please wait...</span>' : '';
         return $customBtn;                 
     }
     

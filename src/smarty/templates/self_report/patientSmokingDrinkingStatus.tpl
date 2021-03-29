@@ -117,7 +117,7 @@
                                 <div class="medium-12 end columns ddSmoke" style="{if $patientSmokingDrinkingStatus->isSmoker()} display:inline-block; {else} display:none; {/if}">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingSince")}</span>
-                                    </label>
+                                    </label><br/>
                                     <input tabindex="3" type="text" class="short" maxlength="2"id="smokingSinceQuantity" name="smokingSinceQuantity" value="{$patientSmokingDrinkingStatus->getSmokingSinceQuantity()}" style="float:left;display:inline-block;margin-right:5px;"/>
                                     <select tabindex="4" name="smokingSinceInterval" id="smokingSinceInterval" class="" style="float:left;display:inline-block;width:170px;">
                                         {html_options options=$intervals selected=$patientSmokingDrinkingStatus->getSmokingSinceInterval()}
@@ -173,7 +173,7 @@
                                 <div class="medium-12 end columns ddDrink" style="{if $patientSmokingDrinkingStatus->isDrinker()} display:inline-block; {else} display:none; {/if}">
                                     <label>
                                         <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingSince")}</span>
-                                    </label>
+                                    </label><br/>
                                     <input tabindex="12" type="text" class="short dDrink" maxlength="2" pattern="number" id="drinkingSinceQuantity" name="drinkingSinceQuantity" value="{$patientSmokingDrinkingStatus->getDrinkingSinceQuantity()}" style="float:left;display:inline-block;margin-right:5px;"/>
                                     <select tabindex="13" class="dDrink" name="drinkingSinceInterval" id="drinkingSinceInterval" style="float:left;display:inline-block;width:170px;">
                                         {html_options options=$intervals selected=$patientSmokingDrinkingStatus->getDrinkingSinceInterval()}

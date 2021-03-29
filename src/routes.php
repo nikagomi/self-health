@@ -460,6 +460,31 @@ $routes->add('smoking_drinking_status_patient_view', new Routing\Route('/smoking
     array('patientId' => '[A-Z0-9]+')
 ));
 
+//Reports
+//Patient Distribution Details
+$routes->add('patient_distribution_detail_form', new Routing\Route('/report/patient/distribution/detail/form', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientDistributionDetailForm')
+));
+$routes->add('patient_distribution_details', new Routing\Route('/report/patient/distribution/details', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientDistributionDetail')
+));
+
+//Patient Smoker/Drinker Report
+$routes->add('patient_smoker_drinker_form', new Routing\Route('/report/patient/smoking/drinking/form', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientSmokingDrinkingForm')
+));
+$routes->add('patient_smoker_drinker_results', new Routing\Route('/report/patient/smoking/drinking', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientSmokingDrinking')
+));
+
+//Patient Physical Activity Report
+$routes->add('patient_physical_activity_form', new Routing\Route('/report/patient/physical/activity/form', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientPhysicalActivityForm')
+));
+$routes->add('patient_physical_activity_results', new Routing\Route('/report/patient/physical/activity', 
+    array('_controller' => 'Report\\Controller\\ReportController::patientPhysicalActivity')
+));
+
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 
     array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmapForm')

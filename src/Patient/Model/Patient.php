@@ -426,9 +426,19 @@ class Patient extends Logger implements Modifiable {
         return ($smokingDrinkingStatus->isSmoker() && !$smokingDrinkingStatus->hasStoppedSmoking()) ? (bool) true : (bool) false;
     }
     
+    public function isSmokerAtDate($date) {
+        $smokingDrinkingStatus = (new PatientSmokingDrinkingStatus())->getByPatientId($this->getId());
+        return ($smokingDrinkingStatus->isSmoker() && (!$smokingDrinkingStatus->hasStoppedSmoking() || ($smokingDrinkingStatus->hasStoppedSmoking() && \strtotime($smokingDrinkingStatus->getStopSmokingDate()) >= \strtotime($date)))) ? (bool) true : (bool) false;
+    }
+    
     public function currentlyDrinks() {
         $smokingDrinkingStatus = (new PatientSmokingDrinkingStatus())->getByPatientId($this->getId());
         return ($smokingDrinkingStatus->isDrinker() && !$smokingDrinkingStatus->hasStoppedDrinking()) ? (bool) true : (bool) false;
+    }
+    
+    public function isDrinkerAtDate($date) {
+        $smokingDrinkingStatus = (new PatientSmokingDrinkingStatus())->getByPatientId($this->getId());
+        return ($smokingDrinkingStatus->isDrinker() && (!$smokingDrinkingStatus->hasStoppedDrinking() || ($smokingDrinkingStatus->hasStoppedDrinking() && \strtotime($smokingDrinkingStatus->getStopDrinkingDate()) >= \strtotime($date)))) ? (bool) true : (bool) false;
     }
 
 }

@@ -207,7 +207,7 @@ class PatientSmokingDrinkingStatus extends Logger {
     public function setStopDrinkingDate($stopDrinkingDate) {
         $stopDate = '';
         if (\trim($stopDrinkingDate) != '') { 
-            $dateObj = \DateTime::createFromFormat("M d, Y", stopDrinkingDate);
+            $dateObj = \DateTime::createFromFormat("M d, Y", $stopDrinkingDate);
             $stopDate = $dateObj->format("Y-m-d");
         } 
         $this->stopDrinkingDate = $stopDate;

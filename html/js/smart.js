@@ -11,7 +11,7 @@ function sarmsHeaderDataTableColumnFilter(dTable, idx, selectedVal){
         if (!smallScreen.matches) {
             $(headerElement).html("");
             
-            var select = $('<select><option value="">'+txt+' [All]</option></select>')
+            var select = $('<select><option value="">'+txt+'</option></select>')
                 .appendTo( column.header() )
                 .on( 'change', function () {
                     var val = $.fn.dataTable.util.escapeRegex(

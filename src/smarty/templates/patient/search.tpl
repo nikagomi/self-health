@@ -90,7 +90,7 @@
                             <span style="display:inline-block;float:left;margin-right:16px;"> - </span>
                             <input style="display:inline-block;float:left;" tabindex="{$tabindex}" data-abide-validator="ageRangeValidator" type="text" class="shorter" maxlength="3" pattern="number" id="aEnd" name="aEnd" value="{$aEnd}" placeholder=""/> 
                             {assign var="tabindex" value="{$tabindex + 1}"}
-                            </label>
+                        </label>
                     </div>
                      <div class="medium-4 end columns">
                         <label><span class="">Country:</span>

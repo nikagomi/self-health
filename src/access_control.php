@@ -71,6 +71,17 @@ $accessMap = array(
         "/security/user/save" => "MANAGE.USERS",
         "/security/user/delete" => "MANAGE.USERS",
     
+        /* Reports */
+        "/report/patient/distribution/detail/form" => "RPT.PATIENT.DISTRIBUTION.DETAILS",
+        "/report/patient/distribution/details" => "RPT.PATIENT.DISTRIBUTION.DETAILS",
+    
+        "/report/patient/smoking/drinking/form" => "RPT.PATIENT.SMOKING.DRINKING.DETAILS",
+        "/report/patient/smoking/drinking" => "RPT.PATIENT.SMOKING.DRINKING.DETAILS",
+    
+        "/report/patient/physical/activity/form" => "RPT.PATIENT.PHYSICAL.ACTIVITY.DETAILS",
+        "/report/patient/physical/activity" => "RPT.PATIENT.PHYSICAL.ACTIVITY.DETAILS",
+    
+    
         /*Server admin functions / access */
         "/property/file/get" => "ADMIN.PROPERTY.FILE",
         "/ajax/property/file/update" => "ADMIN.PROPERTY.FILE",
