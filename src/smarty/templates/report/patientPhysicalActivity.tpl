@@ -71,9 +71,9 @@
             $("div.table-toolbar").html("Patient Physical Activity Report").css({
                 "margin-left" : "26px",
                 "font-family": "'Poppins', sans-serif",
-                "font-size" : "1.2rem",
+                "font-size" : "1rem",
                 "font-weight" : 500,
-                "color": "#464646"
+                "color": "#777777"
             });
             
             $("form#patientPhysicalActivityReportForm").on('valid.fndtn.abide', function() { 
@@ -85,7 +85,7 @@
                 return false;
             });
         {/literal}
-        {if $patients|count gt 0}
+        {if $phyActs|count gt 0}
             {literal}
                  /*************  Column header filter  ************/
                  sarmsHeaderDataTableColumnFilterMulti(dTable, [3,4,5]);
@@ -100,8 +100,8 @@
         colReorder: true,
         paging: false,
         info: false,
-        order: [[ 0, 'asc' ], [ 3, 'asc' ],[ 4, 'asc' ]],
-        dom: "<'row'<'medium-6 columns text-left table-toolbar'><'medium-3 columns text-left'f><'medium-2 columns text-right'B>r>"+
+        order: [[ 0, 'asc' ], [ 2, 'asc' ],[ 3, 'asc' ]],
+        dom: "<'row'<'medium-4 columns text-left table-toolbar'><'medium-5 columns text-left'f><'medium-2 columns text-right'B>r>"+
             "t"+
             "<'row'<'small-6 columns'i><'small-6 columns'p>>",
         buttons: [
@@ -199,6 +199,7 @@
                 <th class='' style="">{Messages::i18n("patientPhysicalActivityReportForm.genderId")}</th>
                 <th class='' style="">{Messages::i18n("patientPhysicalActivityReportForm.physicalActivityId")}</th>
                 <th class='' style="">{Messages::i18n("patientPhysicalActivityReportForm.duration")}</th>
+                <th class='' style="">{Messages::i18n("patientPhysicalActivityReportForm.datePerformed")}</th>
             </tr>
         </thead>
         <tbody>
@@ -211,6 +212,7 @@
                     <td>{$phyAct->getPatient()->getGender()->getLabel()}</td>
                     <td>{$phyAct->getPhysicalActivity()->getLabel()}</td>
                     <td>{$phyAct->getDurationInMinutes()}</td>
+                    <td>{$phyAct->displayDatePerformed()}</td>
                     
                 </tr>
             {/foreach}

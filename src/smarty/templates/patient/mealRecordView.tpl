@@ -81,7 +81,7 @@
              <thead>
                 <tr>
                     <th class='all'>{Messages::i18n("patientMealForm.mealTypeId")}</th>
-                    <th style="width:15%;" class='all'>{Messages::i18n("patientMealForm.dateConsumed")}</th>
+                    <th style="width:15px;" class='all'>{Messages::i18n("patientMealForm.dateConsumed")}</th>
                     <th style="width:20%;"  class='all'>{Messages::i18n("patientMealForm.timeConsumed")}</th>
                     {foreach from=$foodGroups item=fg}
                         <th class=''>{$fg->getLabel()}</th>

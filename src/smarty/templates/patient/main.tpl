@@ -11,11 +11,15 @@
 
 {block name=styles}
     {literal}
-        .viewLabel, .infoLabel{
-            font-size: 0.9rem !important;
+        .viewLabel, .infoLabel, .hotspot {
+            font-size: 0.85rem !important;
             color: #111111 !important;
             font-family: 'Poppins', sans-serif !important;
         
+        }
+        
+        .infoLabel {
+            font-weight: 600;
         }
         
         #btnCrop, #btnZoomIn, #btnZoomOut, #snap, #next, #reset, #endVideo {
@@ -401,9 +405,7 @@
             background-color:#CD5C5C;
         }
         
-        .hotspot {
-            font-size: 0.95rem !important;
-        }
+        
     {/literal}
 {/block}
 

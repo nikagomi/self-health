@@ -62,9 +62,9 @@
             $("div.table-toolbar").html("Patient distribution by Age, Sex & Country").css({
             "margin-left" : "26px",
             "font-family": "'Poppins', sans-serif",
-            "font-size" : "1.2rem",
+            "font-size" : "1rem",
             "font-weight" : 500,
-            "color": "#464646"
+            "color": "#777777"
         });
         
         $("form#patientDistributionForm").on('valid.fndtn.abide', function() { 
@@ -91,8 +91,8 @@
         colReorder: true,
         paging: false,
         info: false,
-        order: [[ 3, 'asc' ],[ 4, 'asc' ]],
-        dom: "<'row'<'small-5 columns text-left table-toolbar'><'small-3 columns text-left'f><'small-3 columns text-right'B>r>"+
+        order: [[ 0, 'asc' ],[ 2, 'asc' ],[ 3, 'asc' ]],
+        dom: "<'row'<'small-4 columns text-left table-toolbar'><'small-5 columns text-left'f><'small-2 columns text-right'B>r>"+
             "t"+
             "<'row'<'small-6 columns'i><'small-6 columns'p>>",
         buttons: [

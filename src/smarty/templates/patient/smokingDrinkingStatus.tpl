@@ -14,6 +14,7 @@
         .viewLabel {
             font-family: 'Poppins', sans-serif !important;
             font-size: 0.9rem  !important;
+            color: #999999 !important;;
         }
     {/literal}
 {/block}
@@ -56,121 +57,125 @@
                     <ul class="medium-block-grid-2 small-block-grid-1">
                         <li>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
-                                    <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smoker")}</span>
+                                <div class="medium-7 end columns small-text-left medium-text-right viewLabel" style='background-color:#fafafa;'>
+                                    <label><span  class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.smoker")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel" style='background-color:#fafafa;'>
                                     {DbMapperUtility::booleanYesNo($patientSmokingDrinkingStatus->isSmoker())}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right">
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingSince")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingSince")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getSmokingSinceQuantity()} {$patientSmokingDrinkingStatus->getSmokingSinceInterval()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right" style='background-color:#fafafa;'>
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingFrequency")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingFrequency")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel" style='background-color:#fafafa;'>
                                     {$patientSmokingDrinkingStatus->getSmokingFrequency()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
-                                    <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedSmoking")}</span>
+                                <div class="medium-7 end columns small-text-left medium-text-right">
+                                    <label><span class=" viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedSmoking")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel">
                                     {DbMapperUtility::booleanYesNo($patientSmokingDrinkingStatus->hasStoppedSmoking())}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right" style='background-color:#fafafa;'>
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stopSmokingDate")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.stopSmokingDate")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel" style='background-color:#fafafa;'>
                                     {$patientSmokingDrinkingStatus->displayStopSmokingDate()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns text-left">
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingComments")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingComments")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                            </div>
+                            <div class="row">
+                                <div class="medium-12 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getSmokingComments()}
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right viewLabel" style='background-color:#fAfafa;'>
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinker")}</span><br/>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.drinker")}</span><br/>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel" style='background-color:#fafafa;'>
                                     {DbMapperUtility::booleanYesNo($patientSmokingDrinkingStatus->isDrinker())}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right ">
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingSince")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingSince")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getDrinkingSinceQuantity()}&nbsp;{$patientSmokingDrinkingStatus->getDrinkingSinceInterval()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns small-text-left medium-text-right" style='background-color:#fafafa;'>
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingFrequency")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingFrequency")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel" style='background-color:#fafafa;'>
                                     {$patientSmokingDrinkingStatus->getDrinkingFrequency()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
-                                    <label><span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedDrinking")}</span>
+                                <div class="medium-7 end columns small-text-left medium-text-right">
+                                    <label><span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.stoppedDrinking")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel">
                                     {DbMapperUtility::booleanYesNo($patientSmokingDrinkingStatus->hasStoppedDrinking())}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right">
+                                <div class="medium-7 end columns small-text-left medium-text-right" style='background-color:#fafafa;'>
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.stopDrinkingDate")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.stopDrinkingDate")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel viewLabel">
+                                <div class="medium-5 end columns infoLabel infoLabel" style='background-color:#fafafa;'>
                                     {$patientSmokingDrinkingStatus->displayStopDrinkingDate()}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-6 end columns small-text-left medium-text-right viewLabel">
+                                <div class="medium-7 end columns text-left">
                                     <label>
-                                        <span class="">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingComments")}</span>
+                                        <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingComments")}</span>
                                     </label>
                                 </div>
-                                <div class="medium-6 end columns infoLabel">
+                            </div>
+                            <div class="row">
+                                <div class="medium-12 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getDrinkingComments()}
                                 </div>
                             </div>

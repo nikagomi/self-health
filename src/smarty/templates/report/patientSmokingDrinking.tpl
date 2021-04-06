@@ -64,9 +64,9 @@
             $("div.table-toolbar").html("Patient smokers/drinkers by Age, Sex & Country on or before {/literal}{$asOfDate}{literal}").css({
                 "margin-left" : "26px",
                 "font-family": "'Poppins', sans-serif",
-                "font-size" : "1.2rem",
+                "font-size" : "1rem",
                 "font-weight" : 500,
-                "color": "#464646"
+                "color": "#777777"
             });
             
             $("#asOfDate").datepicker({
@@ -102,8 +102,8 @@
         colReorder: true,
         paging: false,
         info: false,
-        order: [[ 3, 'asc' ],[ 4, 'asc' ]],
-        dom: "<'row'<'medium-6 columns text-left table-toolbar'><'medium-3 columns text-left'f><'medium-2 columns text-right'B>r>"+
+        order: [[ 0, 'asc' ],[ 2, 'asc' ],[ 3, 'asc' ]],
+        dom: "<'row'<'medium-4 columns text-left table-toolbar'><'medium-5 columns text-left'f><'medium-2 columns text-right'B>r>"+
             "t"+
             "<'row'<'small-6 columns'i><'small-6 columns'p>>",
         buttons: [
@@ -154,7 +154,9 @@
     </div>
     <div class="row" style="margin-left:0px;">
         <div class="medium-4 end columns">
-            <label><span class="required">{Messages::i18n("patientSmokingDrinkingForm.asOfDate")}</span>
+            <label><span class="required">{Messages::i18n("patientSmokingDrinkingForm.asOfDate")}&nbsp;
+                    <a href="#" class="hintanchorRow" onclick="return false;" onMouseover="showhint('Whether the patient was a smoker/drinker at this point in time (date) ', this, event, '180px')">&nbsp;</a>
+                </span>
                 <input tabindex="4" type="text" class="medium" placeholder="MMM ddd, yyyy" name="asOfDate" id="asOfDate" required value="{$asOfDate}"/>
             </label>
         </div>

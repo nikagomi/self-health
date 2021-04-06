@@ -47,6 +47,7 @@
         $("#dateOfBirth").datepicker({
             format:"dd/mm/yyyy", 
             endDate:"-18y",
+            startDate:"-110y",
             clearBtn:true,
             autoclose: true
         }).data('datepicker');
@@ -241,7 +242,7 @@
                         </div>
                         <div class="row">
                             <div class="medium-12 end columns">
-                                <label><span class="required">Date of birth<small class="error" id="dateError">date is invalid</small></span>
+                                <label><span class="required">Date of birth&nbsp;<small class="error" id="dateError">date is invalid</small></span>
                                     <input tabindex="5" class="medium" maxlength="10" type="text" name="dateOfBirth" id="dateOfBirth" value="{$patient->displayDateOfBirth()}" placeholder="dd/mm/yyyy" pattern="" data-abide-validator="dateValidator" required/>
                                 </label>
                             </div>
@@ -392,8 +393,8 @@
                 try{
                     var dob = moment(el.value, "DD/MM/YYYY");
                     var now = moment();
-                    if(now.subtract(16, 'years').isBefore(dob)){
-                        $("#dateError").text("Must be over 1 month");
+                    if(now.subtract(18, 'years').isBefore(dob)){
+                        $("#dateError").text("Must be over 18 years");
                         return false;
                     }
                 }catch(e){

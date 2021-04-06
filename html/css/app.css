@@ -230,6 +230,7 @@ textarea.error,
   font-size:0.9rem /*0.8375rem*/;
 }
 
+
 table thead {
     background: transparent; 
 }
@@ -765,6 +766,8 @@ div.table-toolbar {
   height: 1.3rem;
   width: 1.3rem;
 }
+
+
 
 @media only screen and (min-width: 64.0625em) {
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {

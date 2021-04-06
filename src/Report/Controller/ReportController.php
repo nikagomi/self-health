@@ -48,8 +48,8 @@ class ReportController extends BaseController {
         $genderClause = ($genderId != '') ? " AND gender_id = '".$genderId."' " : "";
         
         $patients = [];
-        $sql = "SELECT patient_id FROM patients WHERE country_id = '".$countryId."' ". $ageRangeClause. $genderClause;
-        $sql .= " AND alive = true";
+        $sql = "SELECT patient_id, last_name FROM patients WHERE country_id = '".$countryId."' ". $ageRangeClause. $genderClause;
+        $sql .= " AND alive = true order by last_name ASC";
         //echo $sql;
        
         $result = DbMapperUtility::dbQuery($sql);
@@ -104,7 +104,7 @@ class ReportController extends BaseController {
         $patients = [];
         $sql = "SELECT p.patient_id FROM patients p, patient_smoking_drinking_statuses psds WHERE p.country_id = '".$countryId."' ". $ageRangeClause. $genderClause;
         $sql .= " AND p.alive = true AND psds.patient_id = p.patient_id AND ( (psds.drinker = true AND (psds.stopped_drinking = false OR (psds.stopped_drinking = true AND psds.stop_drinking_date >= '".$asOfDateObj->format("Y-m-d")."'))) ";
-        $sql .= " OR (psds.smoker = true AND (psds.stopped_smoking = false OR (psds.stopped_smoking = true AND psds.stop_smoking_date >= '".$asOfDateObj->format("Y-m-d")."'))) )";
+        $sql .= " OR (psds.smoker = true AND (psds.stopped_smoking = false OR (psds.stopped_smoking = true AND psds.stop_smoking_date >= '".$asOfDateObj->format("Y-m-d")."'))) ) ORDER BY p.last_name ASC";
         //echo $sql;
        
         $result = DbMapperUtility::dbQuery($sql);
@@ -167,8 +167,8 @@ class ReportController extends BaseController {
         
         $phyActs = [];
         $sql = "select pa.patient_physical_activity_id FROM patient_physical_activities pa, patients p WHERE p.patient_id = pa.patient_id AND p.country_id = '".$countryId."' AND pa.alive = true AND p.alive = true ";
-        $sql .=  $durationClause. $ageRangeClause. $genderClause . $physicalActivityClause;
-        echo $sql;
+        $sql .=  $durationClause. $ageRangeClause. $genderClause . $physicalActivityClause." ORDER BY p.last_name ASC";
+        //echo $sql;
        
         $result = DbMapperUtility::dbQuery($sql);
         if (DbMapperUtility::dbNumRows($result) > 0) {

@@ -1,6 +1,6 @@
 Steps to install image magick to accommodate HEIC format (High Efficiency Image Container)
 
-1) Clone image magick into a folder: git clone https://github.com/ImageMagick/ImageMagick.git [Folder_name_of_choice]
+1) Clone image magick into a folder: git clone https://github.com/ImageMagick/ImageMagick.git ImageMagick [Folder_name_of_choice]
 
 2) Add RPMFusion repository to OS (need for libheif and libde265)
    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm

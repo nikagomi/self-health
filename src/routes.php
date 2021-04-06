@@ -478,7 +478,7 @@ $routes->add('patient_smoker_drinker_results', new Routing\Route('/report/patien
 ));
 
 //Patient Physical Activity Report
-$routes->add('patient_physical_activity_form', new Routing\Route('/report/patient/physical/activity/form', 
+$routes->add('patient_report_physical_activity_form', new Routing\Route('/report/patient/physical/activity/form', 
     array('_controller' => 'Report\\Controller\\ReportController::patientPhysicalActivityForm')
 ));
 $routes->add('patient_physical_activity_results', new Routing\Route('/report/patient/physical/activity', 
