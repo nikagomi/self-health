@@ -541,3 +541,59 @@ CREATE TABLE patient_smoking_drinking_statuses (
 ALTER TABLE patient_smoking_drinking_statuses OWNER TO postgres;
 GRANT ALL ON TABLE patient_smoking_drinking_statuses TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE patient_smoking_drinking_statuses TO public;
+
+--8/Apr/2021
+CREATE TABLE pharmaceuticals (
+  pharmaceutical_id character varying(50) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_pharmaceutical_id PRIMARY KEY (pharmaceutical_id)
+);
+ALTER TABLE pharmaceuticals  OWNER TO postgres;
+GRANT ALL ON TABLE pharmaceuticals TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE pharmaceuticals TO public;
+
+CREATE TABLE quantity_units (
+  quantity_unit_id character varying(50) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_quantity_unit_id PRIMARY KEY (quantity_unit_id)
+);
+ALTER TABLE quantity_units OWNER TO postgres;
+GRANT ALL ON TABLE quantity_units TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE quantity_units TO public;
+
+CREATE TABLE medications (
+  medication_id character varying(50) NOT NULL,
+  pharmaceutical_id character varying(50) NOT NULL,
+  dosage character varying(10),
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_medication_id PRIMARY KEY (medication_id),
+  CONSTRAINT fk_pharmaceutical_id FOREIGN KEY(pharmaceutical_id)
+    REFERENCES pharmaceuticals (pharmaceutical_id)
+);
+ALTER TABLE medications OWNER TO postgres;
+GRANT ALL ON TABLE medications TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE medications TO public;
+
+CREATE TABLE patient_medications (
+  patient_medication_id character varying (50) NOT NULL,
+  patient_id character varying(50) NOT NULL,
+  medication_id character varying(50) NOT NULL,
+  date_taken date NOT NULL,
+  time_taken time without time zone,
+  quantity_amount integer NOT NULL,
+  quantity_unit_id character varying(50) NOT NULL,
+  comments text,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_patient_medication_id PRIMARY KEY(patient_medication_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)
+     REFERENCES patients (patient_id),
+  CONSTRAINT fk_medication_id FOREIGN KEY (medication_id)
+     REFERENCES medications (medication_id),
+  CONSTRAINT fk_quantity_unit_id FOREIGN KEY (quantity_unit_id)
+    REFERENCES qunatity_units (quantity_unit_id)
+);
+ALTER TABLE patient_medications OWNER TO postgres;
+GRANT ALL ON TABLE patient_medications TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE patient_medications TO public;

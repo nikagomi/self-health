@@ -49,28 +49,19 @@
         //Unit conversion calculator
         //Temperature conversion
         $("#calcT").click(function(){
-            var farenheit = $.trim($("#farenheit").val());
-            if (farenheit != '' && $.isNumeric(parseFloat(farenheit)) ) {
-                $("#farenheit").removeClass("error");
-                var conv = (parseFloat(farenheit) - 32) * 0.556;
-                $("#celsius").val(round(conv,1));
-            } else {
-                $("#farenheit").addClass("error");
-                 $("#celsius").val("");
-            }
+            temperatureConverter();
+        });
+        $("#farenheit").blur(function(){
+            temperatureConverter();
         });
         //Weight conversion
         $("#calcW").click(function(){
-            var lbs = $.trim($("#pound").val());
-            if (lbs != '' && $.isNumeric(parseFloat(lbs)) ) {
-                $("#pound").removeClass("error");
-                var conv = parseFloat(lbs) / 2.205;
-                $("#kilogram").val(round(conv,1));
-            } else {
-                $("#pound").addClass("error");
-                $("#kilogram").val("");
-            }
+            weightConverter();
         });
+        $("#pond").blur(function(){
+            weightConverter();
+        });
+        
         //Height conversion
         $("#calcH").click(function(){
             var feet = $.trim($("#feet").val());
@@ -91,6 +82,34 @@
     {/literal}
 {/block}
 
+{block name=scripts}
+    {literal}
+        function temperatureConverter() {
+            var farenheit = $.trim($("#farenheit").val());
+            if (farenheit != '' && $.isNumeric(parseFloat(farenheit)) ) {
+                $("#farenheit").removeClass("error");
+                var conv = (parseFloat(farenheit) - 32) * 0.556;
+                $("#celsius").val(round(conv,1));
+            } else {
+                $("#farenheit").addClass("error");
+                 $("#celsius").val("");
+            }
+        }
+        
+        function weightConverter () {
+            var lbs = $.trim($("#pound").val());
+            if (lbs != '' && $.isNumeric(parseFloat(lbs)) ) {
+                $("#pound").removeClass("error");
+                var conv = parseFloat(lbs) / 2.205;
+                $("#kilogram").val(round(conv,1));
+            } else {
+                $("#pound").addClass("error");
+                $("#kilogram").val("");
+            }
+        }
+    {/literal}
+{/block}
+
 {block name=styles}
     {literal}
         .shorter {
@@ -105,12 +124,12 @@
             color:#464646; 
             font-size:1.2rem; 
             line-height:1.4rem;
-            font-weight:bold;
+            font-weight:500;
             height:40px; 
             padding-top:3px;
             font-family:'Poppins', sans-serif;;
             vertical-align: middle;
-            font-variant:small-caps;
+            font-variant:normal;
             border-radius: 0px;
             padding-bottom:3px;
             padding-top:8px;
@@ -152,7 +171,7 @@
     {$msg}
     
     <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
-        {Messages::i18n("patientVitalForm.legend")}&ensp;<a href="#" onclick="return false;" id="calc" ><i class="fas fa-calculator" style="font-size:1.2rem;color:#008cba;cursor:pointer;"></i></a>
+        {Messages::i18n("patientVitalForm.legend")}&ensp;<a href="#" style="font-size:0.9rem;" onclick="return false;" id="calc">(unit conversion calculator:&ensp;<i class="fas fa-calculator" style="font-size:1.2rem;color:#008cba;cursor:pointer;"></i>)</a>
     </div>
     <div style="margin-left:15px;margin-top:2px;">
         <form data-abide name="patientVitalForm" id="patientVitalForm" action="{$actionPage}" method="POST" autocomplete="off">
@@ -269,8 +288,8 @@
 
 <!-- modal content for conversion calculator -->
     <div id="register-modal-content">
-        <a href="#" onclick="return false;" class="close simplemodal-close"></a>
-        <div class='modalHeader' align="center">Conversion Calculator</div>      
+        <a href="#" onclick="return false;" class="close simplemodal-close" style="font-family:'Poppins', sans-serif;">x</a>
+        <div class='modalHeader' align="center">Unit Conversion Calculator</div>      
             <br/>
             <div class='row' style="margin: 0px 0px;">
                 <div class="small-12 end columns">
@@ -284,7 +303,7 @@
                     
                 </div>
                 <div class="small-2 end columns text-center">
-                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;" class="button" id="calcT"> = </button>
+                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;padding-top:3px;" class="button" id="calcT"> <i class="fas fa-play" style="font-size:0.9rem;"></i> </button>
                 </div>
                 <div class="small-4 end columns text-left">
                     <input tabindex="2" type="text" class="shorter" id="celsius" autocomplete="off" value="" style="float:left;display:inline-block;"/>
@@ -305,7 +324,7 @@
                     
                 </div>
                 <div class="small-2 end columns text-center">
-                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;" class="button" id="calcW"> = </button>
+                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;padding-top:3px;" class="button" id="calcW"> <i class="fas fa-play" style="font-size:0.9rem;"></i> </button>
                 </div>
                 <div class="small-4 end columns text-left">
                     <input tabindex="4" type="text" class="shorter" id="kilogram" autocomplete="off" value="" style="float:left;display:inline-block;"/>
@@ -329,7 +348,7 @@
                     <span style="float:left;padding-top:8px;display:inline-block;">&nbsp;in.</span>
                 </div>
                 <div class="small-2 end columns text-center">
-                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;" class="button" id="calcH"> = </button>
+                    <button type="button" style="font-size:1.4rem;font-weight:bold;width:90%;padding-top:3px;" class="button" id="calcH"> <i class="fas fa-play" style="font-size:0.9rem;"></i> </button>
                 </div>
                 <div class="small-4 end columns text-left">
                     <input tabindex="7" type="text" class="shorter" id="centimeter" autocomplete="off" value="" style="float:left;display:inline-block;"/>

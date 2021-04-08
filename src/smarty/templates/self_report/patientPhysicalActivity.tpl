@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="required">{Messages::i18n("patientPhysicalActivityForm.datePerformed")}</span>
-                                    <input tabindex="2" type="text" class="medium" id="datePerformed" name="datePerformed" value="{$patientPhysicalActivity->getDatePerformed()}" required>
+                                    <input tabindex="2" type="text" class="medium" id="datePerformed" name="datePerformed" value="{$patientPhysicalActivity->displayDatePerformed()}" required>
                                 </label>
                             </div>
                         </div>
