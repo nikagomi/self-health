@@ -71,6 +71,24 @@ $accessMap = array(
         "/security/user/save" => "MANAGE.USERS",
         "/security/user/delete" => "MANAGE.USERS",
     
+        /* Manage Pharmaceuticals */
+        "/pharmaceutical" => "MANAGE.PHARMACEUTICALS",
+        "/pharmaceutical/save" => "MANAGE.PHARMACEUTICALS",
+        "/pharmaceutical/edit" => "MANAGE.PHARMACEUTICALS",
+        "/pharmaceutical/delete" => "MANAGE.PHARMACEUTICALS",
+    
+        /* Manage Medications */
+        "/medication" => "MANAGE.MEDICATIONS",
+        "/medication/save" => "MANAGE.MEDICATIONS",
+        "/medication/edit" => "MANAGE.MEDICATIONS",
+        "/medication/delete" => "MANAGE.MEDICATIONS",
+    
+        /* Manage Quantity Taken Units */
+        "/quantity/taken/unit" => "MANAGE.QUANTITY.TAKEN.UNITS",
+        "/quantity/taken/unit/save" => "MANAGE.QUANTITY.TAKEN.UNITS",
+        "/quantity/taken/unit/edit" => "MANAGE.QUANTITY.TAKEN.UNITS",
+        "/quantity/taken/unit/delete" => "MMANAGE.QUANTITY.TAKEN.UNITS",
+    
         /* Reports */
         "/report/patient/distribution/detail/form" => "RPT.PATIENT.DISTRIBUTION.DETAILS",
         "/report/patient/distribution/details" => "RPT.PATIENT.DISTRIBUTION.DETAILS",

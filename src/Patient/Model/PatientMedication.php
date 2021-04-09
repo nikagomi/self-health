@@ -2,14 +2,14 @@
 
 namespace Patient\Model;
 
-use Neptune\{DbMapperUtility, Logger};
+use Neptune\{DbMapperUtility, Logger, Modifiable};
 
 /**
  * PatientMedication
  * @package self-health
  * @author Randal Neptune
  */
-class PatientMedication extends Logger {
+class PatientMedication extends Logger implements Modifiable {
     protected $_tableName = "patient_medications";
     protected $primaryKeyField = "patient_medication_id";
 
@@ -23,8 +23,12 @@ class PatientMedication extends Logger {
         "dateTaken" => ["date_taken","D"],
         "timeTaken" => ["time_taken", "D"],
         "quantityAmount" => ["quantity_amount","I"],
-        "quantityUnitId" => ["quantity_unit_id","T"],
-        "comments" => ["comments", "T"]
+        "quantityTakenUnitId" => ["quantity_taken_unit_id","T"],
+        "comments" => ["comments", "T"],
+        "createdById" => ["created_by_id","T"],
+        "createdTime" => ["created_time","TS"],
+        "modifiedById" => ["modified_by_id","T"],
+        "modifiedTime" => ["modified_time","TS"]
     ); 
     
     protected $medicationId;
@@ -32,18 +36,26 @@ class PatientMedication extends Logger {
     protected $dateTaken;
     protected $timeTaken;
     protected $quantityAmount;
-    protected $quantityUnitId;
+    protected $quantityTakenUnitId;
     protected $comments;
+    protected $createdById;
+    protected $createdTime;
+    protected $modifiedById;
+    protected $modifiedTime;
     
     protected $medication;
     protected $patient;
-    protected $quantityUnit;
+    protected $quantityTakenUnit;
+    protected $createdBy;
+    protected $modifiedBy;
     
     public function __construct() {
         parent::__construct();
         $this->patient = new Patient();
         $this->medication = new \Admin\Model\Medication();
-        $this->quantityUnit = new \Admin\Model\QuantityUnit();        
+        $this->quantityTakenUnit = new \Admin\Model\QuantityTakenUnit(); 
+        $this->createdBy = new \Authentication\Model\User();
+        $this->modifiedBy = new \Authentication\Model\User();
     }
     
     public function getMedicationId() {
@@ -74,8 +86,8 @@ class PatientMedication extends Logger {
         return $this->quantityAmount;
     }
 
-    public function getQuantityUnitId() {
-        return $this->quantityUnitId;
+    public function getQuantityTakenUnitId() {
+        return $this->quantityTakenUnitId;
     }
 
     public function getComments() {
@@ -90,8 +102,32 @@ class PatientMedication extends Logger {
         return $this->patient->getObjectById($this->getPatientId());
     }
 
-    public function getQuantityUnit() {
-        return $this->quantityUnit->getObjectById($this->getQuantityUnitId());
+    public function getQuantityTakenUnit() {
+        return $this->quantityTakenUnit->getObjectById($this->getQuantityTakenUnitId());
+    }
+    
+    public function getCreatedById() {
+        return $this->createdById;
+    }
+
+    public function getCreatedTime() {
+        return $this->createdTime;
+    }
+
+    public function getModifiedById() {
+        return $this->modifiedById;
+    }
+
+    public function getModifiedTime() {
+        return $this->modifiedTime;
+    }
+    
+    public function getCreatedBy() {
+        return $this->createdBy->getObjectById($this->getCreatedById());
+    }
+
+    public function getModifiedBy() {
+        return $this->modifiedBy->getObjectById($this->getModifiedById());
     }
 
     public function setMedicationId($medicationId) {
@@ -120,8 +156,8 @@ class PatientMedication extends Logger {
         $this->quantityAmount = $quantityAmount;
     }
 
-    public function setQuantityUnitId($quantityUnitId) {
-        $this->quantityUnitId = $quantityUnitId;
+    public function setQuantityTakenUnitId($quantityTakenUnitId) {
+        $this->quantityTakenUnitId = $quantityTakenUnitId;
     }
 
     public function setComments($comments) {
@@ -136,11 +172,35 @@ class PatientMedication extends Logger {
         $this->patient = $patient;
     }
 
-    public function setQuantityUnit($quantityUnit) {
-        $this->quantityUnit = $quantityUnit;
+    public function setQuantityTakenUnit($quantityTakenUnit) {
+        $this->quantityTakenUnit = $quantityTakenUnit;
+    }
+    
+    public function setCreatedById($createdById) {
+        $this->createdById = $createdById;
     }
 
-    public function getMedicationsByPatient($patientId) {
+    public function setCreatedTime($createdTime) {
+        $this->createdTime = $createdTime;
+    }
+
+    public function setModifiedById($modifiedById) {
+        $this->modifiedById = $modifiedById;
+    }
+
+    public function setModifiedTime($modifiedTime) {
+        $this->modifiedTime = $modifiedTime;
+    }
+    
+    public function setCreatedBy($createdBy) {
+        $this->createdBy = $createdBy;
+    }
+
+    public function setModifiedBy($modifiedBy) {
+        $this->modifiedBy = $modifiedBy;
+    }
+
+    public function getByPatientId($patientId) {
         return $this->getObjectsByMultipleCriteria(["patientId"], [$patientId], TRUE, "id", $this->getClassName(), FALSE, "dateTaken");
     }
 }

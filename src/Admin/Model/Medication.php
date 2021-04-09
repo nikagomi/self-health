@@ -19,7 +19,7 @@ class Medication extends Logger {
     protected $fieldMapper = array(
         "id" => ["medication_id","T"],
         "pharmaceuticalId" => ["pharmaceutical_id","T"],
-        "dosage" => ["dosage_id","T"]
+        "dosage" => ["dosage","T"]
     );
 
     protected $pharmaceuticalId;

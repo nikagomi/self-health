@@ -542,7 +542,7 @@ ALTER TABLE patient_smoking_drinking_statuses OWNER TO postgres;
 GRANT ALL ON TABLE patient_smoking_drinking_statuses TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE patient_smoking_drinking_statuses TO public;
 
---8/Apr/2021
+--8/Apr/2021 (not in prod)
 CREATE TABLE pharmaceuticals (
   pharmaceutical_id character varying(50) NOT NULL,
   "name" character varying(50) NOT NULL,
@@ -553,15 +553,15 @@ ALTER TABLE pharmaceuticals  OWNER TO postgres;
 GRANT ALL ON TABLE pharmaceuticals TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE pharmaceuticals TO public;
 
-CREATE TABLE quantity_units (
-  quantity_unit_id character varying(50) NOT NULL,
+CREATE TABLE quantity_taken_units (
+  quantity_taken_unit_id character varying(50) NOT NULL,
   "name" character varying(50) NOT NULL,
   alive boolean NOT NULL DEFAULT true,
-  CONSTRAINT pk_quantity_unit_id PRIMARY KEY (quantity_unit_id)
+  CONSTRAINT pk_quantity_taken_unit_id PRIMARY KEY (quantity_taken_unit_id)
 );
-ALTER TABLE quantity_units OWNER TO postgres;
-GRANT ALL ON TABLE quantity_units TO postgres;
-GRANT SELECT, UPDATE, INSERT ON TABLE quantity_units TO public;
+ALTER TABLE quantity_taken_units OWNER TO postgres;
+GRANT ALL ON TABLE quantity_taken_units TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE quantity_taken_units TO public;
 
 CREATE TABLE medications (
   medication_id character varying(50) NOT NULL,
@@ -583,17 +583,27 @@ CREATE TABLE patient_medications (
   date_taken date NOT NULL,
   time_taken time without time zone,
   quantity_amount integer NOT NULL,
-  quantity_unit_id character varying(50) NOT NULL,
+  quantity_taken_unit_id character varying(50) NOT NULL,
   comments text,
+  created_time timestamp without time zone NOT NULL,
+  created_by_id character varying(50) NOT NULL,
+  modified_time timestamp without time zone NOT NULL,
+  modified_by_id character varying(50) NOT NULL,
   alive boolean NOT NULL DEFAULT true,
   CONSTRAINT pk_patient_medication_id PRIMARY KEY(patient_medication_id),
   CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)
      REFERENCES patients (patient_id),
   CONSTRAINT fk_medication_id FOREIGN KEY (medication_id)
      REFERENCES medications (medication_id),
-  CONSTRAINT fk_quantity_unit_id FOREIGN KEY (quantity_unit_id)
-    REFERENCES qunatity_units (quantity_unit_id)
+  CONSTRAINT fk_created_by_id FOREIGN KEY (created_by_id)
+    REFERENCES users (user_id),
+  CONSTRAINT fk_modified_by_id FOREIGN KEY (modified_by_id)
+    REFERENCES users (user_id),
+  CONSTRAINT fk_quantity_taken_unit_id FOREIGN KEY (quantity_taken_unit_id)
+    REFERENCES quantity_taken_units (quantity_taken_unit_id)
 );
 ALTER TABLE patient_medications OWNER TO postgres;
 GRANT ALL ON TABLE patient_medications TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE patient_medications TO public;
+
+  

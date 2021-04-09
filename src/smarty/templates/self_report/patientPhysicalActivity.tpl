@@ -52,14 +52,14 @@
             <form data-abide name="patientPhysicalActivityForm" id="patientPhysicalActivityForm" action="{$actionPage}" method="POST" autocomplete="off">
                 <input type="hidden" name="id" value="{$patientPhysicalActivity->getId()}"/>
                 <input type="hidden" name="patientId" value="{$smarty.session.patientId}"/>
-            <div class="row>"
-                <div class="medium-4 end columns">
+            <div class="row">
+                <div class="medium-12 end columns">
                 <ul class="medium-block-grid-2 small-block-grid-1">
                     <li>
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="required">{Messages::i18n("patientPhysicalActivityForm.physicalActivityId")}</span>
-                                    <select tabindex="1" id="physicalActivityId" name="physicalActivityId" value="{$patientPhysicalActivity->getPhysicalActivityId()}" required>
+                                    <select tabindex="1" id="physicalActivityId" name="physicalActivityId" required>
                                         {html_options options=$physicalActivityIds selected=$patientPhysicalActivity->getPhysicalActivityId()}
                                     </select>
                                 </label>
@@ -97,16 +97,16 @@
                         </div>
                 </ul>
             </div>
-            
+                                </div>
             <div class="row">
                 <div class="medium-4 end columns" style="padding-top:8px;">
-                    <a href="/patient/physical/activity" tabindex="6" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
-                    {ElementTag::submitBtn(2)}
+                    <a href="/patient/physical/activity" tabindex="7" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
+                    {ElementTag::submitBtn(6)}
                 </div>
                 {if $patientPhysicalActivity->getId() != ''}
                     <div class="medium-4 end columns" style="padding-top:8px;">
-                        {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="7" id="confirmDelete" type="checkbox"/>
-                        {ElementTag::deleteBtn(8, "/patient/physical/activity/delete/`$patientPhysicalActivity->getId()`")}
+                        {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="8" id="confirmDelete" type="checkbox"/>
+                        {ElementTag::deleteBtn(9, "/patient/physical/activity/delete/`$patientPhysicalActivity->getId()`")}
                     </div>
                 {/if}
             </div>

@@ -40,7 +40,7 @@ VALUES (13,  'menu.send.patient.email', 'perm.text.send.patient.email', NULL, 3,
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (14,  'menu.manage.patient.user', 'perm.text.manage.patient.user', '/security/patient/user', 3, NULL, NULL, 'MANAGE.PATIENT.USERS', false, false, NULL, true);
 
---29/3/2021
+--29/Mar/2021
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (15,  'menu.rpt.patient.distribution', 'perm.text.rpt.patient.distribution', '/report/patient/distribution/detail/form', 2, NULL, NULL, 'RPT.PATIENT.DISTRIBUTION.DETAILS', false, false, NULL, true);
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
@@ -48,8 +48,12 @@ VALUES (16,  'menu.rpt.patient.smoker.drinker', 'perm.text.rpt.patient.smoker.dr
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (17,  'menu.rpt.patient.physical.activity', 'perm.text.rpt.patient.physical.activity', '/report/patient/physical/activity/form', 2, NULL, NULL, 'RPT.PATIENT.PHYSICAL.ACTIVITY.DETAILS', false, false, NULL, true);
 
-
-
-
+--9/Apr/2021 (not in prod)
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (18,  'menu.manage.pharmaceutical', 'perm.text.manage.pharmaceutical', '/pharmaceutical', 1, NULL, NULL, 'MANAGE.PHARMACEUTICALS', false, false, NULL, true);
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (19,  'menu.manage.medication', 'perm.text.manage.medication', '/medication', 1, NULL, NULL, 'MANAGE.MEDICATIONS', false, false, NULL, true);
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (20,  'menu.manage.quantity.taken.unit', 'perm.text.manage.quantity.taken.unit', '/quantity/taken/unit', 1, NULL, NULL, 'MANAGE.QUANTITY.TAKEN.UNITS', false, false, NULL, true);
 
 

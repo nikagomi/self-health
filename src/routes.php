@@ -485,6 +485,70 @@ $routes->add('patient_physical_activity_results', new Routing\Route('/report/pat
     array('_controller' => 'Report\\Controller\\ReportController::patientPhysicalActivity')
 ));
 
+//Pharmaceutical Actions
+$routes->add('pharmaceutical_form', new Routing\Route('/pharmaceutical', 
+    array('_controller' => 'Admin\\Controller\\PharmaceuticalController::form')
+));
+$routes->add('pharmaceutical_save', new Routing\Route('/pharmaceutical/save', 
+    array('_controller' => 'Admin\\Controller\\PharmaceuticalController::save')
+));
+$routes->add('pharmaceutical_edit', new Routing\Route('/pharmaceutical/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\PharmaceuticalController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('pharmaceutical_delete', new Routing\Route('/pharmaceutical/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\PharmaceuticalController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Medication Actions
+$routes->add('medication_form', new Routing\Route('/medication', 
+    array('_controller' => 'Admin\\Controller\\MedicationController::form')
+));
+$routes->add('medication_save', new Routing\Route('/medication/save', 
+    array('_controller' => 'Admin\\Controller\\MedicationController::save')
+));
+$routes->add('medication_edit', new Routing\Route('/medication/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\MedicationController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('medication_delete', new Routing\Route('/medication/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\MedicationController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Patient Medication Actions
+$routes->add('patient_medication_form', new Routing\Route('/patient/medication', 
+    array('_controller' => 'Patient\\Controller\\PatientMedicationController::form')
+));
+$routes->add('patient_medication_save', new Routing\Route('/patient/medication/save', 
+    array('_controller' => 'Patient\\Controller\\PatientMedicationController::save')
+));
+$routes->add('patient_medication_edit', new Routing\Route('/patient/medication/edit/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientMedicationController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('patient_medication_delete', new Routing\Route('/patient/medication/delete/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientMedicationController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Quantity Taken Unit Actions
+$routes->add('quantity_taken_unit_form', new Routing\Route('/quantity/taken/unit', 
+    array('_controller' => 'Admin\\Controller\\QuantityTakenUnitController::form')
+));
+$routes->add('quantity_taken_unit_save', new Routing\Route('/quantity/taken/unit/save', 
+    array('_controller' => 'Admin\\Controller\\QuantityTakenUnitController::save')
+));
+$routes->add('quantity_taken_unit_edit', new Routing\Route('/quantity/taken/unit/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\QuantityTakenUnitController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('quantity_taken_unit_delete', new Routing\Route('/quantity/taken/unit/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\QuantityTakenUnitController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 
     array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmapForm')

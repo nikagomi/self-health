@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-04-08 16:59:49
+/* Smarty version 3.1.34-dev-7, created on 2021-04-09 18:44:58
   from '/var/www/oecs/src/smarty/templates/self_report/patientPhysicalActivity.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_606f36859c3f10_99298109',
+  'unifunc' => 'content_6070a0aa5aa9f6_28173655',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f6ad6be5fda3ec97278c2dc9ede04c477e5671bb' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/self_report/patientPhysicalActivity.tpl',
-      1 => 1617901185,
+      1 => 1617993895,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_606f36859c3f10_99298109 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6070a0aa5aa9f6_28173655 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,28 +28,28 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_549792341606f36859af180_57937058', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8603894976070a0aa591de8_47159840', 'jquery');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1350506360606f36859b0f97_17165092', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8157796256070a0aa593ef0_31317307', 'dataTable');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2068370253606f36859b1804_73585977', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18772873346070a0aa594729_65168952', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_549792341606f36859af180_57937058 extends Smarty_Internal_Block
+class Block_8603894976070a0aa591de8_47159840 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_549792341606f36859af180_57937058',
+    0 => 'Block_8603894976070a0aa591de8_47159840',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -87,12 +87,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'dataTable'} */
-class Block_1350506360606f36859b0f97_17165092 extends Smarty_Internal_Block
+class Block_8157796256070a0aa593ef0_31317307 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_1350506360606f36859b0f97_17165092',
+    0 => 'Block_8157796256070a0aa593ef0_31317307',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -109,12 +109,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_2068370253606f36859b1804_73585977 extends Smarty_Internal_Block
+class Block_18772873346070a0aa594729_65168952 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_2068370253606f36859b1804_73585977',
+    0 => 'Block_18772873346070a0aa594729_65168952',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -136,16 +136,15 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
 "/>
                 <input type="hidden" name="patientId" value="<?php echo $_SESSION['patientId'];?>
 "/>
-            <div class="row>"
-                <div class="medium-4 end columns">
+            <div class="row">
+                <div class="medium-12 end columns">
                 <ul class="medium-block-grid-2 small-block-grid-1">
                     <li>
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="required"><?php echo \Neptune\MessageResources::i18n("patientPhysicalActivityForm.physicalActivityId");?>
 </span>
-                                    <select tabindex="1" id="physicalActivityId" name="physicalActivityId" value="<?php echo $_smarty_tpl->tpl_vars['patientPhysicalActivity']->value->getPhysicalActivityId();?>
-" required>
+                                    <select tabindex="1" id="physicalActivityId" name="physicalActivityId" required>
                                         <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['physicalActivityIds']->value,'selected'=>$_smarty_tpl->tpl_vars['patientPhysicalActivity']->value->getPhysicalActivityId()),$_smarty_tpl);?>
 
                                     </select>
@@ -192,19 +191,19 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                         </div>
                 </ul>
             </div>
-            
+                                </div>
             <div class="row">
                 <div class="medium-4 end columns" style="padding-top:8px;">
-                    <a href="/patient/physical/activity" tabindex="6" class="reset"><?php echo \Neptune\MessageResources::i18n("link.reset");?>
+                    <a href="/patient/physical/activity" tabindex="7" class="reset"><?php echo \Neptune\MessageResources::i18n("link.reset");?>
 </a>&nbsp;
-                    <?php echo \Neptune\HtmlElementTag::submitBtn(2);?>
+                    <?php echo \Neptune\HtmlElementTag::submitBtn(6);?>
 
                 </div>
                 <?php if ($_smarty_tpl->tpl_vars['patientPhysicalActivity']->value->getId() != '') {?>
                     <div class="medium-4 end columns" style="padding-top:8px;">
                         <?php echo \Neptune\MessageResources::i18n("checkbox.confirm");?>
-&nbsp;<input tabindex="7" id="confirmDelete" type="checkbox"/>
-                        <?php echo \Neptune\HtmlElementTag::deleteBtn(8,"/patient/physical/activity/delete/".((string)$_smarty_tpl->tpl_vars['patientPhysicalActivity']->value->getId()));?>
+&nbsp;<input tabindex="8" id="confirmDelete" type="checkbox"/>
+                        <?php echo \Neptune\HtmlElementTag::deleteBtn(9,"/patient/physical/activity/delete/".((string)$_smarty_tpl->tpl_vars['patientPhysicalActivity']->value->getId()));?>
 
                     </div>
                 <?php }?>

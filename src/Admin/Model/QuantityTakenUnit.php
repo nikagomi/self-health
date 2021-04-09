@@ -9,15 +9,15 @@ use Neptune\Logger;
  * @package self-health
  * @author Randal Neptune
  */
-class QuantityUnit extends Logger {
-    protected $_tableName = "quantity_units";
-    protected $primaryKeyField = "quantity_unit_id";
+class QuantityTakenUnit extends Logger {
+    protected $_tableName = "quantity_taken_units";
+    protected $primaryKeyField = "quantity_taken_unit_id";
 
     protected $uniqueCombo = [["name"]];
-    protected $uniqueComboErrorMsg = "The quantity unit has already been defined";
+    protected $uniqueComboErrorMsg = "The quantity taken unit has already been defined";
 
     protected $fieldMapper = array(
-         "id" => ["quantity_unit_id","T"],
+         "id" => ["quantity_taken_unit_id","T"],
          "name" => ["name","T"]
     );
 
