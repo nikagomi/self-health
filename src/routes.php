@@ -386,6 +386,10 @@ $routes->add('patient_lab_results_view', new Routing\Route('/patient/lab/results
     array('_controller' => 'Patient\\Controller\\PatientLabTestRecordController::viewPatienLabResults'),
     array('patientId' => '[A-Z0-9]+')
 ));
+$routes->add('patient_medication_view', new Routing\Route('/patient/medication/view/{patientId}', 
+    array('_controller' => 'Patient\\Controller\\PatientMedicationController::viewPatientMedications'),
+    array('patientId' => '[A-Z0-9]+')
+));
 
 /* Religion Actions */
 $routes->add('religion_form', new Routing\Route('/religion', 

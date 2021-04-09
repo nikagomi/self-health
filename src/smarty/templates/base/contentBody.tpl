@@ -15,6 +15,7 @@
 <script type="text/javascript" src="/js/jquery.min_3.2.1.js"></script>
 <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="/js/foundation6.min.js"></script>
 <script type="text/javascript" src="/js/jquery.tipTip.min.js"></script>
 {*<script type="text/javascript" src="/js/foundation.js"></script>
@@ -26,7 +27,7 @@
 <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
 
 
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
 
 <script type="text/javascript" src="/js/chosen.jquery.js"></script>
 
@@ -57,7 +58,8 @@
 {*<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.css" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-timepicker.min.css" />*}
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-      
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.css" />
+
 <link rel="stylesheet" type="text/css" href="/css/jquery.jgrowl.css"/> 
 <link rel="stylesheet" type="text/css" href="/css/chosen.css"/>
 <link rel="stylesheet" type="text/css" href="/css/menu.css"/>
@@ -71,7 +73,7 @@
 <link rel="stylesheet" type="text/css" href="/css/trumbowyg.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/trumbowyg.colors.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/mpdf.css" media="mpdf"/>
-<link rel="stylesheet" type="text/css" href="/css/pace.css" />
+{*<link rel="stylesheet" type="text/css" href="/css/pace.css" />*}
 
 <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
 <link rel="stylesheet" type="text/css" href="/css/intlTelInput.min.css" />
@@ -113,15 +115,31 @@
 
   <!-- Other JS plugins can be included here -->
     {literal}
-       <script type='text/javascript'>
-            //$(document).foundation({
+       <script type="text/javascript" src="/js/foundation.js"></script>
+        <script type="text/javascript" src="/js/datatables.min.js"></script> 
+        <script type="text/javascript" src="/js/absolute.js"></script>
+        <!--<script type="text/javascript" src="/js/dataTables.fixedHeader.min.js"></script>--> 
+        <script type="text/javascript" src="/js/foundation.abide.js"></script>
+        <script type="text/javascript" src="/js/foundation.equalizer.js"></script>
+        <script type="text/javascript" src="/js/foundation.accordion.js"></script> 
+        <script type="text/javascript" src="/js/foundation.joyride.js"></script>
+        
+        <script type='text/javascript'>
+            {/literal}
+                {block name="auxScripts"}
+
+                {/block}
+            {literal}
+            $(document).foundation({
                 {/literal}   
                     {block name="foundation"}
-         
+
                     {/block}
                 {literal}
-            //});
-    {/literal}
+            });
+            {/literal}
+
+        </script>
    
 </script>
 </body>

@@ -674,6 +674,7 @@
                     <li><a id="" href="#start">General</a></li>
                     <li><a id="psdStatus" href="/smoking/drinking/status/patient/view/{$patient->getId()}">Smoking/Drinking</a></li>
                     <li><a id="physA" href="/patient/physical/activity/view/{$patient->getId()}">Physical Activity</a></li>
+                    <li><a id="meds" href="/patient/medication/view/{$patient->getId()}">Medication Record</a></li>
                     <li><a id="meal" href="/patient/meal/record/view/{$patient->getId()}">Meal Records</a></li>
                     <li><a id="vitals" href="/patient/vitals/view/{$patient->getId()}">Vital Signs</a></li>
                     <li><a id="labs" href="/patient/lab/results/view/{$patient->getId()}">Lab Results</a></li>

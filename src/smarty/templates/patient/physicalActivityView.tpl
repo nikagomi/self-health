@@ -16,6 +16,15 @@
         .canceled {
             text-decoration:line-through;
         }
+        
+        th {
+            font-variant:normal !important;
+            font-weight:500 !important;
+            color:#FFFFFF !important;
+            font-size:0.9rem !important;
+            text-align:left !important;
+            font-family: "Poppins", sans-serif !important;
+        }
     {/literal}
 {/block}
 
@@ -76,7 +85,7 @@
     </div>
     <div id="" {if $activities|count == 0} style="display:none;" {/if}>
       
-         <table align="left" id="physicalActivityTable" class="displayTable" style="" width="99%" cellspacing="1">
+         <table align="left" id="physicalActivityTable" class="displayTable_simpleTable" style="" width="99%" cellspacing="1">
              <thead>
                 <tr>
                    <th>{Messages::i18n("patientPhysicalActivityForm.physicalActivityId")}</th> 

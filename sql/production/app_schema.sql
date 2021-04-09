@@ -566,7 +566,7 @@ GRANT SELECT, UPDATE, INSERT ON TABLE quantity_taken_units TO public;
 CREATE TABLE medications (
   medication_id character varying(50) NOT NULL,
   pharmaceutical_id character varying(50) NOT NULL,
-  dosage character varying(10),
+  dosage character varying(20),
   alive boolean NOT NULL DEFAULT true,
   CONSTRAINT pk_medication_id PRIMARY KEY (medication_id),
   CONSTRAINT fk_pharmaceutical_id FOREIGN KEY(pharmaceutical_id)

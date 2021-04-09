@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="medium-4 end columns">
                         <label><span class="required">{Messages::i18n("medicationForm.dosage")}</span>
-                            <input tabindex="2" maxlength="10" type="text" id="dosage" name="dosage" value="{$medication->getDosage()}" placeholder="" required>
+                            <input tabindex="2" maxlength="20" type="text" id="dosage" name="dosage" value="{$medication->getDosage()}" placeholder="" required>
                         </label>
                     </div>
                 </div>

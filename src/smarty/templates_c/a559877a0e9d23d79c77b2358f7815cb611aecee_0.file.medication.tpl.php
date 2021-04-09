@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-04-09 18:36:36
+/* Smarty version 3.1.34-dev-7, created on 2021-04-09 21:18:04
   from '/var/www/oecs/src/smarty/templates/admin/medication.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60709eb48b6ac2_87939009',
+  'unifunc' => 'content_6070c48cc73ac6_88575409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a559877a0e9d23d79c77b2358f7815cb611aecee' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/admin/medication.tpl',
-      1 => 1617993394,
+      1 => 1618002913,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60709eb48b6ac2_87939009 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6070c48cc73ac6_88575409 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,17 +28,17 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_95639622960709eb48a7ec9_61893779', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4228904376070c48cc5a445_09920882', 'jquery');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_164905797860709eb48a99d3_61823109', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10971362766070c48cc5c790_13948486', 'dataTable');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_164014023260709eb48aa1d8_82485992', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_824496886070c48cc5d2c0_95543858', 'content');
 ?>
 
 
@@ -46,12 +46,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_164014023260709eb4
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_95639622960709eb48a7ec9_61893779 extends Smarty_Internal_Block
+class Block_4228904376070c48cc5a445_09920882 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_95639622960709eb48a7ec9_61893779',
+    0 => 'Block_4228904376070c48cc5a445_09920882',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -74,12 +74,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'dataTable'} */
-class Block_164905797860709eb48a99d3_61823109 extends Smarty_Internal_Block
+class Block_10971362766070c48cc5c790_13948486 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_164905797860709eb48a99d3_61823109',
+    0 => 'Block_10971362766070c48cc5c790_13948486',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -96,12 +96,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_164014023260709eb48aa1d8_82485992 extends Smarty_Internal_Block
+class Block_824496886070c48cc5d2c0_95543858 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_164014023260709eb48aa1d8_82485992',
+    0 => 'Block_824496886070c48cc5d2c0_95543858',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -139,7 +139,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                     <div class="medium-4 end columns">
                         <label><span class="required"><?php echo \Neptune\MessageResources::i18n("medicationForm.dosage");?>
 </span>
-                            <input tabindex="2" maxlength="10" type="text" id="dosage" name="dosage" value="<?php echo $_smarty_tpl->tpl_vars['medication']->value->getDosage();?>
+                            <input tabindex="2" maxlength="20" type="text" id="dosage" name="dosage" value="<?php echo $_smarty_tpl->tpl_vars['medication']->value->getDosage();?>
 " placeholder="" required>
                         </label>
                     </div>

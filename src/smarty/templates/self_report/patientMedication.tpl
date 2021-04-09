@@ -29,6 +29,16 @@
         
         $("#timeTaken").timepicki(timePickiOptions);
         $("#medicationId, #quantityUnitId").chosen();
+        
+        $("div.medDateRangeFilter").css({"color":"#666666","font-size":"0.9rem"}).html('<span style="float:left;display:inline-block;padding-top:8px;">Date Filter:&nbsp;</span><input type="text" class="short" style="float:left;width:110px !important;" id="rmin" /><span style="float:left;display:inline-block;padding-top:8px;">&nbsp;-&nbsp;</span><input type="text" style="float:left;width:110px !important;"  class="short" id="rmax" />');
+        $("#rmin, #rmax").datepicker({
+            format:"M dd, yyyy", 
+            clearBtn:true,
+            autoclose: true
+        }).on('changeDate', function (ev) {
+            medTable.draw();
+        }).data('datepicker');
+        
     {/literal}
 {/block}
 
@@ -126,7 +136,7 @@
     {/if}                    
     {if $list|count gt 0}
         <br/>
-        <table align="left" id="listTable" class="displayTable" width="95%" cellspacing="0">
+        <table align="left" id="medTable" class="displayTable" width="95%" cellspacing="0">
             <thead>
                 <tr>
                     <th>{Messages::i18n("patientMedicationForm.medicationId")}</th> 
@@ -135,6 +145,7 @@
                     <th>{Messages::i18n("patientMedicationForm.timeTaken")}</th>
                     <th>{Messages::i18n("patientMedicationForm.comments")}</th>
                     <th width="10%">&nbsp;</th>
+                    <th class="never">&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -150,6 +161,7 @@
                                 <i class='fas fa-edit' style='font-size:1.5rem;color:#008cba;'></i>
                             </a>
                         </td>
+                        <td>{$pmed->getDateTaken()|strtotime}</td>
                     </tr>
                 {/foreach}
             </tbody>
@@ -165,3 +177,52 @@
 {/nocache}
 {/block}
 
+{block name="auxScripts"}
+    {literal}
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var min = ($.trim($('#rmin').val()) != '') ? moment($('#rmin').val(), "MMM D, YYYY") : null;
+                var max = ($.trim($('#rmax').val()) != '') ? moment($('#rmax').val(), "MMM D, YYYY") : null;
+                var startDate = moment(data[2], "MMM D, YYYY");
+
+                if (min == null && min == null) { return true; }
+                if (min == null && startDate.isSameOrBefore(max)) { return true;}
+                if (max == null && startDate.isSameOrAfter(min)) {return true;}
+                if (startDate.isSameOrBefore(max) && startDate.isSameOrAfter(min)) { return true; }
+                return false;
+            }
+        );
+
+        var medTable = $("#medTable").DataTable({
+            "paging":true,
+            "iDisplayLength": 100,
+            responsive: true,
+            "dom": "<'row'<'medium-3 columns show-for-medium-up'l><'medium-8 columns end text-right medDateRangeFilter'>>"+
+                "t"+
+                "<'row'<'small-12 medium-7 text-left columns end'p>>",
+            order: [
+                [0, 'asc'], [2, 'desc']
+            ],
+            'columnDefs': [
+                { 'orderData':[6], 
+                  'targets': [2], 
+                },
+                {
+                  'targets': [6],
+                  'visible': false,
+                  'searchable': false,
+                },
+                {
+                    className: 'control',
+                    orderable: false,
+                    targets:   '0'
+                }
+            ]
+        });
+
+        /*************  Column header filter  ************/
+        sarmsHeaderDataTableColumnFilterMulti(medTable, [0]);
+
+         
+    {/literal}
+{/block}
