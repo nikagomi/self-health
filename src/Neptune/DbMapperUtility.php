@@ -1217,4 +1217,15 @@ class DbMapperUtility{
         public static function patientCount () {
             return \count((new \Patient\Model\Patient())->getAll(true));
         }
+        
+        public static function generateYearDropDown ($year) {
+            $now = \date("Y");
+           // $start = 0;
+            $list = [];
+            $list[''] = '';
+            for ($i = $now; $i >= $year; $i--) {
+                $list[$i] = $i;
+            }
+            return $list;
+        }
 }

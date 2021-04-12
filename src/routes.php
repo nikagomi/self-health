@@ -605,6 +605,14 @@ $routes->add('patient_allergy_delete', new Routing\Route('/patient/allergy/delet
     array('id' => '[A-Z0-9]+')
 ));
 
+//Patient Chronic Disease Actions
+$routes->add('patient_chronic_disease_form', new Routing\Route('/patient/chronic/disease/form', 
+    array('_controller' => 'Patient\\Controller\\PatientChronicDiseaseController::form')
+));
+$routes->add('patient_chronic_disease_save', new Routing\Route('/patient/chronic/disease/save', 
+    array('_controller' => 'Patient\\Controller\\PatientChronicDiseaseController::save')
+));
+
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 
     array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmapForm')

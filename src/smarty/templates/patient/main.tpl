@@ -899,7 +899,7 @@
                         </div>
                     {/if}
                     {*End of first tab content *}
-                    
+                    <br/>
                     
                    {*End of tab content *}
                 </div>
