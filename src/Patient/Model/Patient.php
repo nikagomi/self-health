@@ -34,7 +34,11 @@ class Patient extends Logger implements Modifiable {
         "ethnicityId" => ["ethnicity_id", "T"],
         "address" => ["address", "T"],
         "primaryDoctor" => ["primary_doctor","T"],
-        "principalHealthCareFacility" => ["principal_health_care_facility","T"]
+        "principalHealthCareFacility" => ["principal_health_care_facility","T"],
+        "relocated" => ["relocated","B"],
+        "relocatedAddress" => ["relocated_address","T"],
+        "relocatedCountryId" => ["relocated_country_id","T"],
+        "relocatedDate" => ["relocated_date","D"]
     );
     
     protected $firstName;
@@ -55,12 +59,17 @@ class Patient extends Logger implements Modifiable {
     protected $principalHealthCareFacility;
     protected $address;
     protected $primaryDoctor;
+    protected $relocated;
+    protected $relocatedAddress;
+    protected $relocatedCountryId;
+    protected $relocatedDate;
     
     protected $country;
     protected $gender;
     protected $user;
     protected $religion;
     protected $ethnicity;
+    protected $relocatedCountry;
     
     protected $labelSortProperty = "lastName";
     
@@ -71,6 +80,7 @@ class Patient extends Logger implements Modifiable {
         $this->country = new \Admin\Model\Country();
         $this->religion = new \Admin\Model\Religion();
         $this->ethnicity = new \Admin\Model\Ethnicity();
+        $this->relocatedCountry = new \Admin\Model\Country();
     }
     
     
@@ -204,6 +214,62 @@ class Patient extends Logger implements Modifiable {
 
     public function getPrimaryDoctor() {
         return $this->primaryDoctor;
+    }
+    
+    public function getRelocated() {
+        return $this->relocated;
+    }
+    
+    public function isRelocated() {
+        return ($this->relocated == 1 || $this->relocated == 't') ? (bool) true : (bool) false;
+    }
+
+    public function getRelocatedAddress() {
+        return $this->relocatedAddress;
+    }
+
+    public function getRelocatedCountryId() {
+        return $this->relocatedCountryId;
+    }
+
+    public function getRelocatedCountry() {
+        return $this->relocatedCountry->getObjectById($this->getRelocatedCountryId());
+    }
+    
+    public function getRelocatedDate() {
+        return $this->relocatedDate;
+    }
+    
+    public function displayRelocatedDate() {
+        return DbMapperUtility::sqlToDisplayDateFormat($this->getRelocatedDate());
+    }
+
+    public function showRelocatedDate(){
+        return DbMapperUtility::formatSqlDate($this->getRelocatedDate());
+    }
+
+    public function setRelocatedDate($relocatedDate) {
+        if (\trim($relocatedDate) != '') {
+            $this->relocatedDate = \Neptune\DbMapperUtility::displayToSqlDate($relocatedDate);
+        } else {
+            $this->relocatedDate = $relocatedDate;
+        }
+    }
+
+    public function setRelocated($relocated) {
+        $this->relocated = $relocated;
+    }
+
+    public function setRelocatedAddress($relocatedAddress) {
+        $this->relocatedAddress = $relocatedAddress;
+    }
+
+    public function setRelocatedCountryId($relocatedCountryId) {
+        $this->relocatedCountryId = $relocatedCountryId;
+    }
+
+    public function setRelocatedCountry($relocatedCountry) {
+        $this->relocatedCountry = $relocatedCountry;
     }
 
     public function setPrincipalHealthCareFacility($principalHealthCareFacility) {

@@ -89,6 +89,18 @@ $accessMap = array(
         "/quantity/taken/unit/edit" => "MANAGE.QUANTITY.TAKEN.UNITS",
         "/quantity/taken/unit/delete" => "MMANAGE.QUANTITY.TAKEN.UNITS",
     
+        /* Manage allergy types */
+        "/allergy/type" => "MANAGE.ALLERGY.TYPES",
+        "/allergy/type/save" => "MANAGE.ALLERGY.TYPES",
+        "/allergy/type/edit" => "MANAGE.ALLERGY.TYPES",
+        "/allergy/type/delete" => "MANAGE.ALLERGY.TYPES",
+    
+        /* Manage chronic diseases */
+        "/chronic/disease" => "MANAGE.CHRONIC.DISEASES",
+        "/chronic/disease/save" => "MANAGE.CHRONIC.DISEASES",
+        "/chronic/disease/edit" => "MANAGE.CHRONIC.DISEASES",
+        "/chronic/disease/delete" => "MANAGE.CHRONIC.DISEASES",
+    
         /* Reports */
         "/report/patient/distribution/detail/form" => "RPT.PATIENT.DISTRIBUTION.DETAILS",
         "/report/patient/distribution/details" => "RPT.PATIENT.DISTRIBUTION.DETAILS",

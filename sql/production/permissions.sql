@@ -56,4 +56,9 @@ VALUES (19,  'menu.manage.medication', 'perm.text.manage.medication', '/medicati
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (20,  'menu.manage.quantity.taken.unit', 'perm.text.manage.quantity.taken.unit', '/quantity/taken/unit', 1, NULL, NULL, 'MANAGE.QUANTITY.TAKEN.UNITS', false, false, NULL, true);
 
+--12/Apr/2021 (not in prod)
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (21,  'menu.manage.allergy.types', 'perm.text.manage.allergy.types', '/allergy/type', 1, NULL, NULL, 'MANAGE.ALLERGY.TYPES', false, false, NULL, true);
+INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
+VALUES (22,  'menu.manage.chronic.diseases', 'perm.text.manage.chronic.diseases', '/chronic/disease', 1, NULL, NULL, 'MANAGE.CHRONIC.DISEASES', false, false, NULL, true);
 

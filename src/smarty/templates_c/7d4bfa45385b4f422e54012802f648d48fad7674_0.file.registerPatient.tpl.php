@@ -1,12 +1,78 @@
-{*Author: Randal Neptune*}
-{*Project: EduRecord*}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-04-12 16:44:23
+  from '/var/www/oecs/src/smarty/templates/patient/registerPatient.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_607478e7cb2278_17314734',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '7d4bfa45385b4f422e54012802f648d48fad7674' => 
+    array (
+      0 => '/var/www/oecs/src/smarty/templates/patient/registerPatient.tpl',
+      1 => 1618245860,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_607478e7cb2278_17314734 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
 
 
-{extends file="base/body.tpl"}
 
 
-{block name=jquery}
-    {literal}
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1718058960607478e7c98933_42234149', 'jquery');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1776079810607478e7c9a0c4_25962727', 'scripts');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1570037570607478e7c9a9e4_91772933', 'styles');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_618869675607478e7c9b184_46804858', 'content');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_704793118607478e7caee80_71873293', "auxScripts");
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1217001993607478e7cb0c22_48859479', "foundation");
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
+}
+/* {block 'jquery'} */
+class Block_1718058960607478e7c98933_42234149 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'jquery' => 
+  array (
+    0 => 'Block_1718058960607478e7c98933_42234149',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    
         
         $("#countryId,#genderId, #religionId, #ethnicityId").chosen();
         
@@ -169,17 +235,43 @@
                 $("div.reloc").find("select, textarea, input[type='text']").val("");
             }
         });
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'jquery'} */
+/* {block 'scripts'} */
+class Block_1776079810607478e7c9a0c4_25962727 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'scripts' => 
+  array (
+    0 => 'Block_1776079810607478e7c9a0c4_25962727',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=scripts}
-    {literal}
+    
         
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'scripts'} */
+/* {block 'styles'} */
+class Block_1570037570607478e7c9a9e4_91772933 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'styles' => 
+  array (
+    0 => 'Block_1570037570607478e7c9a9e4_91772933',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=styles}
-    {literal}
+    
         /* max-width 640px, mobile-only styles, use when QAing mobile issues */
         @media only screen and (max-width: 40em) { 
             div#inputs{
@@ -213,22 +305,40 @@
             color: #FF0000;
             font-weight: 400;
         }
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'styles'} */
+/* {block 'content'} */
+class Block_618869675607478e7c9b184_46804858 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_618869675607478e7c9b184_46804858',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/smarty/libs/plugins/function.html_options.php','function'=>'smarty_function_html_options',),));
+?>
 
-{block name=content}
-{nocache}
 
-{$msg}
+
+<?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
+
 
 <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
     Edit Patient Details
 </div>
 <div style="margin-left:15px;margin-top:2px;">
-<form data-abide="ajax" name="registrationForm" id="registrationForm" action="{$actionPage}" method="POST" autocomplete="off">
+<form data-abide="ajax" name="registrationForm" id="registrationForm" action="<?php echo $_smarty_tpl->tpl_vars['actionPage']->value;?>
+" method="POST" autocomplete="off">
     
-            <input type="hidden" name="id" value="{$patient->getId()}"/>
-            <input type="hidden" name="userId" value="{$smarty.session.userId}"/>
+            <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"/>
+            <input type="hidden" name="userId" value="<?php echo $_SESSION['userId'];?>
+"/>
             
             <div id="inputs">
                 <ul class="medium-block-grid-2 small-block-grid-1">
@@ -236,21 +346,24 @@
                         <div class="row" >
                             <div class="medium-12 end columns">
                                 <label><span class="required">First name</span>
-                                    <input tabindex="1" type="text" name="firstName" id="firstName" maxlength="50" value="{$patient->getFirstName()}" required>
+                                    <input tabindex="1" type="text" name="firstName" id="firstName" maxlength="50" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getFirstName();?>
+" required>
                                 </label>
                             </div>
                         </div>
                         <div class="row" >
                             <div class="medium-12 end columns">
                                 <label><span>Middle names</span>
-                                    <input tabindex="2" type="text" name="middleNames" id="middleNames" value="{$patient->getMiddleNames()}"/>
+                                    <input tabindex="2" type="text" name="middleNames" id="middleNames" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getMiddleNames();?>
+"/>
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="required">Last name </span>
-                                    <input tabindex="3" type="text" name="lastName" id="lastName" value="{$patient->getLastName()}" required/>
+                                    <input tabindex="3" type="text" name="lastName" id="lastName" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getLastName();?>
+" required/>
                                 </label>
                             </div>
                         </div>
@@ -258,7 +371,8 @@
                             <div class="medium-12 end columns">
                                <label><span class="required">Sex</span>
                                     <select tabindex="4" name="genderId" id="genderId" required>
-                                        {html_options options=$genders selected=$patient->getGenderId()}
+                                        <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['genders']->value,'selected'=>$_smarty_tpl->tpl_vars['patient']->value->getGenderId()),$_smarty_tpl);?>
+
                                     </select>
                                 </label>
                             </div>
@@ -266,7 +380,8 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="required">Date of birth&nbsp;<small class="error" id="dateError">date is invalid</small></span>
-                                    <input tabindex="5" class="medium" maxlength="10" type="text" name="dateOfBirth" id="dateOfBirth" value="{$patient->displayDateOfBirth()}" placeholder="dd/mm/yyyy" pattern="" data-abide-validator="dateValidator" required/>
+                                    <input tabindex="5" class="medium" maxlength="10" type="text" name="dateOfBirth" id="dateOfBirth" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->displayDateOfBirth();?>
+" placeholder="dd/mm/yyyy" pattern="" data-abide-validator="dateValidator" required/>
                                 </label>
                             </div>
                         </div>
@@ -274,11 +389,12 @@
                             <div class="medium-12 end columns">
                                 <label>
                                     <span>Ethnicity
-                                    {if PermissionManager::userHasPermission('MANAGE.ETHNICITIES', $smarty.session.userId)}
+                                    <?php if (\Authentication\Model\PermissionManager::userHasPermission('MANAGE.ETHNICITIES',$_SESSION['userId'])) {?>
                                         <a class="show-for-medium-up quickAdd" href="#" onclick="return false;" data-sClass="\Admin\Model\Ethnicity">add new</a>
-                                    {/if}</span>
+                                    <?php }?></span>
                                     <select tabindex="6" name="ethnicityId" id="ethnicityId">
-                                        {html_options options=$ethnicities selected=$patient->getEthnicityId()}
+                                        <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['ethnicities']->value,'selected'=>$_smarty_tpl->tpl_vars['patient']->value->getEthnicityId()),$_smarty_tpl);?>
+
                                     </select>
                                 </label>
                             </div>
@@ -286,11 +402,12 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span>Religion
-                                    {if PermissionManager::userHasPermission('MANAGE.RELIGIONS', $smarty.session.userId)}
+                                    <?php if (\Authentication\Model\PermissionManager::userHasPermission('MANAGE.RELIGIONS',$_SESSION['userId'])) {?>
                                         <a class="show-for-medium-up quickAdd" href="#" onclick="return false;" data-sClass="\Admin\Model\Religion">add new</a>
-                                    {/if}</span>
+                                    <?php }?></span>
                                     <select tabindex="7" name="religionId" id="religionId">
-                                        {html_options options=$religions selected=$patient->getReligionId()}
+                                        <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['religions']->value,'selected'=>$_smarty_tpl->tpl_vars['patient']->value->getReligionId()),$_smarty_tpl);?>
+
                                     </select>
                                 </label>
                             </div>
@@ -300,14 +417,16 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="">Primary contact #<small class="error" id="phoneError"></small></span><br/>
-                                    <input tabindex="8" type="text" class="medium" data-abide-validator='phoneValidator' id="primaryNumber" value="{$patient->getContactNumber()}" placeholder=""/>
+                                    <input tabindex="8" type="text" class="medium" data-abide-validator='phoneValidator' id="primaryNumber" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getContactNumber();?>
+" placeholder=""/>
                                 </label>
                             </div>
                         </div>
                         <div class="row" >
                             <div class="medium-12 end columns">
                                 <label><span>Other contact #<small class="error" id="phone2Error"></small></span><br/>
-                                    <input tabindex="9"  class="medium" type="text" data-abide-validator='phoneValidator' id="otherNumber" value="{$patient->getOtherContactNumber()}" placeholder=""/>
+                                    <input tabindex="9"  class="medium" type="text" data-abide-validator='phoneValidator' id="otherNumber" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getOtherContactNumber();?>
+" placeholder=""/>
                                 </label>
                             </div>
                         </div>
@@ -315,21 +434,24 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="">Patient Address</span>
-                                    <textarea style="resize: none;" tabindex="10"  rows="3" name="address" id="address" >{$patient->getAddress()}</textarea>
+                                    <textarea style="resize: none;" tabindex="10"  rows="3" name="address" id="address" ><?php echo $_smarty_tpl->tpl_vars['patient']->value->getAddress();?>
+</textarea>
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="">Primary Doctor</span>
-                                    <input tabindex="11" type="text" name="primaryDoctor" id="primaryDoctor" maxlength="120" value="{$patient->getPrimaryDoctor()}" placeholder=""/>
+                                    <input tabindex="11" type="text" name="primaryDoctor" id="primaryDoctor" maxlength="120" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getPrimaryDoctor();?>
+" placeholder=""/>
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="">Principal Health Facility</span>
-                                    <input tabindex="12" type="text" name="principalHealthCareFacility" id="principalHealthCareFacility" maxlength="120" value="{$patient->getPrincipalHealthCareFAcility()}" placeholder=""/>
+                                    <input tabindex="12" type="text" name="principalHealthCareFacility" id="principalHealthCareFacility" maxlength="120" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getPrincipalHealthCareFAcility();?>
+" placeholder=""/>
                                 </label>
                             </div>
                         </div>
@@ -337,7 +459,8 @@
                             <div class="medium-12 end columns">
                                <label><span class="required">Country </span>
                                     <select tabindex="13" name="countryId" id="countryId" required>
-                                        {html_options options=$countries selected=$patient->getCountryId()}
+                                        <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['countries']->value,'selected'=>$_smarty_tpl->tpl_vars['patient']->value->getCountryId()),$_smarty_tpl);?>
+
                                     </select>
                                 </label>
                             </div>
@@ -351,34 +474,37 @@
                         <div class="medium-12 end columns">
                             <label><span>Have you been forced to relocate?</span>
                                 <div class="switch"  style="margin-bottom:0px !important;"> 
-                                    <input name="relocated" id="relocated" type="checkbox" tabindex="14" value="1" {if $patient->isRelocated()} checked {/if}> 
+                                    <input name="relocated" id="relocated" type="checkbox" tabindex="14" value="1" <?php if ($_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> checked <?php }?>> 
                                     <label for="relocated"></label> 
                                 </div> 
                             </label>
                         </div>
                     </div>
                     <div class='row'>
-                        <div class="medium-12 end columns reloc" style="{if !$patient->isRelocated()} display:none; {else} display:block; {/if}">
+                        <div class="medium-12 end columns reloc" style="<?php if (!$_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> display:none; <?php } else { ?> display:block; <?php }?>">
                             <label><span>Date of relocation</span>
-                                <input name="relocatedDate" tabindex="15" placeholder="dd/mm/yyyy" id="relocatedDate" class="medium" type="text" value="{$patient->displayRelocatedDate()}" /> 
+                                <input name="relocatedDate" tabindex="15" placeholder="dd/mm/yyyy" id="relocatedDate" class="medium" type="text" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->displayRelocatedDate();?>
+" /> 
                             </label>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class='row'>
-                        <div class="medium-12 end columns reloc" style="{if !$patient->isRelocated()} display:none; {else} display:block; {/if}">
+                        <div class="medium-12 end columns reloc" style="<?php if (!$_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> display:none; <?php } else { ?> display:block; <?php }?>">
                             <label><span class="required">Country relocated to</span>
                                 <select required tabindex="16" name="relocatedCountryId" id="relocatedCountryId">
-                                    {html_options options=$countries selected=$patient->getRelocatedCountryId()}
+                                    <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['countries']->value,'selected'=>$_smarty_tpl->tpl_vars['patient']->value->getRelocatedCountryId()),$_smarty_tpl);?>
+
                                 </select>
                             </label>
                         </div>
                     </div>
                     <div class='row'>
-                        <div class="medium-12 end columns reloc" style="{if !$patient->isRelocated()} display:none; {else} display:block; {/if}">
+                        <div class="medium-12 end columns reloc" style="<?php if (!$_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> display:none; <?php } else { ?> display:block; <?php }?>">
                             <label><span class="required">Address relocated to</span>
-                                <textarea required style="resize: none;" tabindex="17"  rows="3" name="relocatedAddress" id="relocatedAddress" >{$patient->getRelocatedAddress()}</textarea>
+                                <textarea required style="resize: none;" tabindex="17"  rows="3" name="relocatedAddress" id="relocatedAddress" ><?php echo $_smarty_tpl->tpl_vars['patient']->value->getRelocatedAddress();?>
+</textarea>
                             </label>
                         </div>
                     </div>                
@@ -391,29 +517,37 @@
             </div>            
             <div class="row">
                 <div class="medium-4 end columns">
-                    {*<input type="submit" tabindex="14" name="submit" class="button" value="Update"/>*}
-                    {ElementTag::submitBtn(18, 'Update', 'update_patient')}
-                    <a href="/patient/summary/{$patient->getId()}" tabindex="19" class="reset">Patient Summary</a>  
+                                        <?php echo \Neptune\HtmlElementTag::submitBtn(18,'Update','update_patient');?>
+
+                    <a href="/patient/summary/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+" tabindex="19" class="reset">Patient Summary</a>  
                 </div>
                 <div class="medium-8 end columns">
                     <div class="err"></div>
                 </div>
                 
-                {*if $patient->getId() != ''}
-                    <div class="medium-4 end columns">
-                        <span id="delete"><i>Confirm</i>&nbsp;<input tabindex="17"  type="checkbox"/></span>
-                        <a tabindex="18" href="/patient/delete/{$patient->getId()}" class="delete">Delete</a>
-                    </div>
-                {/if*}
-            </div>
+                            </div>
 </form>
 </div>
                 
-{/nocache}
-{/block}
 
-{block name="auxScripts"}
-    {literal}
+<?php
+}
+}
+/* {/block 'content'} */
+/* {block "auxScripts"} */
+class Block_704793118607478e7caee80_71873293 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'auxScripts' => 
+  array (
+    0 => 'Block_704793118607478e7caee80_71873293',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    
         const phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
         var primaryNumber = document.querySelector("#primaryNumber");
         var otherNumber = document.querySelector("#otherNumber");
@@ -443,11 +577,25 @@
             autoHideDialCode: true
         });
         
-        var localCode = '{/literal}{PropertyService::getProperty("facility.country.code","lc")}{literal}';
-    {/literal}
-{/block}
+        var localCode = '<?php echo \Neptune\PropertyService::getProperty("facility.country.code","lc");?>
+';
+    
+<?php
+}
+}
+/* {/block "auxScripts"} */
+/* {block "foundation"} */
+class Block_1217001993607478e7cb0c22_48859479 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'foundation' => 
+  array (
+    0 => 'Block_1217001993607478e7cb0c22_48859479',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name="foundation"}
     abide : {
         validators: {
             dateValidator: function (el, required, parent) {
@@ -505,4 +653,8 @@
             }
         }
     }
-{/block}
+<?php
+}
+}
+/* {/block "foundation"} */
+}

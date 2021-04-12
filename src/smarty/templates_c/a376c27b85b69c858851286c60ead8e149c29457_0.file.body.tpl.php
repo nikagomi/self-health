@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-04-09 21:17:58
+/* Smarty version 3.1.34-dev-7, created on 2021-04-12 19:34:04
   from '/var/www/oecs/src/smarty/templates/base/body.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6070c486949244_72118290',
+  'unifunc' => 'content_6074a0ace8fd68_89949992',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a376c27b85b69c858851286c60ead8e149c29457' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/base/body.tpl',
-      1 => 1617992901,
+      1 => 1618256036,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:base/header.tpl' => 1,
   ),
 ),false)) {
-function content_6070c486949244_72118290 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6074a0ace8fd68_89949992 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -48,7 +48,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     }
     
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11656696626070c486900673_45789627', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7875515226074a0ace65af5_33576160', 'styles');
 ?>
 
 </style>
@@ -97,7 +97,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11656696626070c486
     
         
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11833546686070c4869021a1_25322892', 'scripts');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7664038416074a0ace66815_47564086', 'scripts');
 ?>
 
         
@@ -288,7 +288,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11833546686070c486
             var dTable = $("#listTable, .listTable").DataTable({
                 
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2529842886070c486916c54_78886617', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21257272926074a0ace6fcb3_67890740', 'dataTable');
 ?>
 
                 
@@ -337,7 +337,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2529842886070c4869
     
 
             <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16582940536070c486917ec8_81050831', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9130590546074a0ace70790_63623242', 'jquery');
 ?>
 
      
@@ -349,7 +349,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16582940536070c486
 
 <title>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c486918a90_87775828', 'title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16674500656074a0ace70ed1_14533630', 'title');
 ?>
 
 </title>
@@ -408,16 +408,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                             </a>
                             <ul class="collapse list-unstyled" id="healthSubmenu">
                                 <li>
-                                    <a href="/patient/smoking/drinking/status/form">Smoking/Drinking Status</a>
-                                </li>
-                                <li>
-                                    <a href="/patient/physical/activity">Physical Activity</a>
+                                    <a href="/patient/allergy">Allergies</a>
                                 </li>
                                 <li>
                                     <a href="/patient/meal/record/form">Meals</a>
                                 </li>
                                 <li>
                                     <a href="/patient/medication">Medications Taken</a>
+                                </li>
+                                <li>
+                                    <a href="/patient/physical/activity">Physical Activity</a>
+                                </li>
+                                <li>
+                                    <a href="/patient/smoking/drinking/status/form">Smoking/Drinking Status</a>
                                 </li>
                                 <li>
                                     <a href="/patient/vitals/form">Vitals</a>
@@ -434,9 +437,9 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                                 <i class="fas fa-user-shield" style="color:inherit;"></i>&ensp;Security
                             </a>
                             <ul class="collapse list-unstyled" id="secureSubmenu">
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.USER.GROUPS",$_SESSION['userId'])) {?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/security/group">Manage User Groups</a>
+                                        <a href="/security/patient/user">Manage Patient Users</a>
                                     </li>
                                 <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.USERS",$_SESSION['userId'])) {?>
@@ -444,40 +447,49 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                                         <a href="/security/user">Manage Users</a>
                                     </li>
                                 <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PATIENT.USERS",$_SESSION['userId'])) {?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.USER.GROUPS",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/security/patient/user">Manage Patient Users</a>
+                                        <a href="/security/group">Manage User Groups</a>
                                     </li>
                                 <?php }?>
                             </ul>
                         </li>
                     <?php }?>
-                    <?php if (\Authentication\Model\PermissionManager::userHasPermissionInList("MANAGE.QUANTITY.TAKEN.UNITS,MANAGE.MEDICATIONS,MANAGE.PHARMACEUTICALS,MANAGE.FOOD.GROUPS,MANAGE.MEAL.TYPES,MANAGE.LAB.TESTS,MANAGE.VITAL.TESTS,MANAGE.COUNTRIES,MANAGE.PHYSICAL.ACTIVITIES,MANAGE.AGE.RANGES",$_SESSION['userId'])) {?>
+                    <?php if (\Authentication\Model\PermissionManager::userHasPermissionInList("MANAGE.CHRONIC.DISEASES,MANAGE.ALLERGY.TYPES,MANAGE.QUANTITY.TAKEN.UNITS,MANAGE.MEDICATIONS,MANAGE.PHARMACEUTICALS,MANAGE.FOOD.GROUPS,MANAGE.MEAL.TYPES,MANAGE.LAB.TESTS,MANAGE.VITAL.TESTS,MANAGE.COUNTRIES,MANAGE.PHYSICAL.ACTIVITIES,MANAGE.AGE.RANGES",$_SESSION['userId'])) {?>
                         <li>
                             <a href="#adminSubmenu" onclick="toggleLinkState($(this));" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                                 <i class="fas fa-tools" style="color:inherit;"></i>&ensp;Configuration
                             </a>
                             <ul class="collapse list-unstyled" id="adminSubmenu">
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.AGE.RANGES",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/age/range/form">Age Ranges</a>
+                                    </li>
+                                <?php }?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.ALLERGY.TYPES",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/allergy/type">Allergy Types</a>
+                                    </li>
+                                <?php }?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.CHRONIC.DISEASES",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/chronic/disease">Chronic Diseases</a>
+                                    </li>
+                                <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.COUNTRIES",$_SESSION['userId'])) {?>
                                     <li>
                                         <a href="/country"><?php echo \Neptune\MessageResources::i18n("menu.manage.country");?>
 </a>
                                     </li>
                                 <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PHYSICAL.ACTIVITIES",$_SESSION['userId'])) {?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.ETHNICITIES",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/physical/activity"><?php echo \Neptune\MessageResources::i18n("menu.manage.physical.activity");?>
-</a>
+                                        <a href="/ethnicity">Ethnicities</a>
                                     </li>
                                 <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.AGE.RANGES",$_SESSION['userId'])) {?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.FOOD.GROUPS",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/age/range/form">Age Ranges</a>
-                                    </li>
-                                <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.VITAL.TESTS",$_SESSION['userId'])) {?>
-                                    <li>
-                                        <a href="/vital/test/form">Vital Tests</a>
+                                        <a href="/food/group">Food Groups</a>
                                     </li>
                                 <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.LAB.TESTS",$_SESSION['userId'])) {?>
@@ -490,19 +502,15 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                                         <a href="/meal/type">Meal Types</a>
                                     </li>
                                 <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.FOOD.GROUPS",$_SESSION['userId'])) {?>
-                                    <li>
-                                        <a href="/food/group">Food Groups</a>
-                                    </li>
-                                <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PHARMACEUTICALS",$_SESSION['userId'])) {?>
                                     <li>
                                         <a href="/pharmaceutical">Pharmaceuticals</a>
                                     </li>
                                 <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.MEDICATIONS",$_SESSION['userId'])) {?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.PHYSICAL.ACTIVITIES",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/medication">Tracked Medications</a>
+                                        <a href="/physical/activity"><?php echo \Neptune\MessageResources::i18n("menu.manage.physical.activity");?>
+</a>
                                     </li>
                                 <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.QUANTITY.TAKEN.UNITS",$_SESSION['userId'])) {?>
@@ -512,15 +520,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                                 <?php }?>
                                 <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.RELIGIONS",$_SESSION['userId'])) {?>
                                     <li>
-                                        <a href="/ethnicity">Ethnicities</a>
-                                    </li>
-                                <?php }?>
-                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.ETHNICITIES",$_SESSION['userId'])) {?>
-                                    <li>
                                         <a href="/religion">Religions</a>
                                     </li>
                                 <?php }?>
-                                
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.MEDICATIONS",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/medication">Tracked Medications</a>
+                                    </li>
+                                <?php }?>
+                                <?php if (\Authentication\Model\PermissionManager::userHasPermission("MANAGE.VITAL.TESTS",$_SESSION['userId'])) {?>
+                                    <li>
+                                        <a href="/vital/test/form">Vital Tests</a>
+                                    </li>
+                                <?php }?>
                             </ul>
                         </li>
                     <?php }?>
@@ -579,7 +591,7 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7724288846070c4869
                 </div>
                 <div id="content-bar">
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17866374116070c4869415b8_22657877', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_5474728216074a0ace89ea3_66663905', 'content');
 ?>
 
                 </div>
@@ -620,14 +632,14 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17866374116070c486
  type='text/javascript'>
             
                 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16485186666070c486944bf2_56936558', "auxScripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11869060206074a0ace8b315_77514518', "auxScripts");
 ?>
 
             
             $(document).foundation({
                    
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8549756256070c486947036_31719042', "foundation");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15739213696074a0ace8de48_23502709', "foundation");
 ?>
 
                 
@@ -641,12 +653,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8549756256070c4869
 </html>
 <?php }
 /* {block 'styles'} */
-class Block_11656696626070c486900673_45789627 extends Smarty_Internal_Block
+class Block_7875515226074a0ace65af5_33576160 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_11656696626070c486900673_45789627',
+    0 => 'Block_7875515226074a0ace65af5_33576160',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -658,12 +670,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block 'scripts'} */
-class Block_11833546686070c4869021a1_25322892 extends Smarty_Internal_Block
+class Block_7664038416074a0ace66815_47564086 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_11833546686070c4869021a1_25322892',
+    0 => 'Block_7664038416074a0ace66815_47564086',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -676,12 +688,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'scripts'} */
 /* {block 'dataTable'} */
-class Block_2529842886070c486916c54_78886617 extends Smarty_Internal_Block
+class Block_21257272926074a0ace6fcb3_67890740 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_2529842886070c486916c54_78886617',
+    0 => 'Block_21257272926074a0ace6fcb3_67890740',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -693,12 +705,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'jquery'} */
-class Block_16582940536070c486917ec8_81050831 extends Smarty_Internal_Block
+class Block_9130590546074a0ace70790_63623242 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_16582940536070c486917ec8_81050831',
+    0 => 'Block_9130590546074a0ace70790_63623242',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -711,12 +723,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'title'} */
-class Block_7724288846070c486918a90_87775828 extends Smarty_Internal_Block
+class Block_16674500656074a0ace70ed1_14533630 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'title' => 
   array (
-    0 => 'Block_7724288846070c486918a90_87775828',
+    0 => 'Block_16674500656074a0ace70ed1_14533630',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -729,12 +741,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'title'} */
 /* {block 'content'} */
-class Block_17866374116070c4869415b8_22657877 extends Smarty_Internal_Block
+class Block_5474728216074a0ace89ea3_66663905 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_17866374116070c4869415b8_22657877',
+    0 => 'Block_5474728216074a0ace89ea3_66663905',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -746,12 +758,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'content'} */
 /* {block "auxScripts"} */
-class Block_16485186666070c486944bf2_56936558 extends Smarty_Internal_Block
+class Block_11869060206074a0ace8b315_77514518 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'auxScripts' => 
   array (
-    0 => 'Block_16485186666070c486944bf2_56936558',
+    0 => 'Block_11869060206074a0ace8b315_77514518',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -763,12 +775,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "auxScripts"} */
 /* {block "foundation"} */
-class Block_8549756256070c486947036_31719042 extends Smarty_Internal_Block
+class Block_15739213696074a0ace8de48_23502709 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'foundation' => 
   array (
-    0 => 'Block_8549756256070c486947036_31719042',
+    0 => 'Block_15739213696074a0ace8de48_23502709',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

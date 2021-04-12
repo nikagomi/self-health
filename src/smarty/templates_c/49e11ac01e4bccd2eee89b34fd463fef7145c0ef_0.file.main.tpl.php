@@ -1,16 +1,96 @@
-{*Author: Randal Neptune*}
-{*Project: EduRecord*}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-04-12 19:54:14
+  from '/var/www/oecs/src/smarty/templates/patient/main.tpl' */
 
-{extends file="base/body.tpl"}
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_6074a5669408c3_71943427',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '49e11ac01e4bccd2eee89b34fd463fef7145c0ef' => 
+    array (
+      0 => '/var/www/oecs/src/smarty/templates/patient/main.tpl',
+      1 => 1618257177,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_6074a5669408c3_71943427 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
 
-{block name=dataTable}
-     {literal}
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21238638276074a566919829_24112030', 'dataTable');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1293398106074a56691a424_93743199', 'styles');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19649969316074a56691aec2_91357724', "scripts");
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10705276576074a56691c062_67113641', 'jquery');
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15811678776074a56691c953_95703050', 'content');
+?>
+
+    
+    
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1603708416074a56693ff49_56826869', "foundation");
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
+}
+/* {block 'dataTable'} */
+class Block_21238638276074a566919829_24112030 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'dataTable' => 
+  array (
+    0 => 'Block_21238638276074a566919829_24112030',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+     
        fixedHeader: false
-   {/literal}
-{/block}
+   
+<?php
+}
+}
+/* {/block 'dataTable'} */
+/* {block 'styles'} */
+class Block_1293398106074a56691a424_93743199 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'styles' => 
+  array (
+    0 => 'Block_1293398106074a56691a424_93743199',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=styles}
-    {literal}
+    
         .infoLabel {
             font-family: 'Poppins', sans-serif !important;
             font-size: 1rem  !important;
@@ -407,11 +487,24 @@
         }
         
         
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'styles'} */
+/* {block "scripts"} */
+class Block_19649969316074a56691aec2_91357724 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'scripts' => 
+  array (
+    0 => 'Block_19649969316074a56691aec2_91357724',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name="scripts"}
-    {literal}
+    
         var smallScreen = window.matchMedia("(max-width: 40.0625em)");
         var emailWidth = (smallScreen.matches) ? "95%" : "550px";
         
@@ -479,11 +572,24 @@
         }
         
         
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block "scripts"} */
+/* {block 'jquery'} */
+class Block_10705276576074a56691c062_67113641 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'jquery' => 
+  array (
+    0 => 'Block_10705276576074a56691c062_67113641',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=jquery}
-    {literal}
+    
         $(function(){
             $(".hotspot").tipTip({maxWidth: "400px", edgeOffset: 3, defaultPosition: "top", delay: 200, fadeOut: 400});
         });
@@ -650,21 +756,41 @@
             });
             
         
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block 'jquery'} */
+/* {block 'content'} */
+class Block_15811678776074a56691c953_95703050 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_15811678776074a56691c953_95703050',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
 
-{block name=content }
-    {nocache}
+    
 
-{if PermissionManager::userHasPermission("SEARCH.PATIENTS", $smarty.session.userId) || $smarty.session.isPatient}
-    <span class="msg">{$msg}</span>
+<?php if (\Authentication\Model\PermissionManager::userHasPermission("SEARCH.PATIENTS",$_SESSION['userId']) || $_SESSION['isPatient']) {?>
+    <span class="msg"><?php echo $_smarty_tpl->tpl_vars['msg']->value;?>
+</span>
 
-    <input type="hidden" id="patientId" value="{$patient->getId()}"/>
-    <input type="hidden" id="patientName" value="{$patient->getFullName()}"/>
+    <input type="hidden" id="patientId" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"/>
+    <input type="hidden" id="patientName" value="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getFullName();?>
+"/>
     <div class="row show-for-small-down" style="margin-left:5px;width:90%;color:#444444;border:1px solid #464646; background-color:#ffc42c !important;padding:5px 1px;font-weight:500;font-family:'Poppins', sans-serif;">
         
         <div class="small-9 columns end">
-           <b><a style="color:#008cba;" href="/patient/summary/{$patient->getId()}">{$patient->getFullName()}</a></b><br/>{$patient->getGender()->getName()} - {$patient->displayAge()}
+           <b><a style="color:#008cba;" href="/patient/summary/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['patient']->value->getFullName();?>
+</a></b><br/><?php echo $_smarty_tpl->tpl_vars['patient']->value->getGender()->getName();?>
+ - <?php echo $_smarty_tpl->tpl_vars['patient']->value->displayAge();?>
+
         </div>
     </div>
     <div class="row">
@@ -673,24 +799,31 @@
             <div id="tabs" style="display:none;padding-top:0px;">
                 <ul>
                     <li><a id="" href="#start">General</a></li>
-                    <li><a id="allergy" href="/patient/allergy/view/{$patient->getId()}">Allergies</a></li>
-                    <li><a id="psdStatus" href="/smoking/drinking/status/patient/view/{$patient->getId()}">Smoking/Drinking</a></li>
-                    <li><a id="physA" href="/patient/physical/activity/view/{$patient->getId()}">Physical Activity</a></li>
-                    <li><a id="meds" href="/patient/medication/view/{$patient->getId()}">Medication Record</a></li>
-                    <li><a id="meal" href="/patient/meal/record/view/{$patient->getId()}">Meal Records</a></li>
-                    <li><a id="vitals" href="/patient/vitals/view/{$patient->getId()}">Vital Signs</a></li>
-                    <li><a id="labs" href="/patient/lab/results/view/{$patient->getId()}">Lab Results</a></li>
+                    <li><a id="allergy" href="/patient/allergy/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Allergies</a></li>
+                    <li><a id="psdStatus" href="/smoking/drinking/status/patient/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Smoking/Drinking</a></li>
+                    <li><a id="physA" href="/patient/physical/activity/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Physical Activity</a></li>
+                    <li><a id="meds" href="/patient/medication/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Medication Record</a></li>
+                    <li><a id="meal" href="/patient/meal/record/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Meal Records</a></li>
+                    <li><a id="vitals" href="/patient/vitals/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Vital Signs</a></li>
+                    <li><a id="labs" href="/patient/lab/results/view/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+">Lab Results</a></li>
                 </ul>
                 <div id="start" style="margin-top:0px;padding-top:0px;">
-                    {* Summary of student *}
-                    <br/>
+                                        <br/>
                     <div align="right" style="padding-right:4px;padding-top:0px;margin-top:0px;">
-                        {if $patient->getUser()->getEmail() != '' && PermissionManager::userHasPermission("SEND.PATIENT.EMAILS", $smarty.session.userId)}
+                        <?php if ($_smarty_tpl->tpl_vars['patient']->value->getUser()->getEmail() != '' && \Authentication\Model\PermissionManager::userHasPermission("SEND.PATIENT.EMAILS",$_SESSION['userId'])) {?>
                             &ensp;&nbsp;
-                            <a  class="emailPatient" href="#" onclick="return false;" style='margin-top:0px;color:#999 !important;font-weight:bold;font-size:0.875rem;' data-email='{$patient->getUser()->getEmail()}'>
+                            <a  class="emailPatient" href="#" onclick="return false;" style='margin-top:0px;color:#999 !important;font-weight:bold;font-size:0.875rem;' data-email='<?php echo $_smarty_tpl->tpl_vars['patient']->value->getUser()->getEmail();?>
+'>
                                 <i class="fas fa-envelope hotspot hotspotNoBorder" style="font-size:1.4rem;" title="Send email message to patient"></i>
                             </a>
-                        {/if}
+                        <?php }?>
                     </div>
                     
                     <div class="row" data-equalizer="top" data-equalizer-mq="medium-up">
@@ -702,7 +835,9 @@
                                     </div>
                                     <div class="medium-7 columns end">
                                         <label class="infoLabel text-left"> 
-                                            <a style="color:#008cba;" href="/patient/summary/{$patient->getId()}">{$patient->displayID()}</a>
+                                            <a style="color:#008cba;" href="/patient/summary/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['patient']->value->displayID();?>
+</a>
                                         </label>
                                     </div>
                                 </div>
@@ -712,7 +847,9 @@
                                     </div>
                                     <div class="medium-7 columns">
                                         <label class="infoLabel text-left"> 
-                                            <a href="/patient/summary/{$patient->getId()}">{$patient->getFirstName()}</a>
+                                            <a href="/patient/summary/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['patient']->value->getFirstName();?>
+</a>
                                         </label>
                                     </div>
                                 </div>
@@ -721,7 +858,8 @@
                                         <label class="viewLabel text-left">Middle name(s):</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getMiddleNames()} &nbsp;</label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getMiddleNames();?>
+ &nbsp;</label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -729,7 +867,8 @@
                                         <label class="viewLabel text-left">Last name:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getLastName()}</label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getLastName();?>
+</label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -737,7 +876,8 @@
                                         <label class="viewLabel text-left">Gender:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getGender()->getName()}</label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getGender()->getName();?>
+</label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -745,7 +885,8 @@
                                         <label class="viewLabel text-left">Date of birth:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {DbMapperUtility::formatSqlDate($patient->getDateOfBirth())}</label>
+                                        <label class="infoLabel text-left"> <?php echo \Neptune\DbMapperUtility::formatSqlDate($_smarty_tpl->tpl_vars['patient']->value->getDateOfBirth());?>
+</label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -753,7 +894,8 @@
                                         <label class="viewLabel text-left">Ethnicity:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getEthnicity()->getName()} </label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getEthnicity()->getName();?>
+ </label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -761,7 +903,8 @@
                                         <label class="viewLabel text-left">Religion:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getReligion()->getName()} </label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getReligion()->getName();?>
+ </label>
                                     </div>
                                 </div>
                                 
@@ -785,8 +928,10 @@
                                     </div>
                                     <div class="medium-7 columns">
                                         <label class="infoLabel text-left"> 
-                                            <span {if $patient->getContactNumber() != ''} class="hotspot" title="{$patient->getContactNumber()}" {/if}>
-                                                {$html->truncateString($patient->getContactNumber(),20)}
+                                            <span <?php if ($_smarty_tpl->tpl_vars['patient']->value->getContactNumber() != '') {?> class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getContactNumber();?>
+" <?php }?>>
+                                                <?php echo $_smarty_tpl->tpl_vars['html']->value->truncateString($_smarty_tpl->tpl_vars['patient']->value->getContactNumber(),20);?>
+
                                             </span>
                                         </label>
                                     </div>
@@ -797,8 +942,10 @@
                                     </div>
                                     <div class="medium-7 end columns">
                                         <label class="infoLabel text-left"> 
-                                            <span {if $patient->getOtherContactNumber() != ''} class="hotspot" title="{$patient->getOtherContactNumber()}" {/if}>
-                                                {$html->truncateString($patient->getOtherContactNumber(),20)}
+                                            <span <?php if ($_smarty_tpl->tpl_vars['patient']->value->getOtherContactNumber() != '') {?> class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getOtherContactNumber();?>
+" <?php }?>>
+                                                <?php echo $_smarty_tpl->tpl_vars['html']->value->truncateString($_smarty_tpl->tpl_vars['patient']->value->getOtherContactNumber(),20);?>
+
                                             </span>
                                         </label>
                                     </div>
@@ -809,8 +956,10 @@
                                     </div>
                                     <div class="medium-7 end columns">
                                         <label class="infoLabel text-left">
-                                            <span {if $patient->getUser()->getEmail() != ''} class="hotspot" title="{$patient->getUser()->getEmail()}" {/if}>
-                                                {$html->truncateString($patient->getUser()->getEmail(),17)}
+                                            <span <?php if ($_smarty_tpl->tpl_vars['patient']->value->getUser()->getEmail() != '') {?> class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getUser()->getEmail();?>
+" <?php }?>>
+                                                <?php echo $_smarty_tpl->tpl_vars['html']->value->truncateString($_smarty_tpl->tpl_vars['patient']->value->getUser()->getEmail(),17);?>
+
                                             </span>
                                         </label>
                                     </div>
@@ -821,8 +970,10 @@
                                     </div>
                                     <div class="medium-7 columns">
                                         <label class="infoLabel text-left"> 
-                                            <span {if $patient->getAddress() != ''} class="hotspot" title="{$patient->getAddress()}" {/if}>
-                                                {$patient->getAddress()} 
+                                            <span <?php if ($_smarty_tpl->tpl_vars['patient']->value->getAddress() != '') {?> class="hotspot" title="<?php echo $_smarty_tpl->tpl_vars['patient']->value->getAddress();?>
+" <?php }?>>
+                                                <?php echo $_smarty_tpl->tpl_vars['patient']->value->getAddress();?>
+ 
                                             </span>
                                         </label>
                                     </div>
@@ -832,7 +983,8 @@
                                         <label class="viewLabel text-left">Primary Doctor:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getPrimaryDoctor()} </label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getPrimaryDoctor();?>
+ </label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -840,7 +992,8 @@
                                         <label class="viewLabel text-left">Principal Health Facility:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getPrincipalHealthCareFacility()} </label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getPrincipalHealthCareFacility();?>
+ </label>
                                     </div>
                                 </div>
                                 <div class="row" >
@@ -848,7 +1001,8 @@
                                         <label class="viewLabel text-left">Country:</label>
                                     </div>
                                     <div class="medium-7 columns">
-                                        <label class="infoLabel text-left"> {$patient->getCountry()->getName()} </label>
+                                        <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getCountry()->getName();?>
+ </label>
                                     </div>
                                 </div>
                                 
@@ -857,12 +1011,11 @@
                     </div>
                     
                     <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
-                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
-                            {if $patient->isRelocated()} Forced to relocate {else} Not relocated {/if}&ensp;
+                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;<?php if ($_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> color:orangered;<?php }?>">
+                            <?php if ($_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> Forced to relocate <?php } else { ?> Not relocated <?php }?>&ensp;
                         </div>
-                        {*<div style="flex-grow:0.5;height: 1px;background-color: #9f9f9f;width: 50%;"></div>*}
-                    </div> 
-                    {if $patient->isRelocated()}
+                                            </div> 
+                    <?php if ($_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?>
                         <div class="row" data-equalizer="top" data-equalizer-mq="medium-up">
                             <div class="medium-6 small-6 columns">
                                 <div data-equalizer-watch="top">
@@ -871,7 +1024,8 @@
                                             <label class="viewLabel text-left">Relocation Date:</label>
                                         </div>
                                         <div class="medium-7 columns">
-                                            <label class="infoLabel text-left">{DbMapperUtility::formatSqlDate($patient->getRelocatedDate())}</label>
+                                            <label class="infoLabel text-left"><?php echo \Neptune\DbMapperUtility::formatSqlDate($_smarty_tpl->tpl_vars['patient']->value->getRelocatedDate());?>
+</label>
                                         </div>
                                     </div>
                                 </div>
@@ -883,7 +1037,8 @@
                                             <label class="viewLabel text-left">Relocation Country:</label>
                                         </div>
                                         <div class="medium-7 columns">
-                                            <label class="infoLabel text-left"> {$patient->getRelocatedCountry()->getName()} </label>
+                                            <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getRelocatedCountry()->getName();?>
+ </label>
                                         </div>
                                     </div>
                                     <div class="row" >
@@ -891,30 +1046,27 @@
                                             <label class="viewLabel text-left">Relocation Address:</label>
                                         </div>
                                         <div class="medium-7 columns">
-                                            <label class="infoLabel text-left"> {$patient->getRelocatedAddress()} </label>
+                                            <label class="infoLabel text-left"> <?php echo $_smarty_tpl->tpl_vars['patient']->value->getRelocatedAddress();?>
+ </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    {/if}
-                    {*End of first tab content *}
+                    <?php }?>
+                                        
                     
-                    
-                   {*End of tab content *}
-                </div>
+                                   </div>
             </div>
         </div>
-         {***************************** SEPARATOR ********************}
-        
+                 
         <div id="summary" class="medium-2 small-10 end columns show-for-medium-up show-for-landscape">
             
             <div align="center" class="" style="color:#444444;border:1px solid #464646; background-color:#ffc42c !important;padding:5px 1px;font-weight:500;font-family:'Poppins', sans-serif;">
                 Patient Summary
             </div>
 
-            {* ****************************Patient Info section************************** *}
-            <div style="">
+                        <div style="">
                 
                 <div class="row" style="background-color:#FFFFFF;margin:4px 0px;">
                     <div class="medium-12 large-4 small-3 columns end">
@@ -922,7 +1074,9 @@
                     </div>
                     <div class="medium-12 large-8 small-9 columns end">
                         <label class="text-left" style="font-size:0.875rem;padding-top:3px;">
-                            <b><a style="color:#008cba;" href="/patient/summary/{$patient->getId()}">{$patient->getFullName()}</a></b>
+                            <b><a style="color:#008cba;" href="/patient/summary/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['patient']->value->getFullName();?>
+</a></b>
                         </label>
                     </div>
                 </div>
@@ -932,7 +1086,8 @@
                     </div>
                     <div class="medium-12 large-8 small-9 columns end">
                         <label class="text-left" style="color:#111;font-size:0.875rem;padding-top:3px;">
-                            <b>{$patient->getGender()->getName()}</b>
+                            <b><?php echo $_smarty_tpl->tpl_vars['patient']->value->getGender()->getName();?>
+</b>
                         </label>
                     </div>
                 </div>
@@ -942,101 +1097,55 @@
                     </div>
                     <div class="medium-12 large-8 small-9 columns end">
                         <label class="text-left" style="color:#111;font-size:0.875rem;padding-top:3px;">
-                            <b>{$patient->displayAge()}</b>
+                            <b><?php echo $_smarty_tpl->tpl_vars['patient']->value->displayAge();?>
+</b>
                         </label>
                     </div>
                 </div>
-                {if $smarty.session.patientId == $patient->getId()}
+                <?php if ($_SESSION['patientId'] == $_smarty_tpl->tpl_vars['patient']->value->getId()) {?>
                     <div class="row " style="margin:7px 0px;">
                         <div class="medium-12 large-4 small-3 columns end">
                             <label class="text-left">&nbsp;</label>
                         </div>
                         <div class="medium-12 large-8 small-9 columns end">
                             <label class="text-left" >
-                                <a  class="editLink" href="/patient/edit/{$patient->getId()}" style='font-weight:400;color:#008cba !important;font-size:0.875rem;'>
+                                <a  class="editLink" href="/patient/edit/<?php echo $_smarty_tpl->tpl_vars['patient']->value->getId();?>
+" style='font-weight:400;color:#008cba !important;font-size:0.875rem;'>
                                     edit record
                                 </a>
                             </label>
                         </div>
                     </div>
-                {/if}
-                {*if $smarty.session.patientId != $patient->getId()}
-                    <div class="row" style="margin:4px 0px;">
-                        <div class="medium-12 columns end text-right">
-                            
-                        {if $patient->currentlySmokes()}
-                            <i class="fas fa-smoking" style="color:#FF0000;font-size:1.7rem;" title="Currently smokes"></i>
-                        {else}
-                            <i class="fas fa-smoking-ban" title="Does not currently smoke" style="color:#006432;font-size:1.7rem;"></i>
-                        {/if}
-                        &ensp;
-                        {if !$patient->currentlyDrinks()}
-                            <i class="fas fa-cocktail" style="color:#FF0000;font-size:1.7rem;" title="Currently drinks"></i>
-                        {else}
-                            <span style="height:30px !important;text-align:right;" class="fa-stack fa-2x">
-                                <i class="fas fa-cocktail fa-stack-1x" style="color:#888888;font-size:1rem;"></i>
-                                <i class="fas fa-ban fa-stack-2x" style="color:#006432;font-size:1rem;"></i>
-                            </span>
-                        {/if}
-                            
-                        </div>
-                    </div>
-                {/if*}
-            </div>
+                <?php }?>
+                            </div>
         </div>
-        {***************************** SEPARATOR ********************}
-        
+                
     </div> 
-    {*    
-            <!-- for image upload and cropping -->
-            <div id="openModal" class="modalDialog">
-                <div>
-                    <a href="#close" title="close" class="close">X</a>
-                    <h5>Crop and/or upload photograph</h5>
-                    <div class="container" >
-                        <div class="imageBox">
-                            <div class="thumbBox"></div>
-                            <div class="spinner" style="display: none">Loading...</div>
-                        </div>
-                        <div class="action">
-                            <input type="file" id="file" style="float:left; width: 200px">
-                            <input type="button" id="btnCrop" value="Done" style="float: right;">
-                            <input type="button" id="btnZoomIn" value="+" style="float: right;">
-                            <input type="button" id="btnZoomOut" value="-" style="float: right;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--For the camera -->
-            <div id="videoModal" class="modalDialog smallModal">
-                <div>
-                    <a href="#videoClose" title="close" class="close" id="closeVideo">X</a>
-                    <h5>Capture photograph</h5>
-                    <div id="">
-                        <div class="camcontent" style="margin:0px;padding:0px;border:1px solid #464646;width:200px;height:200px;background-color:#bbbbbb;">
-                            <video width="200" height="200" id="video" style="border: 1px solid red;" autoplay></video>
-                            <canvas id="canvas" width="200" height="200"/>
-                        </div>
-                        <div style="width:200px;">
-                            <input type="button" id="snap" value="Capture" style="display:none;">
-                            <input type="button" id="reset" value="Reset" style="display:none;">
-                            <input type="button" id="next" value="Next" style="display:none;">
-                            <input type="button" id="endVideo" value="Close">
-                        </div>
-                    </div>
-                </div>
-            </div>
-    *}
-{else}
+    <?php } else { ?>
     <div class="emptyListMessage">You do not have permissions to see the content of this page</div>
-{/if}
-{/nocache} 
-{/block}
+<?php }?>
+ 
+<?php
+}
+}
+/* {/block 'content'} */
+/* {block "foundation"} */
+class Block_1603708416074a56693ff49_56826869 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'foundation' => 
+  array (
+    0 => 'Block_1603708416074a56693ff49_56826869',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
     
-    
-{block name="foundation"}
-    {literal}
         
-    {/literal}
-{/block}
+    
+<?php
+}
+}
+/* {/block "foundation"} */
+}

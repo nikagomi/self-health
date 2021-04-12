@@ -390,6 +390,10 @@ $routes->add('patient_medication_view', new Routing\Route('/patient/medication/v
     array('_controller' => 'Patient\\Controller\\PatientMedicationController::viewPatientMedications'),
     array('patientId' => '[A-Z0-9]+')
 ));
+$routes->add('patient_allergy_view', new Routing\Route('/patient/allergy/view/{patientId}', 
+    array('_controller' => 'Patient\\Controller\\PatientAllergyController::viewPatientAllergies'),
+    array('patientId' => '[A-Z0-9]+')
+));
 
 /* Religion Actions */
 $routes->add('religion_form', new Routing\Route('/religion', 
@@ -550,6 +554,54 @@ $routes->add('quantity_taken_unit_edit', new Routing\Route('/quantity/taken/unit
 ));
 $routes->add('quantity_taken_unit_delete', new Routing\Route('/quantity/taken/unit/delete/{id}', 
     array('_controller' => 'Admin\\Controller\\QuantityTakenUnitController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Allergy Type Actions
+$routes->add('allergy_type_form', new Routing\Route('/allergy/type', 
+    array('_controller' => 'Admin\\Controller\\AllergyTypeController::form')
+));
+$routes->add('allergy_type_save', new Routing\Route('/allergy/type/save', 
+    array('_controller' => 'Admin\\Controller\\AllergyTypeController::save')
+));
+$routes->add('allergy_type_edit', new Routing\Route('/allergy/type/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\AllergyTypeController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('allergy_type_delete', new Routing\Route('/allergy/type/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\AllergyTypeController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Chronic Disease Actions
+$routes->add('chronic_disease_form', new Routing\Route('/chronic/disease', 
+    array('_controller' => 'Admin\\Controller\\ChronicDiseaseController::form')
+));
+$routes->add('chronic_disease_save', new Routing\Route('/chronic/disease/save', 
+    array('_controller' => 'Admin\\Controller\\ChronicDiseaseController::save')
+));
+$routes->add('chronic_disease_edit', new Routing\Route('/chronic/disease/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\ChronicDiseaseController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('chronic_disease_delete', new Routing\Route('/chronic/disease/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\ChronicDiseaseController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Patient Allergy Actions
+$routes->add('patient_allergy_form', new Routing\Route('/patient/allergy', 
+    array('_controller' => 'Patient\\Controller\\PatientAllergyController::form')
+));
+$routes->add('patient_allergy_save', new Routing\Route('/patient/allergy/save', 
+    array('_controller' => 'Patient\\Controller\\PatientAllergyController::save')
+));
+$routes->add('patient_allergy_edit', new Routing\Route('/patient/allergy/edit/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientAllergyController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('patient_allergy_delete', new Routing\Route('/patient/allergy/delete/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientAllergyController::delete'),
     array('id' => '[A-Z0-9]+')
 ));
 

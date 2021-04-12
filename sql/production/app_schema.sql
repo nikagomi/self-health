@@ -606,4 +606,63 @@ ALTER TABLE patient_medications OWNER TO postgres;
 GRANT ALL ON TABLE patient_medications TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE patient_medications TO public;
 
-  
+--12/Apr/2021 (not in prod)
+CREATE TABLE allergy_types (
+  allergy_type_id character varying(50) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_allergy_type_id PRIMARY KEY (allergy_type_id)
+);
+ALTER TABLE allergy_types OWNER TO postgres;
+GRANT ALL ON TABLE allergy_types TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE allergy_types TO public;
+
+CREATE TABLE patient_allergies (
+  patient_allergy_id character varying(50) NOT NULL,
+  patient_id character varying(50) NOT NULL,
+  allergy_type_id character varying(50) NOT NULL,
+  allergen character varying(200) NOT NULL,
+  notes text,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_patient_allergy_id PRIMARY KEY (patient_allergy_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY(patient_id) 
+    REFERENCES patients (patient_id),
+  CONSTRAINT fk_allergen_type_id FOREIGN KEY (allergen_type_id)
+    REFERENCES allergy_types (allergy_type_id)
+);
+ALTER TABLE patient_allergies OWNER TO postgres;
+GRANT ALL ON TABLE patient_allergies TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE patient_allergies TO public;
+
+CREATE TABLE chronic_diseases (
+  chronic_disease_id character varying(50) NOT NULL,
+  "name" character varying(150) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_chronic_disease_id PRIMARY KEY(chronic_disease_id)
+);
+ALTER TABLE chronic_diseases OWNER TO postgres;
+GRANT ALL ON TABLE chronic_diseases TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE chronic_diseases TO public;
+
+CREATE TABLE patient_chronic_diseases (
+  patient_chronic_disease_id character varying(50) NOT NULL,
+  patient_id character varying(50) NOT NULL,
+  chronic_disease_id character varying(50) NOT NULL,
+  diagnosed_since_year int(4),
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_patient_chronic_disease_id PRIMARY KEY(patient_chrnic_disease_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)
+    REFERENCES patients (patient_id),
+  CONSTRAINT fk_chronic_disease_id FOREIGN KEY(chronic_disease_id) 
+    REFERENCES chronic_diseases (chronic_disease_id) 
+);
+ALTER TABLE patient_chronic_diseases OWNER TO postgres;
+GRANT ALL ON TABLE patient_chronic_diseases TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE patient_chronic_diseases TO public;
+
+ALTER TABLE patients ADD COLUMN relocated boolean NOT NULL DEFAULT false;
+ALTER TABLE patients ADD COLUMN relocated_address text;
+ALTER TABLE patients ADD COLUMN relocated_country_id character varying(50);
+ALTER TABLE patients ADD COLUMN relocated_date date;
+ALTER TABLE patients ADD CONSTRAINT fk_relocated_country_id FOREIGN KEY (relocated_country_id)
+REFERENCES countries (country_id);
