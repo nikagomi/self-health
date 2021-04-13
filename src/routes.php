@@ -394,6 +394,10 @@ $routes->add('patient_allergy_view', new Routing\Route('/patient/allergy/view/{p
     array('_controller' => 'Patient\\Controller\\PatientAllergyController::viewPatientAllergies'),
     array('patientId' => '[A-Z0-9]+')
 ));
+$routes->add('next_of_kin_view', new Routing\Route('/next/of/kin/view/{patientId}', 
+    array('_controller' => 'Patient\\Controller\\NextOfKinController::viewPatientNextOfKin'),
+    array('patientId' => '[A-Z0-9]+')
+));
 
 /* Religion Actions */
 $routes->add('religion_form', new Routing\Route('/religion', 
@@ -612,6 +616,39 @@ $routes->add('patient_chronic_disease_form', new Routing\Route('/patient/chronic
 $routes->add('patient_chronic_disease_save', new Routing\Route('/patient/chronic/disease/save', 
     array('_controller' => 'Patient\\Controller\\PatientChronicDiseaseController::save')
 ));
+
+//Relationship Type Actions
+$routes->add('relationship_type_form', new Routing\Route('/relationship/type', 
+    array('_controller' => 'Admin\\Controller\\RelationshipTypeController::form')
+));
+$routes->add('relationship_type_save', new Routing\Route('/relationship/type/save', 
+    array('_controller' => 'Admin\\Controller\\RelationshipTypeController::save')
+));
+$routes->add('relationship_type_edit', new Routing\Route('/relationship/type/edit/{id}', 
+    array('_controller' => 'Admin\\Controller\\RelationshipTypeController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('relationship_type_delete', new Routing\Route('/relationship/type/delete/{id}', 
+    array('_controller' => 'Admin\\Controller\\RelationshipTypeController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Next of Kin Actions
+$routes->add('next_of_kin_form', new Routing\Route('/next/of/kin/form', 
+    array('_controller' => 'Patient\\Controller\\NextOfKinController::form')
+));
+$routes->add('next_of_kin_save', new Routing\Route('/next/of/kin/save', 
+    array('_controller' => 'Patient\\Controller\\NextOfKinController::save')
+));
+$routes->add('next_of_kin_edit', new Routing\Route('/next/of/kin/edit/{id}', 
+    array('_controller' => 'Patient\\Controller\\NextOfKinController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('next_of_kin_delete', new Routing\Route('/next/of/kin/delete/{id}', 
+    array('_controller' => 'Patient\\Controller\\NextOfKinController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+
 
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 

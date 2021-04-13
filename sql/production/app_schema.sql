@@ -666,3 +666,30 @@ ALTER TABLE patients ADD COLUMN relocated_country_id character varying(50);
 ALTER TABLE patients ADD COLUMN relocated_date date;
 ALTER TABLE patients ADD CONSTRAINT fk_relocated_country_id FOREIGN KEY (relocated_country_id)
 REFERENCES countries (country_id);
+
+CREATE TABLE relationship_types (
+  relationship_type_id character varying(50) NOT NULL,
+  "name" character varying(50) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_relationship_type_id PRIMARY KEY(relationship_type_id)
+);
+ALTER TABLE relationship_types OWNER TO postgres;
+GRANT ALL ON TABLE relationship_types TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE relationship_types TO public;
+
+CREATE TABLE next_of_kins (
+  next_of_kin_id character varying(50) NOT NULL,
+  patient_id character varying(50) NOT NULL,
+  relationship_type_id character varying(50) NOT NULL,
+  "name" character varying(200) NOT NULL,
+  contact_number character varying(20) NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_next_of_kin_id PRIMARY KEY(next_of_kin_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY (patient_id)
+    REFERENCES patients (patient_id),
+  CONSTRAINT fk_relationship_type_id FOREIGN KEY(relationship_type_id)
+    REFERENCES relationship_types (relationship_type_id)
+);
+ALTER TABLE next_of_kins OWNER TO postgres;
+GRANT ALL ON TABLE next_of_kins TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE next_of_kins TO public;

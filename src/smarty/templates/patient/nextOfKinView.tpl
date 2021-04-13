@@ -17,7 +17,7 @@
             text-decoration:line-through;
         }
         
-        table#allergyTable th {
+        table#nokTable th {
             font-variant:normal !important;
             font-weight:500 !important;
             color:#FFFFFF !important;
@@ -52,24 +52,24 @@
     {nocache}
     <div>
     <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
-        Allergy Record
+        Next of Kin
     </div>
-    <div id="" {if $allergies|count == 0} style="display:none;" {/if}>
+    <div id="" {if $nextOfKins|count == 0} style="display:none;" {/if}>
       
-        <table align="left" id="allergyTable" class="displayTable_simpleTable" width="100%" cellspacing="0">
+        <table align="left" id="nokTable" class="displayTable_simpleTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>{Messages::i18n("patientAllergyForm.allergyTypeId")}</th> 
-                    <th>{Messages::i18n("patientAllergyForm.allergen")}</th>
-                    <th>{Messages::i18n("patientAllergyForm.notes")}</th>
+                    <th>{Messages::i18n("nextOfKinForm.name")}</th>
+                    <th>{Messages::i18n("nextOfKinForm.relationshipTypeId")}</th> 
+                    <th>{Messages::i18n("nextOfKinForm.contactNumber")}</th>
                 </tr>
             </thead>
             <tbody>
-                {foreach from=$allergies item=allergy} 
-                    <tr>                           
-                        <td>{$allergy->getAllergyType()->getLabel()}</td> 
-                        <td>{$allergy->getAllergen()}</td>
-                        <td>{$allergy->getNotes()}</td>
+                {foreach from=$nextOfKins item=nok} 
+                    <tr>   
+                        <td>{$nok->getName()}</td>
+                        <td>{$nok->getRelationshipType()->getLabel()}</td> 
+                        <td>{$nok->getContactNumber()}</td>
                     </tr>
                 {/foreach}
             </tbody>
@@ -77,12 +77,13 @@
      </div>    
         
     
-    {if $allergies|count == 0}
-        <div class="emptyListMessage">{Messages::i18n("patientAllergyForm.empty.list.message")}</div>
+    {if $nextOfKins|count == 0}
+        <div class="emptyListMessage">{Messages::i18n("nextOfKinForm.empty.list.message")}</div>
     {/if}
 </div>
 
 {/nocache}
 {/block}
+
 
 

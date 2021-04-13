@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="medium-12 end columns">
                         <label><span class="required">{Messages::i18n("patientAllergyForm.allergyTypeId")}</span>
-                            <select tabindex="1" id="allergyTYpeId" name="allergyTypeId"  required>
+                            <select tabindex="1" id="allergyTypeId" name="allergyTypeId"  required>
                                 {html_options options=$allergyTypeIds selected=$patientAllergy->getAllergyTypeId()}
                             </select>
                         </label>
@@ -84,7 +84,7 @@
     {/if}                    
     {if $list|count gt 0}
         <br/>
-        <table align="left" id="medTable" class="displayTable" width="95%" cellspacing="0">
+        <table align="left" id="listTable" class="displayTable" width="95%" cellspacing="0">
             <thead>
                 <tr>
                     <th>{Messages::i18n("patientAllergyForm.allergyTypeId")}</th> 

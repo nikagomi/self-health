@@ -95,6 +95,12 @@ $accessMap = array(
         "/allergy/type/edit" => "MANAGE.ALLERGY.TYPES",
         "/allergy/type/delete" => "MANAGE.ALLERGY.TYPES",
     
+        /* Manage relationship types */
+        "/relationship/type" => "MANAGE.RELATIONSHIP.TYPES",
+        "/relationship/type/save" => "MANAGE.RELATIONSHIP.TYPES",
+        "/relationship/type/edit" => "MANAGE.RELATIONSHIP.TYPES",
+        "/relationship/type/delete" => "MANAGE.RELATIONSHIP.TYPES",
+    
         /* Manage chronic diseases */
         "/chronic/disease" => "MANAGE.CHRONIC.DISEASES",
         "/chronic/disease/save" => "MANAGE.CHRONIC.DISEASES",

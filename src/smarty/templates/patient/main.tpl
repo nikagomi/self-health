@@ -673,6 +673,7 @@
             <div id="tabs" style="display:none;padding-top:0px;">
                 <ul>
                     <li><a id="" href="#start">General</a></li>
+                    <li><a id="nok" href="/next/of/kin/view/{$patient->getId()}">Next of Kin</a></li>
                     <li><a id="allergy" href="/patient/allergy/view/{$patient->getId()}">Allergies</a></li>
                     <li><a id="psdStatus" href="/smoking/drinking/status/patient/view/{$patient->getId()}">Smoking/Drinking</a></li>
                     <li><a id="physA" href="/patient/physical/activity/view/{$patient->getId()}">Physical Activity</a></li>
@@ -855,9 +856,13 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="medium-12 columns">
+                          <hr width="95%" size="2" color="#D0E0F0" style="margin:5px;"/>
+                        </div>
+                    </div>    
                     <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
-                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
+                        <div style="margin-left:15px; flex-grow:0; font-weight:500;font-size:1.2rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
                             {if $patient->isRelocated()} Forced to relocate {else} Not relocated {/if}&ensp;
                         </div>
                         {*<div style="flex-grow:0.5;height: 1px;background-color: #9f9f9f;width: 50%;"></div>*}
@@ -900,15 +905,20 @@
                     {/if}
                     
                     {*Chronic Disease section *}
+                    <div class="row">
+                        <div class="medium-12 columns">
+                          <hr width="95%" size="2" color="#D0E0F0" style="margin:5px;"/>
+                        </div>
+                    </div>    
                     <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
-                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
+                        <div style="margin-left:15px; flex-grow:0; font-weight:500;font-size:1.1rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
                             Chronic Diseases&ensp;
                             <a href="#" class="hintanchorRow" onclick="return false;" onMouseover="showhint('When present, the figure in parenthesis represents the year when the patient was initially diagnosed with the chronic disease.', this, event, '180px')">&nbsp;</a>
                         </div>
                         {*<div style="flex-grow:0.5;height: 1px;background-color: #9f9f9f;width: 50%;"></div>*}
                     </div>
                     {if $patientChronicDiseases|count gt 0}
-                        <ul class='medium-block-grid-3 small-block-grid-1'>
+                        <ul class='medium-block-grid-4 small-block-grid-2'>
                             {foreach from=$patientChronicDiseases item=pcd}
                                 <li>
                                     &nbsp;&bull;

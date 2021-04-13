@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-04-12 19:54:11
+/* Smarty version 3.1.34-dev-7, created on 2021-04-13 13:03:15
   from '/var/www/oecs/src/smarty/templates/self_report/patientAllergy.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6074a56300eed3_08269222',
+  'unifunc' => 'content_60759693f3a623_92025795',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5408ad1c0e22732a7dd0b43057fbfc22f1689c48' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/self_report/patientAllergy.tpl',
-      1 => 1618257248,
+      1 => 1618318992,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6074a56300eed3_08269222 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60759693f3a623_92025795 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,26 +28,26 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3432475096074a562f399b2_51860711', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_203648398860759693f24510_96532900', 'jquery');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17601011036074a562f3ae73_13266013', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_119860341360759693f25b14_32489480', 'dataTable');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11629010486074a562f3b630_17555451', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_127393823860759693f26417_00728379', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'jquery'} */
-class Block_3432475096074a562f399b2_51860711 extends Smarty_Internal_Block
+class Block_203648398860759693f24510_96532900 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_3432475096074a562f399b2_51860711',
+    0 => 'Block_203648398860759693f24510_96532900',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -71,12 +71,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'dataTable'} */
-class Block_17601011036074a562f3ae73_13266013 extends Smarty_Internal_Block
+class Block_119860341360759693f25b14_32489480 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_17601011036074a562f3ae73_13266013',
+    0 => 'Block_119860341360759693f25b14_32489480',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -93,12 +93,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'content'} */
-class Block_11629010486074a562f3b630_17555451 extends Smarty_Internal_Block
+class Block_127393823860759693f26417_00728379 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_11629010486074a562f3b630_17555451',
+    0 => 'Block_127393823860759693f26417_00728379',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -125,7 +125,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
                     <div class="medium-12 end columns">
                         <label><span class="required"><?php echo \Neptune\MessageResources::i18n("patientAllergyForm.allergyTypeId");?>
 </span>
-                            <select tabindex="1" id="allergyTYpeId" name="allergyTypeId"  required>
+                            <select tabindex="1" id="allergyTypeId" name="allergyTypeId"  required>
                                 <?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['allergyTypeIds']->value,'selected'=>$_smarty_tpl->tpl_vars['patientAllergy']->value->getAllergyTypeId()),$_smarty_tpl);?>
 
                             </select>
@@ -176,7 +176,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/oecs/vendor/smarty/
     <?php }?>                    
     <?php if (count($_smarty_tpl->tpl_vars['list']->value) > 0) {?>
         <br/>
-        <table align="left" id="medTable" class="displayTable" width="95%" cellspacing="0">
+        <table align="left" id="listTable" class="displayTable" width="95%" cellspacing="0">
             <thead>
                 <tr>
                     <th><?php echo \Neptune\MessageResources::i18n("patientAllergyForm.allergyTypeId");?>

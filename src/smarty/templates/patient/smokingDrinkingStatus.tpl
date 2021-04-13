@@ -105,14 +105,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-7 end columns text-left">
+                                <div class="medium-7 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.smokingComments")}</span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="medium-12 end columns infoLabel">
+                                 <div class="medium-5 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getSmokingComments()}
                                 </div>
                             </div>
@@ -168,14 +166,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="medium-7 end columns text-left">
+                                <div class="medium-7 end columns small-text-left medium-text-right">
                                     <label>
                                         <span class="viewLabel">{Messages::i18n("patientSmokingDrinkingStatusForm.drinkingComments")}</span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="medium-12 end columns infoLabel">
+                                <div class="medium-5 end columns infoLabel">
                                     {$patientSmokingDrinkingStatus->getDrinkingComments()}
                                 </div>
                             </div>

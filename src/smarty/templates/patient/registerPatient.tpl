@@ -426,8 +426,8 @@
             hiddenInput: "contactNumber",
             "allowDropdown": true,
             "autoPlaceholder": "polite",
-            "initialCountry": "lc",
-            "preferredCountries": ["lc", "us", "gb"],
+            "initialCountry": "ai",
+            "preferredCountries": ["ai", "ag", "vg", "dm", "gd", "gp", "mq", "ms", "kn", "lc", "vc"],
             "formatOnDisplay": true,
             autoHideDialCode: true
         });
@@ -437,13 +437,13 @@
             hiddenInput: "otherContactNumber",
             "allowDropdown": true,
             "autoPlaceholder": "polite",
-            "initialCountry": "lc",
-            "preferredCountries": ["lc", "us", "gb"],
+            "initialCountry": "ai",
+            "preferredCountries": ["ai", "ag", "vg", "dm", "gd", "gp", "mq", "ms", "kn", "lc", "vc"],
             "formatOnDisplay": true,
             autoHideDialCode: true
         });
         
-        var localCode = '{/literal}{PropertyService::getProperty("facility.country.code","lc")}{literal}';
+        //var localCode = '{/literal}{PropertyService::getProperty("facility.country.code","lc")}{literal}';
     {/literal}
 {/block}
 
@@ -468,13 +468,13 @@
                    
                 if (el.getAttribute("id") == 'primaryNumber') {
                     if (!itiPrimaryNumber.isValidNumber()) {
-                        var countryCode = itiPrimaryNumber.getSelectedCountryData().iso2;
+                        /*var countryCode = itiPrimaryNumber.getSelectedCountryData().iso2;
                         
                         if (countryCode == "lc" && (itiPrimaryNumber.getNumber().indexOf("732") == 5 || itiPrimaryNumber.getNumber().indexOf("733") == 5) && phoneErrorMap[itiPrimaryNumber.getValidationError()] == "Invalid number") {
                             $("#phoneError").text("");
                             $("#primaryNumber").removeClass("error");
                             return true;
-                        } 
+                        } */
                         $("#phoneError").text(phoneErrorMap[itiPrimaryNumber.getValidationError()]).css("display","inline-block");
                         $("#primaryNumber").addClass("error");
                         return false;
@@ -485,12 +485,12 @@
                 if (el.getAttribute("id") == 'otherNumber' && $.trim($("#otherNumber").val()) !== '') {
                 
                     if (!itiOtherNumber.isValidNumber()) {
-                        var countryCode = itiOtherNumber.getSelectedCountryData().iso2;
+                        /*var countryCode = itiOtherNumber.getSelectedCountryData().iso2;
                         if (countryCode == "lc" && (itiOtherNumber.getNumber().indexOf("732") == 5 || itiOtherNumber.getNumber().indexOf("733") == 5) && phoneErrorMap[itiOtherNumber.getValidationError()] == "Invalid number") {
                             $("#phone2Error").text("");
                             $("#otherNumber").removeClass("error");
                             return true;
-                        } 
+                        } */
                         $("#phone2Error").text(phoneErrorMap[itiOtherNumber.getValidationError()]).css("display","inline-block");
                         $("#otherNumber").addClass("error");
                         return false;
