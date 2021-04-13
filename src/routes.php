@@ -398,6 +398,10 @@ $routes->add('next_of_kin_view', new Routing\Route('/next/of/kin/view/{patientId
     array('_controller' => 'Patient\\Controller\\NextOfKinController::viewPatientNextOfKin'),
     array('patientId' => '[A-Z0-9]+')
 ));
+$routes->add('covid19_vaccination_view', new Routing\Route('/patient/covid19/vaccination/view/{patientId}', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::viewPatientCovid19Vaccinations'),
+    array('patientId' => '[A-Z0-9]+')
+));
 
 /* Religion Actions */
 $routes->add('religion_form', new Routing\Route('/religion', 
@@ -649,6 +653,41 @@ $routes->add('next_of_kin_delete', new Routing\Route('/next/of/kin/delete/{id}',
     array('id' => '[A-Z0-9]+')
 ));
 
+#Patient Covid19 Vaccine Actions
+$routes->add('patient_covid19_vaccination_form', new Routing\Route('/patient/covid19/vaccination/form', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::form')
+));
+$routes->add('patient_covid19_vaccination_save', new Routing\Route('/patient/covid19/vaccination/save', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::save')
+));
+$routes->add('patient_covid19_vaccination_edit', new Routing\Route('/patient/covid19/vaccination/edit/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('patient_covid19_vaccination_delete', new Routing\Route('/patient/covid19/vaccination/delete/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('ajax_covid19_vaccine_dose_count', new Routing\Route('/ajax/covid19/dose/count/{id}', 
+    array('_controller' => 'Patient\\Controller\\PatientCovid19VaccinationController::getCovid19VaccineDoseCount'),
+    array('id' => '[A-Z0-9]+')
+));
+
+//Covid19 VaccineActions
+$routes->add('covid19_vaccine_form', new Routing\Route('/covid19/vaccine/form', 
+    array('_controller' => 'Clinical\\Controller\\Covid19VaccineController::form')
+));
+$routes->add('covid19_vaccine_save', new Routing\Route('/covid19/vaccine/save', 
+    array('_controller' => 'Clinical\\Controller\\Covid19VaccineController::save')
+));
+$routes->add('covid19_vaccine_edit', new Routing\Route('/covid19/vaccine/edit/{id}', 
+    array('_controller' => 'Clinical\\Controller\\Covid19VaccineController::edit'),
+    array('id' => '[A-Z0-9]+')
+));
+$routes->add('covid19_vaccine_delete', new Routing\Route('/covid19/vaccine/delete/{id}', 
+    array('_controller' => 'Clinical\\Controller\\Covid19VaccineController::delete'),
+    array('id' => '[A-Z0-9]+')
+));
 
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 

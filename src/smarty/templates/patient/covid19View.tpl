@@ -17,7 +17,7 @@
             text-decoration:line-through;
         }
         
-        table#mealRecordTable th {
+        table#covid19Table th {
             font-variant:normal !important;
             font-weight:500 !important;
             color:#FFFFFF !important;
@@ -34,10 +34,6 @@
             var newLength = val - 3;
             return (text.length > val) ? text.substring(0, newLength) + "..." : text; 
         }
-        
-        var foodGroupsQty = {/literal}{$foodGroups|count}{literal};
-        var col1 = foodGroupsQty + 1;
-        var col2 = foodGroupsQty + 2;
     {/literal}
 {/block}
 
@@ -49,23 +45,21 @@
             $(".hotspot").tipTip({maxWidth: "200px", edgeOffset: 3, defaultPosition: "top", delay: 200, fadeOut: 400});
         });
         
-        
-        
         /*********************************
          DataTable configuration options
         **********************************/
-        $("table#mealRecordTable").DataTable({
+        $("table#covid19Table").DataTable({
             responsive: true,
             "searching":false,
             "info": false,
             "paging": false,
             "fixedHeader": false,
             order: [
-                [1, 'desc'],
-                [2,'desc'],
-                [0, 'asc']
+                [0, 'asc'],
+                [1,'asc']
             ]
         });
+        
     {/literal}
 {/block}
 
@@ -73,45 +67,38 @@
     {nocache}
     <div>
     <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
-        Meal Records
+        Covid-19 Vaccinations
     </div>
-    <div id="" {if $meals|count == 0} style="display:none;" {/if}>
+    <div id="" {if $covid19Vaccinations|count == 0} style="display:none;" {/if}>
       
-         <table align="left" id="mealRecordTable" class="displayTable_simpleTable" style="" width="99%" cellspacing="1">
-             <thead>
+        <table align="left" id="covid19Table" class="displayTable_simpleTable" width="100%" cellspacing="0">
+            <thead>
                 <tr>
-                    <th class='all'>{Messages::i18n("patientMealForm.mealTypeId")}</th>
-                    <th style="width:15px;" class='all'>{Messages::i18n("patientMealForm.dateConsumed")}</th>
-                    <th style="width:20%;"  class='all'>{Messages::i18n("patientMealForm.timeConsumed")}</th>
-                    {foreach from=$foodGroups item=fg}
-                        <th class=''>{$fg->getLabel()}</th>
-                    {/foreach}
-                   {*<th class="never">&nbsp;</th> 
-                   <th class="never">&nbsp;</th>*}
+                    <th>{Messages::i18n("covid19VaxForm.covid19VaccineId")}</th> 
+                    <th>{Messages::i18n("covid19VaxForm.doseNumber")}</th>
+                    <th>{Messages::i18n("covid19VaxForm.dateReceived")}</th>
                 </tr>
-             </thead>
+            </thead>
             <tbody>
-                {foreach from=$meals item=meal} 
-                    <tr> 
-                        <td>{$meal->getMealType()->getLabel()} </td>
-                        <td>{$meal->displayDateConsumed()}</td>
-                        <td>{$meal->displayTimeConsumed()}</td>
-                        {foreach from=$foodGroups item=fg}
-                            <td>{$mealFoodGroup->getByMealRecordAndFoodGroupId($meal->getId(), $fg->getId())->getDetails()}</td>
-                        {/foreach}
-                        {*<td>{$meal->getDateConsumed()|strtotime}</td>
-                        <td>{$meal->getTimeConsumed|strtotime}</td>*}
+                {foreach from=$covid19Vaccinations item=pvax} 
+                    <tr>                           
+                        <td>{$pvax->getCovid19Vaccine()->getLabel()}</td> 
+                        <td>{$pvax->getDoseNumber()}</td>
+                        <td>{$pvax->displayDateReceived()}</td>
                     </tr>
                 {/foreach}
             </tbody>
-         </table> 
+        </table>  
      </div>    
         
     
-    {if $meals|count == 0}
-        <div class="emptyListMessage">{Messages::i18n("patientMealForm.empty.list.message")}</div>
+    {if $covid19Vaccinations|count == 0}
+        <div class="emptyListMessage">{Messages::i18n("covid19VaccineForm.empty.list.message")}</div>
     {/if}
 </div>
 
 {/nocache}
 {/block}
+
+
+

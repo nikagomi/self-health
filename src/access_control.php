@@ -107,6 +107,12 @@ $accessMap = array(
         "/chronic/disease/edit" => "MANAGE.CHRONIC.DISEASES",
         "/chronic/disease/delete" => "MANAGE.CHRONIC.DISEASES",
     
+        /* Manage covid-19 vaccines */
+        "/covid19/vaccine/form" => "MANAGE.COVID19.VACCINES",
+        "/covid19/vaccine/save" => "MANAGE.COVID19.VACCINES",
+        "/covid19/vaccine/edit" => "MANAGE.COVID19.VACCINES",
+        "/covid19/vaccine/delete" => "MANAGE.COVID19.VACCINES",
+    
         /* Reports */
         "/report/patient/distribution/detail/form" => "RPT.PATIENT.DISTRIBUTION.DETAILS",
         "/report/patient/distribution/details" => "RPT.PATIENT.DISTRIBUTION.DETAILS",

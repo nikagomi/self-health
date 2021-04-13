@@ -17,8 +17,8 @@ class AllergyType extends DbMapper {
     protected $uniqueComboErrorMsg = "The allergy type is already defined";
 
     protected $fieldMapper = array(
-         "id" => array("allergy_type_id","T"),
-         "name" => array("name","T")
+        "id" => array("allergy_type_id","T"),
+        "name" => array("name","T")
     );
 
     protected $name;

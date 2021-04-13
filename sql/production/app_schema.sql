@@ -627,7 +627,7 @@ CREATE TABLE patient_allergies (
   CONSTRAINT pk_patient_allergy_id PRIMARY KEY (patient_allergy_id),
   CONSTRAINT fk_patient_id FOREIGN KEY(patient_id) 
     REFERENCES patients (patient_id),
-  CONSTRAINT fk_allergen_type_id FOREIGN KEY (allergen_type_id)
+  CONSTRAINT fk_allergy_type_id FOREIGN KEY (allergy_type_id)
     REFERENCES allergy_types (allergy_type_id)
 );
 ALTER TABLE patient_allergies OWNER TO postgres;
@@ -693,3 +693,33 @@ CREATE TABLE next_of_kins (
 ALTER TABLE next_of_kins OWNER TO postgres;
 GRANT ALL ON TABLE next_of_kins TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE next_of_kins TO public;
+
+--13/Apr/2021 (not in prod)
+
+CREATE TABLE covid19_vaccines (
+  covid19_vaccine_id character varying(50) NOT NULL,
+  manufacturer character varying(100) NOT NULL,
+  dose_amount smallint NOT NULL,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_covid19_vaccine_id PRIMARY KEY (covid19_vaccine_id)
+);
+ALTER TABLE covid19_vaccines OWNER TO postgres;
+GRANT ALL ON TABLE covid19_vaccines TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE covid19_vaccines TO public;
+
+CREATE TABLE patient_covid19_vaccinations (
+  patient_covid19_vaccination_id character varying(50) NOT NULL,
+  patient_id character varying(50) NOT NULL,
+  covid19_vaccine_id character varying(50) NOT NULL,
+  dose_number smallint NOT NULL,
+  date_received date,
+  alive boolean NOT NULL DEFAULT true,
+  CONSTRAINT pk_patient_covid19_vaccination_id PRIMARY KEY(patient_covid19_vaccination_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)
+    REFERENCES patients (patient_id),
+  CONSTRAINT fk_covid19_vaccine_id FOREIGN KEY(covid19_vaccine_id)
+    REFERENCES covid19_vaccines (covid19_vaccine_id)
+);
+ALTER TABLE patient_covid19_vaccinations OWNER TO postgres;
+GRANT ALL ON TABLE patient_covid19_vaccinations TO postgres;
+GRANT SELECT, UPDATE, INSERT ON TABLE patient_covid19_vaccinations TO public;

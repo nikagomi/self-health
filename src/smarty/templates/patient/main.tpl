@@ -675,6 +675,7 @@
                     <li><a id="" href="#start">General</a></li>
                     <li><a id="nok" href="/next/of/kin/view/{$patient->getId()}">Next of Kin</a></li>
                     <li><a id="allergy" href="/patient/allergy/view/{$patient->getId()}">Allergies</a></li>
+                    <li><a id="covid" href="/patient/covid19/vaccination/view/{$patient->getId()}">Covid-19 Vaccination</a></li>
                     <li><a id="psdStatus" href="/smoking/drinking/status/patient/view/{$patient->getId()}">Smoking/Drinking</a></li>
                     <li><a id="physA" href="/patient/physical/activity/view/{$patient->getId()}">Physical Activity</a></li>
                     <li><a id="meds" href="/patient/medication/view/{$patient->getId()}">Medication Record</a></li>
@@ -862,7 +863,7 @@
                         </div>
                     </div>    
                     <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
-                        <div style="margin-left:15px; flex-grow:0; font-weight:500;font-size:1.2rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
+                        <div style="margin-left:15px; flex-grow:0; font-weight:500;font-size:1.1rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
                             {if $patient->isRelocated()} Forced to relocate {else} Not relocated {/if}&ensp;
                         </div>
                         {*<div style="flex-grow:0.5;height: 1px;background-color: #9f9f9f;width: 50%;"></div>*}

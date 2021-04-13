@@ -34,7 +34,7 @@ class NextOfKinController extends BaseController {
         $this->_health->assign('list',$obj->getByPatientId($_SESSION['patientId']));
         $this->_health->assign('html',$this->html);
         $this->_health->assign('relationshipTypeIds', DbMapperUtility::convertObjectArrayToDropDown((new \Admin\Model\RelationshipType())->getAllOrderBy("name")));
-        $this->_health->assign('title','Record Patient Next of KIns');
+        $this->_health->assign('title','Record Patient Next of Kins');
         $this->_health->assign('actionPage',$this->actionPage);
     }
 }

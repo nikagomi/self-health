@@ -9,26 +9,16 @@
         <style>html{literal}{display:none;}{/literal}</style>
         <meta http-equiv="refresh" content="0.0;url=/nojs.html">
       </noscript>
-{*include file="base/header.tpl"*}
 
 
+{*
 <script type="text/javascript" src="/js/jquery.min_3.2.1.js"></script>
 <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript" src="/js/foundation6.min.js"></script>
+
 <script type="text/javascript" src="/js/jquery.tipTip.min.js"></script>
-{*<script type="text/javascript" src="/js/foundation.js"></script>
-<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/js/dataTable.foundation.js"></script>
-<script type="text/javascript" src="/js/foundation.abide.js"></script>*}
-
-
 <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
-
-
-
-
 <script type="text/javascript" src="/js/chosen.jquery.js"></script>
 
 <script type="text/javascript" src="/js/trumbowyg.min.js"></script>
@@ -39,24 +29,16 @@
 <script type="text/javascript" src="/js/jquery.simplemodal.js"></script>
 <script type="text/javascript" src="/js/jquery.jgrowl.min.js"></script>
 <script type="text/javascript" src="/js/jquery.qtip.js"></script>
+<script type="text/javascript" src="/js/store.min.js"></script>*}
 
-{*<script type="text/javascript" src="/js/date.js"></script>*}
-<script type="text/javascript" src="/js/store.min.js"></script>
-{*<script type="text/javascript" src="/js/jquery-idleTimeout.min.js"></script>*}
-
-
-{*locale path=PropertyService::getProperty("il8n.locale.dir") domain="messages" language=$smarty.session.locale*}
 <link rel="stylesheet" type="text/css" href="/css/foundation6.css" />
-<link rel="stylesheet"  href="/css/datatables.min.css" />
-{*<link rel="stylesheet" type="text/css" href="/css/dataTables.fixedHeader.min.css" />*}
+<link rel="stylesheet" type="text/css" href="/css/datatables.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/app.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 <link rel="stylesheet" type="text/css" href="/css/base.css" />
 
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css"/> 
-{*<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.css" />
-<link rel="stylesheet" type="text/css" href="/css/bootstrap-timepicker.min.css" />*}
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.css" />
 
@@ -65,7 +47,6 @@
 <link rel="stylesheet" type="text/css" href="/css/menu.css"/>
 <link rel="stylesheet" type="text/css" href="/css/sweetalert2.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/tipTip.css" media="screen" />
-{*<link rel="stylesheet" type="text/css" href="/css/lightbox.css"/>*}
 <link rel="stylesheet" type="text/css" href="/css/jquery.qtip.min_2.2.1.css"/> 
 
 <link rel="stylesheet" type="text/css" href="/css/calendar.css" />
@@ -73,7 +54,6 @@
 <link rel="stylesheet" type="text/css" href="/css/trumbowyg.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/trumbowyg.colors.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/mpdf.css" media="mpdf"/>
-{*<link rel="stylesheet" type="text/css" href="/css/pace.css" />*}
 
 <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
 <link rel="stylesheet" type="text/css" href="/css/intlTelInput.min.css" />

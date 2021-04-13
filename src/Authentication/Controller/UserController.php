@@ -187,7 +187,6 @@ class UserController extends \Neptune\BaseController{
         $response = new Response(json_encode($result));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
-        
     }
     
     public function getPreferences(){
