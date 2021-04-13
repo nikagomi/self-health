@@ -18,63 +18,25 @@ class PatientChronicDiseaseController extends BaseController {
     private $actionPage = "/patient/chronic/disease/save";
     
     public function save(Request $request){
-        $pmr = (new $this->modelClass())->mapFormToEntity($request->request);
-        $now = \date("Y-m-d H:i:s");
-        if($request->request->get("id") != ''){//an edit
-            $dbObj = (new $this->modelClass())->getEntityById($request->request->get("id"));
-            $pmr->setCreatedById($dbObj->getCreatedById());
-            $pmr->setCreatedTime($dbObj->getCreatedTime());
-        }else{
-            $pmr->setCreatedById($_SESSION['userId']);
-            $pmr->setCreatedTime($now);
+        $pcd = (new $this->modelClass())->mapFormToEntity($request->request);
+        
+        
+        $years = [];
+        $chronicDiseaseIds = ($request->request->has("chronicDiseaseId")) ? $request->request->get("chronicDiseaseId") : [];
+        foreach ($chronicDiseaseIds as $chronicDiseaseId) {
+            \array_push($years, $request->request->get("year_".$chronicDiseaseId));
         }
-        $pmr->setModifiedById($_SESSION['userId']);
-        $pmr->setModifiedTime($now);
-        $pmr->pushObjectToDB(true);
-        if ($pmr->getOpStatus()) {//Container record saved
-            $details = [];
-            $foodGroupIds = ($request->request->has("foodGroupId")) ? $request->request->get("foodGroupId") : [];
-            foreach ($foodGroupIds as $foodGroupId) {
-                \array_push($details, $request->request->get("detail_".$foodGroupId));
-            }
-            
-            $result = (new \Patient\Model\PatientMealRecordFoodGroup())->recordMealFoodGroups($pmr->getId(), $foodGroupIds, $details);
-            $txt = ($result) ? "The meal details were successfully recorded." : "An error occurred. Could not record the meal details. Please try again later";
-            if (!$result) {
-                $pmr->delete();
-            } else {
-                $pmr->clear();
-            }
-            $msg = HtmlHelper::composeToastMessage([$result => $txt]);
-        } else {
-            $msg = HtmlHelper::composeToastMessage([$pmr->getOpStatus() => $pmr->getOpMessage()]);
-        }
-        $this->setUpTemplateVars($pmr, $msg);
+
+        $result = (new \Patient\Model\PatientChronicDisease())->recordChronicDiseases($request->request->get("patientId"), $chronicDiseaseIds, $years);
+        $txt = ($result) ? "The chronic disease(s) were successfully recorded." : "An error occurred. Could not record the chronic disease(s). Please try again later";
+        
+        $msg = HtmlHelper::composeToastMessage([$result => $txt]);
+        
+        $this->setUpTemplateVars ((new $this->modelClass()), $msg);
         return new Response($this->_health->display($this->template));
     }
     
-    public function delete($id) {
-        $pmr = (new $this->modelClass())->getObjectById($id);
-        if ($pmr->getPatientId() == $_SESSION['patientId']) {
-            $sql = '';
-            $sql .= $pmr->generateDeleteSql();
-            $items = $pmr->getAssociatedFoodGroups();
-            foreach ($items as $item) {
-                $sql .= $item->generateDeleteSql();
-            }
-            $result = DbMapperUtility::dbQuery("BEGIN TRANSACTION; " .$sql ." COMMIT;");
-            $txt  = ($result !== false) ? "The meal record was successfully deleted" : "Could not delete the meal record. Please try again later.";
-            $msg = HtmlHelper::composeToastMessage([($result !== false) => $txt]);
-        } else {
-            $msg = HtmlHelper::composeToastMessage([FALSE => "This indicated meal record does not belong to the patient associated to your user account."]);
-            $pmr->clear();
-        }
-        $this->setUpTemplateVars($pmr, $msg);
-        return new Response($this->_health->display($this->template));
-    }
-    
- 
-    protected function setUpTemplateVars($obj, $msg = ''){
+    protected function setUpTemplateVars ($obj, $msg = ''){
         $this->_health->assign('patientChronicDisease', $obj);
         $this->_health->assign('msg',$msg);
         
@@ -83,7 +45,7 @@ class PatientChronicDiseaseController extends BaseController {
         $this->_health->assign('title','Record Chronic Diseases');
         $this->_health->assign('pcd', new \Patient\Model\PatientChronicDisease());
         $this->_health->assign('yearIds', DbMapperUtility::generateYearDropDown(1980));
-        $this->_health->assign('associatedChronicDiseases', $obj->getAssociatedChronicDiseases());
+        $this->_health->assign('associatedChronicDiseases', (new $this->modelClass())->getAssociatedChronicDiseases());
         $this->_health->assign('actionPage',$this->actionPage);
     }
 }

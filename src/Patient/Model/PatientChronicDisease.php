@@ -85,7 +85,7 @@ class PatientChronicDisease extends Logger {
         if(\count($chronicDiseaseIds) > 0){
             $patientDiseases = $this->getObjectsByMultipleCriteria(["patientId"], [$patientId], TRUE);
         
-            $propertyArr = ["patientId", "chronicDisaseId"];
+            $propertyArr = ["patientId", "chronicDiseaseId"];
             foreach($patientDiseases as $pd){
                 $sql .= $pd->generateDeleteSql();
             }
@@ -95,13 +95,13 @@ class PatientChronicDisease extends Logger {
                 if($newInstance->getId() != ''){//already exists in table
                     $sql .= $newInstance->generateReactivateSql();
                     if ($newInstance->getDiagnosedSinceYear() != $years[$i]) {
-                        $newInstance->setDiagnosedSinceYear($year[$i]);
+                        $newInstance->setDiagnosedSinceYear($years[$i]);
                         $sql .= $newInstance->generateUpdateWithEmptyFieldsSql();
                     }
                 }else{// insert a new record
                     $newInstance->setPatientId($patientId);
-                    $newInstance->setPermissionId($chronicDiseaseIds[$i]);
-                    $newInstance->setDiagnosedSinceYear($year[$i]);
+                    $newInstance->setChronicDiseaseId($chronicDiseaseIds[$i]);
+                    $newInstance->setDiagnosedSinceYear($years[$i]);
                     $newInstance->setId('');
                     $sql .= $newInstance->generateSaveSql();
                 }

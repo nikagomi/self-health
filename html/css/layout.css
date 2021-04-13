@@ -75,6 +75,10 @@
 
 #sidebar.active {
     margin-left: -300px;
+    -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
 
 

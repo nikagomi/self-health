@@ -156,9 +156,10 @@ class PatientController extends ModifiableBaseController{
     }
 
     protected function setUpTemplateVars($obj, $msg = ''){
-        $this->_health->assign('patient',$obj);
-        $this->_health->assign('msg',$msg);
+        $this->_health->assign('patient', $obj);
+        $this->_health->assign('msg', $msg);
         $this->_health->assign('currentUsr',(new \Authentication\Model\User())->getObjectById($_SESSION['userId']));
+        $this->_health->assign('patientChronicDiseases',(new \Patient\Model\PatientChronicDisease())->getByPatientId($obj->getId()));
         
         //for registration
         $this->_health->assign('genders',(new \Admin\Model\Gender())->getDropDownArrayOrder('name', 'name', 'ASC'));

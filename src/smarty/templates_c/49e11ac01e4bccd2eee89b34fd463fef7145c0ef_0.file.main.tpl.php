@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-04-12 19:59:12
+/* Smarty version 3.1.34-dev-7, created on 2021-04-13 00:07:50
   from '/var/www/oecs/src/smarty/templates/patient/main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6074a690582f29_48458989',
+  'unifunc' => 'content_6074e0d62a4174_96430790',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '49e11ac01e4bccd2eee89b34fd463fef7145c0ef' => 
     array (
       0 => '/var/www/oecs/src/smarty/templates/patient/main.tpl',
-      1 => 1618257547,
+      1 => 1618272463,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6074a690582f29_48458989 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6074e0d62a4174_96430790 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,44 +28,44 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6934716216074a69055c157_80704817', 'dataTable');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8838527126074e0d625fa78_05388194', 'dataTable');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19176062446074a69055d290_92925434', 'styles');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6906258796074e0d6260b99_52820370', 'styles');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13980316186074a69055dda0_09657164', "scripts");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11735724636074e0d6262135_75971347', "scripts");
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1406533266074a69055e565_17604298', 'jquery');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1157807406074e0d6262ff1_04602872', 'jquery');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10582654276074a69055f038_18246120', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11800866826074e0d6263ad9_85917483', 'content');
 ?>
 
     
     
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16781296726074a690582668_37147128', "foundation");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19278793896074e0d62a3272_71836061', "foundation");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "base/body.tpl");
 }
 /* {block 'dataTable'} */
-class Block_6934716216074a69055c157_80704817 extends Smarty_Internal_Block
+class Block_8838527126074e0d625fa78_05388194 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'dataTable' => 
   array (
-    0 => 'Block_6934716216074a69055c157_80704817',
+    0 => 'Block_8838527126074e0d625fa78_05388194',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -79,12 +79,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'dataTable'} */
 /* {block 'styles'} */
-class Block_19176062446074a69055d290_92925434 extends Smarty_Internal_Block
+class Block_6906258796074e0d6260b99_52820370 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'styles' => 
   array (
-    0 => 'Block_19176062446074a69055d290_92925434',
+    0 => 'Block_6906258796074e0d6260b99_52820370',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -493,12 +493,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'styles'} */
 /* {block "scripts"} */
-class Block_13980316186074a69055dda0_09657164 extends Smarty_Internal_Block
+class Block_11735724636074e0d6262135_75971347 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'scripts' => 
   array (
-    0 => 'Block_13980316186074a69055dda0_09657164',
+    0 => 'Block_11735724636074e0d6262135_75971347',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -578,12 +578,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "scripts"} */
 /* {block 'jquery'} */
-class Block_1406533266074a69055e565_17604298 extends Smarty_Internal_Block
+class Block_1157807406074e0d6262ff1_04602872 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'jquery' => 
   array (
-    0 => 'Block_1406533266074a69055e565_17604298',
+    0 => 'Block_1157807406074e0d6262ff1_04602872',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -762,12 +762,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'jquery'} */
 /* {block 'content'} */
-class Block_10582654276074a69055f038_18246120 extends Smarty_Internal_Block
+class Block_11800866826074e0d6263ad9_85917483 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_10582654276074a69055f038_18246120',
+    0 => 'Block_11800866826074e0d6263ad9_85917483',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -1054,6 +1054,37 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                             </div>
                         </div>
                     <?php }?>
+                    
+                                        <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
+                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;<?php if ($_smarty_tpl->tpl_vars['patient']->value->isRelocated()) {?> color:orangered;<?php }?>">
+                            Chronic Diseases&ensp;
+                            <a href="#" class="hintanchorRow" onclick="return false;" onMouseover="showhint('When present, the figure in parenthesis represents the year when the patient was initially diagnosed with the chronic disease.', this, event, '180px')">&nbsp;</a>
+                        </div>
+                                            </div>
+                    <?php if (count($_smarty_tpl->tpl_vars['patientChronicDiseases']->value) > 0) {?>
+                        <ul class='medium-block-grid-3 small-block-grid-1'>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['patientChronicDiseases']->value, 'pcd');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['pcd']->value) {
+?>
+                                <li>
+                                    &nbsp;&bull;
+                                    <?php echo $_smarty_tpl->tpl_vars['pcd']->value->getChronicDisease()->getLabel();?>
+
+                                    <?php if ($_smarty_tpl->tpl_vars['pcd']->value->getDiagnosedSinceYear() != '') {?>
+                                        &nbsp;<i>(<?php echo $_smarty_tpl->tpl_vars['pcd']->value->getDiagnosedSinceYear();?>
+)</i>
+                                    <?php }?>
+                                </li>
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                        </ul>
+                    <?php } else { ?>
+                        None recorded.
+                    <?php }?>
                                         <br/>
                     
                                    </div>
@@ -1130,12 +1161,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'content'} */
 /* {block "foundation"} */
-class Block_16781296726074a690582668_37147128 extends Smarty_Internal_Block
+class Block_19278793896074e0d62a3272_71836061 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'foundation' => 
   array (
-    0 => 'Block_16781296726074a690582668_37147128',
+    0 => 'Block_19278793896074e0d62a3272_71836061',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

@@ -898,6 +898,30 @@
                             </div>
                         </div>
                     {/if}
+                    
+                    {*Chronic Disease section *}
+                    <div class="row" style="display:flex;flex-direction:row; align-items: center;margin-bottom:10px;">
+                        <div style="margin-left:15px; flex-grow:0; font-weight:bold;font-size:0.9rem;font-family:'Poppins', sans-serif;{if $patient->isRelocated()} color:orangered;{/if}">
+                            Chronic Diseases&ensp;
+                            <a href="#" class="hintanchorRow" onclick="return false;" onMouseover="showhint('When present, the figure in parenthesis represents the year when the patient was initially diagnosed with the chronic disease.', this, event, '180px')">&nbsp;</a>
+                        </div>
+                        {*<div style="flex-grow:0.5;height: 1px;background-color: #9f9f9f;width: 50%;"></div>*}
+                    </div>
+                    {if $patientChronicDiseases|count gt 0}
+                        <ul class='medium-block-grid-3 small-block-grid-1'>
+                            {foreach from=$patientChronicDiseases item=pcd}
+                                <li>
+                                    &nbsp;&bull;
+                                    {$pcd->getChronicDisease()->getLabel()}
+                                    {if $pcd->getDiagnosedSinceYear() != ''}
+                                        &nbsp;<i>({$pcd->getDiagnosedSinceYear()})</i>
+                                    {/if}
+                                </li>
+                            {/foreach}
+                        </ul>
+                    {else}
+                        None recorded.
+                    {/if}
                     {*End of first tab content *}
                     <br/>
                     

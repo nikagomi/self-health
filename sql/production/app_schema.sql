@@ -648,9 +648,9 @@ CREATE TABLE patient_chronic_diseases (
   patient_chronic_disease_id character varying(50) NOT NULL,
   patient_id character varying(50) NOT NULL,
   chronic_disease_id character varying(50) NOT NULL,
-  diagnosed_since_year int(4),
+  diagnosed_since_year smallint,
   alive boolean NOT NULL DEFAULT true,
-  CONSTRAINT pk_patient_chronic_disease_id PRIMARY KEY(patient_chrnic_disease_id),
+  CONSTRAINT pk_patient_chronic_disease_id PRIMARY KEY(patient_chronic_disease_id),
   CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)
     REFERENCES patients (patient_id),
   CONSTRAINT fk_chronic_disease_id FOREIGN KEY(chronic_disease_id) 
