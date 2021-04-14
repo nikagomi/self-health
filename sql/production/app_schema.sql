@@ -694,7 +694,7 @@ ALTER TABLE next_of_kins OWNER TO postgres;
 GRANT ALL ON TABLE next_of_kins TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE next_of_kins TO public;
 
---13/Apr/2021 (not in prod)
+--13/Apr/2021 
 
 CREATE TABLE covid19_vaccines (
   covid19_vaccine_id character varying(50) NOT NULL,

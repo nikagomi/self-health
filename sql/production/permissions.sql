@@ -64,7 +64,7 @@ VALUES (22,  'menu.manage.chronic.diseases', 'perm.text.manage.chronic.diseases'
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (23,  'menu.manage.relationship.types', 'perm.text.manage.relationship.types', '/relationship/type', 1, NULL, NULL, 'MANAGE.RELATIONSHIP.TYPES', false, false, NULL, true);
 
---13/Apr/2021 (not in prod)
+--13/Apr/2021
 INSERT INTO permissions (permission_id, submenu_name_key, perm_text_key, url, category_id, level, level1_id, constant, is_menu, is_container, comments, alive) 
 VALUES (24,  'menu.manage.covid19.vaccines', 'perm.text.manage.covid19.vaccines', '/covid19/vaccine/form', 1, NULL, NULL, 'MANAGE.COVID19.VACCINES', false, false, NULL, true);
 
