@@ -689,6 +689,11 @@ $routes->add('covid19_vaccine_delete', new Routing\Route('/covid19/vaccine/delet
     array('id' => '[A-Z0-9]+')
 ));
 
+/* About link Action */
+$routes->add('covid19_vaccine_form', new Routing\Route('/about', 
+    array('_controller' => 'Authentication\\Controller\\AuthenticationController::aboutLink')
+));
+
 //Visualization Actions
 $routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 
     array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmapForm')

@@ -15,6 +15,12 @@ class AuthenticationController extends BaseController{
         $this->usr = new User();
     }
     
+    public function aboutLink () {
+        $this->_health->assign("title", "About OCES PEHR");
+        $response = new Response($this->_health->display('utility/about.tpl'));
+        return $response;
+    }
+    
     public function indexAction(Request $request){
         $this->_health->assign('actionPage','/login');
         $this->_health->assign('html',$this->html);
