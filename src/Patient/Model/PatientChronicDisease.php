@@ -20,12 +20,14 @@ class PatientChronicDisease extends Logger {
         "id" => ["patient_chronic_disease_id","T"],
         "patientId" => ["patient_id","T"],
         "chronicDiseaseId" => ["chronic_disease_id","T"],
+        "otherDisease" => ["other_disease","T"],
         "diagnosedSinceYear" => ["diagnosed_since_year","I"]
     );
     
     protected $patientId;
     protected $chronicDiseaseId;
     protected $diagnosedSinceYear;
+    protected $otherDisease;
     
     protected $patient;
     protected $chronicDisease;
@@ -56,6 +58,14 @@ class PatientChronicDisease extends Logger {
         return $this->chronicDisease->getObjectById($this->getChronicDiseaseId());
     }
     
+    public function getOtherDisease() {
+        return $this->otherDisease;
+    }
+
+    public function setOtherDisease($otherDisease) {
+        $this->otherDisease = $otherDisease;
+    }
+
     public function setPatientId($patientId) {
         $this->patientId = $patientId;
     }
@@ -80,7 +90,7 @@ class PatientChronicDisease extends Logger {
         return $this->getObjectsByMultipleCriteria(["patientId"], [$patientId], TRUE);
     }
     
-    public function recordChronicDiseases($patientId, array $chronicDiseaseIds, array $years) {
+    public function recordChronicDiseases($patientId, array $chronicDiseaseIds, array $years, array $otherDiseases) {
         $sql = "";
         if(\count($chronicDiseaseIds) > 0){
             $patientDiseases = $this->getObjectsByMultipleCriteria(["patientId"], [$patientId], TRUE);
@@ -94,14 +104,16 @@ class PatientChronicDisease extends Logger {
                 $newInstance =  (new $this->className())->getEntityByMultipleCriteria($propertyArr, [$patientId, $chronicDiseaseIds[$i]], false);
                 if($newInstance->getId() != ''){//already exists in table
                     $sql .= $newInstance->generateReactivateSql();
-                    if ($newInstance->getDiagnosedSinceYear() != $years[$i]) {
+                    if ($newInstance->getDiagnosedSinceYear() != $years[$i] || $newInstance->getOtherDisease() != $otherDiseases[$i]) {
                         $newInstance->setDiagnosedSinceYear($years[$i]);
+                        $newInstance->setOtherDisease($otherDiseases[$i]);
                         $sql .= $newInstance->generateUpdateWithEmptyFieldsSql();
                     }
                 }else{// insert a new record
                     $newInstance->setPatientId($patientId);
                     $newInstance->setChronicDiseaseId($chronicDiseaseIds[$i]);
                     $newInstance->setDiagnosedSinceYear($years[$i]);
+                    $newInstance->setOtherDisease($otherDiseases[$i]);
                     $newInstance->setId('');
                     $sql .= $newInstance->generateSaveSql();
                 }

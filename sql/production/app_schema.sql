@@ -723,3 +723,7 @@ CREATE TABLE patient_covid19_vaccinations (
 ALTER TABLE patient_covid19_vaccinations OWNER TO postgres;
 GRANT ALL ON TABLE patient_covid19_vaccinations TO postgres;
 GRANT SELECT, UPDATE, INSERT ON TABLE patient_covid19_vaccinations TO public;
+
+--26/Apr/2021
+ALTER TABLE patient_medications ADD COLUMN other_medication character varying(200);
+ALTER TABLE patient_chronic_diseases ADD COLUMN other_disease character varying(200);

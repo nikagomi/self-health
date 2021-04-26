@@ -28,7 +28,8 @@ class PatientMedication extends Logger implements Modifiable {
         "createdById" => ["created_by_id","T"],
         "createdTime" => ["created_time","TS"],
         "modifiedById" => ["modified_by_id","T"],
-        "modifiedTime" => ["modified_time","TS"]
+        "modifiedTime" => ["modified_time","TS"],
+        "otherMedication" => ["other_medication","T"]
     ); 
     
     protected $medicationId;
@@ -42,6 +43,7 @@ class PatientMedication extends Logger implements Modifiable {
     protected $createdTime;
     protected $modifiedById;
     protected $modifiedTime;
+    protected $otherMedication;
     
     protected $medication;
     protected $patient;
@@ -128,6 +130,14 @@ class PatientMedication extends Logger implements Modifiable {
 
     public function getModifiedBy() {
         return $this->modifiedBy->getObjectById($this->getModifiedById());
+    }
+    
+    public function getOtherMedication() {
+        return $this->otherMedication;
+    }
+
+    public function setOtherMedication($otherMedication) {
+        $this->otherMedication = $otherMedication;
     }
 
     public function setMedicationId($medicationId) {

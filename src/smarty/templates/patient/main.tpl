@@ -924,6 +924,9 @@
                                 <li>
                                     &nbsp;&bull;
                                     {$pcd->getChronicDisease()->getLabel()}
+                                    {if $pcd->getOtherDisease() != ''}
+                                        -&nbsp;<i>{$pcd->getOtherDisease()}</i>
+                                    {/if}
                                     {if $pcd->getDiagnosedSinceYear() != ''}
                                         &nbsp;<i>({$pcd->getDiagnosedSinceYear()})</i>
                                     {/if}

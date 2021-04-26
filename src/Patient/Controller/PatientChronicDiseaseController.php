@@ -20,14 +20,16 @@ class PatientChronicDiseaseController extends BaseController {
     public function save(Request $request){
         $pcd = (new $this->modelClass())->mapFormToEntity($request->request);
         
-        
         $years = [];
+        $otherDiseases = [];
         $chronicDiseaseIds = ($request->request->has("chronicDiseaseId")) ? $request->request->get("chronicDiseaseId") : [];
+        
         foreach ($chronicDiseaseIds as $chronicDiseaseId) {
             \array_push($years, $request->request->get("year_".$chronicDiseaseId));
+            \array_push($otherDiseases, \trim($request->request->get("od_".$chronicDiseaseId)));
         }
 
-        $result = (new \Patient\Model\PatientChronicDisease())->recordChronicDiseases($request->request->get("patientId"), $chronicDiseaseIds, $years);
+        $result = (new \Patient\Model\PatientChronicDisease())->recordChronicDiseases($request->request->get("patientId"), $chronicDiseaseIds, $years, $otherDiseases);
         $txt = ($result) ? "The chronic disease(s) were successfully recorded." : "An error occurred. Could not record the chronic disease(s). Please try again later";
         
         $msg = HtmlHelper::composeToastMessage([$result => $txt]);

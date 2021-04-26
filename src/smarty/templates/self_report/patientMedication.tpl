@@ -28,7 +28,19 @@
         };
         
         $("#timeTaken").timepicki(timePickiOptions);
-        $("#medicationId, #quantityUnitId").chosen();
+        $("#quantityUnitId").chosen();
+        
+        $("#medicationId").chosen().change(function(){
+            let txt = $.trim($(this).find("option:selected").text());
+            if (txt.toUpperCase() == "OTHER") {
+                $("#otherMedication").prop("disabled", false).attr("required", "required");
+                $("#otherMedication").closest("label").find("span").addClass("required");
+            } else {
+                $("#otherMedication").prop("disabled", true).removeAttr("required");
+                $("#otherMedication").closest("label").find("span").removeClass("required");
+                $("#otherMedication").removeClass("error");
+            }
+        });
         
         $("div.medDateRangeFilter").css({"color":"#666666","font-size":"0.9rem"}).html('<span style="float:left;display:inline-block;padding-top:8px;">Date Filter:&nbsp;</span><input type="text" class="short" style="float:left;width:110px !important;" id="rmin" /><span style="float:left;display:inline-block;padding-top:8px;">&nbsp;-&nbsp;</span><input type="text" style="float:left;width:110px !important;"  class="short" id="rmax" />');
         $("#rmin, #rmax").datepicker({
@@ -69,9 +81,16 @@
                             <div class="row">
                                 <div class="medium-12 end columns">
                                     <label><span class="required">{Messages::i18n("patientMedicationForm.medicationId")}</span>
-                                        <select tabindex="1" id="medicationId" name="medicationId"  required>
+                                        <select tabindex="1" id="medicationId" name="medicationId" required>
                                             {html_options options=$medicationIds selected=$patientMedication->getMedicationId()}
                                         </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="medium-12 end columns">
+                                    <label><span class="{if $patientMedication->getMedication()->getPharmaceutical()->getLabel()|strtolower eq 'other'}required{/if}">{Messages::i18n("patientMedicationForm.otherMedication")}</span>
+                                        <input tabindex="2" maxlength="199" type="text" id="otherMedication" {if $patientMedication->getMedication()->getPharmaceutical()->getLabel()|strtolower != "other"} disabled {else} required {/if} name="otherMedication" value="{$patientMedication->getOtherMedication()}" >
                                     </label>
                                 </div>
                             </div>
@@ -80,8 +99,8 @@
                                     <label>
                                         <span class="">{Messages::i18n("patientMedicationForm.quantityConsumed")}</span>
                                     </label><br/>
-                                    <input tabindex="2" type="text" class="short" maxlength="2" id="quantityAmount" name="quantityAmount" value="{$patientMedication->getQuantityAmount()}" style="float:left;display:inline-block;margin-right:5px;"/>
-                                    <select tabindex="3" name="quantityTakenUnitId" id="quantityTakenUnitId" class="" style="float:left;display:inline-block;width:170px;">
+                                    <input tabindex="3" type="text" class="short" maxlength="2" id="quantityAmount" name="quantityAmount" value="{$patientMedication->getQuantityAmount()}" style="float:left;display:inline-block;margin-right:5px;"/>
+                                    <select tabindex="4" name="quantityTakenUnitId" id="quantityTakenUnitId" class="" style="float:left;display:inline-block;width:170px;">
                                         {html_options options=$quantityTakenUnitIds selected=$patientMedication->getQuantityTakenUnitId()}
                                     </select>
                                 </div>
@@ -91,39 +110,37 @@
                             <div class="row">
                                 <div class="medium-12 end columns">
                                     <label><span class="required">{Messages::i18n("patientMedicationForm.dateTaken")}</span>
-                                        <input tabindex="4" type="text" class="medium" id="dateTaken" name="dateTaken" value="{$patientMedication->displayDateTaken()}" required>
+                                        <input tabindex="5" type="text" class="medium" id="dateTaken" name="dateTaken" value="{$patientMedication->displayDateTaken()}" required>
                                     </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="medium-12 end columns">
                                     <label><span class="">{Messages::i18n("patientMedicationForm.timeTaken")}</span>
-                                        <input tabindex="5" class="medium" type="text" id="timeTaken" name="timeTaken" value="{$patientMedication->getTimeTaken()}">
+                                        <input tabindex="6" class="medium" type="text" id="timeTaken" name="timeTaken" value="{$patientMedication->getTimeTaken()}">
                                     </label>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="medium-12 end columns">
+                                    <label><span class="">{Messages::i18n("patientMedicationForm.comments")}</span>
+                                        <textarea tabindex="7" id="comments" rows="3" style="resize:none;" name="comments" >{$patientMedication->getComments()}</textarea>
+                                    </label>
+                                </div>
+                            </div>
                         </li>   
                     </ul>
                 </div>
             </div>
             <div class="row">
-                <div class="medium-4 end columns">
-                    <label><span class="">{Messages::i18n("patientMedicationForm.comments")}</span>
-                        <textarea tabindex="6" id="comments" rows="3" style="resize:none;" name="comments" >{$patientMedication->getComments()}</textarea>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="row">
                 <div class="medium-4 end columns" style="padding-top:8px;">
-                    <a href="/patient/medication" tabindex="8" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
-                    {ElementTag::submitBtn(7)}
+                    <a href="/patient/medication" tabindex="9" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
+                    {ElementTag::submitBtn(8)}
                 </div>
                 {if $patientMedication->getId() != ''}
                     <div class="medium-4 end columns" style="padding-top:8px;">
-                        {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="9" id="confirmDelete" type="checkbox"/>
-                        {ElementTag::deleteBtn(10, "/patient/medication/delete/`$patientMedication->getId()`")}
+                        {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="10" id="confirmDelete" type="checkbox"/>
+                        {ElementTag::deleteBtn(11, "/patient/medication/delete/`$patientMedication->getId()`")}
                     </div>
                 {/if}
             </div>
@@ -140,6 +157,7 @@
             <thead>
                 <tr>
                     <th>{Messages::i18n("patientMedicationForm.medicationId")}</th> 
+                    <th>{Messages::i18n("patientMedicationForm.otherMedication")}</th> 
                     <th>{Messages::i18n("patientMedicationForm.quantityConsumed")}</th>
                     <th>{Messages::i18n("patientMedicationForm.dateTaken")}</th>
                     <th>{Messages::i18n("patientMedicationForm.timeTaken")}</th>
@@ -152,6 +170,7 @@
                 {foreach from=$list item=pmed} 
                     <tr>                           
                         <td>{$pmed->getMedication()->getLabel()}</td> 
+                        <td>{$pmed->getOtherMedication()}</td> 
                         <td>{$pmed->getQuantityAmount()} {$pmed->getQuantityTakenUnit()->getLabel()}</td>
                         <td>{$pmed->displayDateTaken()}</td>
                         <td>{$pmed->displayTimeTaken()}</td>
@@ -201,14 +220,14 @@
                 "t"+
                 "<'row'<'small-12 medium-7 text-left columns end'p>>",
             order: [
-                [0, 'asc'], [2, 'desc']
+                [0, 'asc'], [3, 'desc']
             ],
             'columnDefs': [
-                { 'orderData':[6], 
-                  'targets': [2], 
+                { 'orderData':[7], 
+                  'targets': [3], 
                 },
                 {
-                  'targets': [6],
+                  'targets': [7],
                   'visible': false,
                   'searchable': false,
                 },

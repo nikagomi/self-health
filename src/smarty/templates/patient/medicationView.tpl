@@ -68,7 +68,8 @@
         <table align="left" id="medTable" class="displayTable_simpleTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>{Messages::i18n("patientMedicationForm.medicationId")}</th> 
+                    <th>{Messages::i18n("patientMedicationForm.medicationId")}</th>
+                    <th>{Messages::i18n("patientMedicationForm.otherMedication")}</th> 
                     <th>{Messages::i18n("patientMedicationForm.quantityConsumed")}</th>
                     <th>{Messages::i18n("patientMedicationForm.dateTaken")}</th>
                     <th>{Messages::i18n("patientMedicationForm.timeTaken")}</th>
@@ -80,6 +81,7 @@
                 {foreach from=$medications item=pmed} 
                     <tr>                           
                         <td>{$pmed->getMedication()->getLabel()}</td> 
+                        <td>{$pmed->getOtherMedication()}</td> 
                         <td>{$pmed->getQuantityAmount()} {$pmed->getQuantityTakenUnit()->getLabel()}</td>
                         <td>{$pmed->displayDateTaken()}</td>
                         <td>{$pmed->displayTimeTaken()}</td>
@@ -107,7 +109,7 @@
             function (settings, data, dataIndex) {
                 var min = ($.trim($('#rmin').val()) != '') ? moment($('#rmin').val(), "MMM D, YYYY") : null;
                 var max = ($.trim($('#rmax').val()) != '') ? moment($('#rmax').val(), "MMM D, YYYY") : null;
-                var startDate = moment(data[2], "MMM D, YYYY");
+                var startDate = moment(data[3], "MMM D, YYYY");
 
                 if (min == null && min == null) { return true; }
                 if (min == null && startDate.isSameOrBefore(max)) { return true;}
@@ -125,14 +127,14 @@
                 "t"+
                 "<'row'<'small-12 medium-7 text-left columns end'p>>",
             order: [
-                [0, 'asc'], [2, 'desc']
+                [0, 'asc'], [3, 'desc']
             ],
             'columnDefs': [
-                { 'orderData':[5], 
-                  'targets': [2], 
+                { 'orderData':[6], 
+                  'targets': [3], 
                 },
                 {
-                  'targets': [5],
+                  'targets': [6],
                   'visible': false,
                   'searchable': false,
                 },

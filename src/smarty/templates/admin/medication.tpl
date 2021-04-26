@@ -30,43 +30,40 @@
     {nocache}
     {$msg}
     
-    <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight: 500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins', sans-serif;font-size:1.3rem;">
+    <div class="listTableCaption_simpleTable" style="font-variant:normal;font-weight:500;margin-top:2px;margin-bottom:2px;color:#414042;font-family:'Poppins',sans-serif;font-size:1.3rem;">
         {Messages::i18n("medicationForm.legend")}
     </div>
     <div style="margin-left:15px;margin-top:2px;">
         <form data-abide name="medicationForm" id="medicationForm" action="{$actionPage}" method="POST" autocomplete="off">
-
-
-                <input type="hidden" name="id" value="{$medication->getId()}"/>
-                <div class="row">
-                    <div class="medium-4 end columns">
-                        <label><span class="required">{Messages::i18n("medicationForm.pharmaceuticalId")}</span>
-                            <select tabindex="1" id="pharmaceuticalId" name="pharmaceuticalId" value="{$medication->getPharmaceuticalId()}" required>
-                                {html_options options=$pharmaceuticalIds selected=$medication->getPharmaceuticalId()}
-                            </select>
-                        </label>
-                    </div>
+            <input type="hidden" name="id" value="{$medication->getId()}"/>
+            <div class="row">
+                <div class="medium-4 end columns">
+                    <label><span class="required">{Messages::i18n("medicationForm.pharmaceuticalId")}</span>
+                        <select tabindex="1" id="pharmaceuticalId" name="pharmaceuticalId" value="{$medication->getPharmaceuticalId()}" required>
+                            {html_options options=$pharmaceuticalIds selected=$medication->getPharmaceuticalId()}
+                        </select>
+                    </label>
                 </div>
-                <div class="row">
-                    <div class="medium-4 end columns">
-                        <label><span class="required">{Messages::i18n("medicationForm.dosage")}</span>
-                            <input tabindex="2" maxlength="20" type="text" id="dosage" name="dosage" value="{$medication->getDosage()}" placeholder="" required>
-                        </label>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="medium-4 end columns">
+                    <label><span class="">{Messages::i18n("medicationForm.dosage")}</span>
+                        <input tabindex="2" maxlength="20" type="text" id="dosage" name="dosage" value="{$medication->getDosage()}" placeholder="">
+                    </label>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
+                <div class="medium-4 end columns" style="padding-top:8px;">
+                    <a href="/medication" tabindex="4" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
+                    {ElementTag::submitBtn(3)}
+                </div>
+                {if $medication->getId() != ''}
                     <div class="medium-4 end columns" style="padding-top:8px;">
-                        <a href="/medication" tabindex="4" class="reset">{Messages::i18n("link.reset")}</a>&nbsp;
-                        {ElementTag::submitBtn(3)}
+                        {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="5" id="confirmDelete" type="checkbox"/>
+                        {ElementTag::deleteBtn(6, "/medication/delete/`$medication->getId()`")}
                     </div>
-                    {if $medication->getId() != ''}
-                        <div class="medium-4 end columns" style="padding-top:8px;">
-                            {Messages::i18n("checkbox.confirm")}&nbsp;<input tabindex="5" id="confirmDelete" type="checkbox"/>
-                            {ElementTag::deleteBtn(6, "/medication/delete/`$medication->getId()`")}
-                        </div>
-                    {/if}
-                </div>
-
+                {/if}
+            </div>
         </form> 
     </div>       
 
