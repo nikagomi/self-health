@@ -690,7 +690,7 @@ $routes->add('covid19_vaccine_delete', new Routing\Route('/covid19/vaccine/delet
 ));
 
 /* About link Action */
-$routes->add('covid19_vaccine_form', new Routing\Route('/about', 
+$routes->add('about_link_form', new Routing\Route('/about', 
     array('_controller' => 'Authentication\\Controller\\AuthenticationController::aboutLink')
 ));
 
