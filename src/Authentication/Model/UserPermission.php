@@ -92,8 +92,8 @@ class UserPermission extends Logger{
                 }
             }
             $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-            
-            return $this->dbQuery($dbTransaction);
+            $result = $this->dbQuery($dbTransaction);;
+            return ($result != false);
         }else{
             if(\count($userPerms) > 0){
                 //previous permissions but they were deselected
@@ -102,8 +102,8 @@ class UserPermission extends Logger{
                     $sql .= $usrPrm->generateDeleteSql();
                 }
                 $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-                
-                return $this->dbQuery($dbTransaction);
+                $result = $this->dbQuery($dbTransaction);
+                return ($result != false);
             }else{
                 return true;
             }

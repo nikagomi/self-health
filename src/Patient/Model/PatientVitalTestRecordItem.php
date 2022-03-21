@@ -106,7 +106,8 @@ class PatientVitalTestRecordItem extends Logger {
                 }
             }
             $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-            return $this->dbQuery($dbTransaction);
+            $result =  $this->dbQuery($dbTransaction);
+            return ($result != false);
         }
         return false;
     }

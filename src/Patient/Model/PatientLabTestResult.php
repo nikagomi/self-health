@@ -120,7 +120,8 @@ class PatientLabTestResult extends Logger {
                 }
             }
             $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-            return $this->dbQuery($dbTransaction);
+            $result = $this->dbQuery($dbTransaction);
+            return ($result != false);
         } else {
             return false;
         }

@@ -93,7 +93,8 @@ class GroupPermission extends Logger{
                 }
             }
             $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-            return $this->dbQuery($dbTransaction);
+            $result = $this->dbQuery($dbTransaction);
+            return ($result != false);
         }else{
             if(\count($grpPerms) > 0){
                 //permissions previously assigned to group have all been deselected

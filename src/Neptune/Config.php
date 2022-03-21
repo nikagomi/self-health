@@ -23,6 +23,7 @@ class Config {
     public static $KIBANA_PORT = "5602"; //Because nginx is being used to auto-login
     //public static $S3_BUCKET_NAME = "smart-bucket";
     //public static $S3_FILE_URL_PREFIX = "http://smart-bucket.us-east-1.linodeobjects.com/";
+    public static $SMARTY_DIR_PREFIX="/usr/local/var/www/self-health";
     
     private function __construct() {
         

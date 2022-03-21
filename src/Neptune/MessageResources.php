@@ -21,7 +21,7 @@ class MessageResources {
     
     public static function i18n($messageKey){
         
-        self::$messageFile = "/var/www/oecs/src/locales/messages_en_US.properties";
+        self::$messageFile = Config::$SMARTY_DIR_PREFIX."/src/locales/messages_en_US.properties";
        
         $fp = fopen(self::$messageFile,"r");
         if($fp){
@@ -54,7 +54,7 @@ class MessageResources {
      */
     public static function i18nParams($messageKey, $paramStr){
         
-        self::$messageFile = "/var/www/oecs/src/locales/messages_en_US.properties";
+        self::$messageFile = Config::$SMARTY_DIR_PREFIX."/src/locales/messages_en_US.properties";
         
         $fp = fopen(self::$messageFile,"r");
         if($fp){

@@ -16,7 +16,8 @@ class AccessControlListener implements EventSubscriberInterface{
     public function onKernelRequest(GetResponseEvent $event){
         $request = $event->getRequest();
         
-        $appUsr = (!empty($_SESSION['appUser'])) ? \unserialize($_SESSION['appUser']) : new \Authentication\Model\User(); 
+        
+        $appUsr = (!empty($_SESSION['userId']) && isset($_SESSION['userId'])) ? (new \Authentication\Model\User())->getObjectById($_SESSION['userId']) : new \Authentication\Model\User();
         
         if(($request->getRequestUri() != "/login" && $request->getRequestUri() != "/" && $request->getRequestUri() != "/reset" && $request->getRequestUri() != "/register/user" 
                 && $request->getRequestUri() != "/user/forgot/password" && $request->getRequestUri() != "/tfa/verify" 

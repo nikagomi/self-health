@@ -19,7 +19,7 @@ class PatientController extends ModifiableBaseController{
         
     public function summary (Request $request, $id, $message = ""){
         $patient = (new $this->modelClass())->getEntityById($id);
-        
+       
         if ($patient->getId() != "" && ($patient->getId() == $_SESSION['patientId'] 
                 || \Authentication\Model\PermissionManager::userHasPermission("SEARCH.PATIENTS", $_SESSION['userId']))) {
          

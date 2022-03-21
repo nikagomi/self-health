@@ -25,10 +25,11 @@ class FoodGroupController extends BaseController {
         \set_time_limit(90);
       
         try {
-
-            if (($request->files->get("foodGroupFile")->getClientSize() / 1024) <= 1024) {
+            $file = $request->files->get("foodGroupFile");
+            
+            if (($file['size'] / 1024) <= 1024) {
                 $imagick = new \Imagick();
-                $imagick->readimage($request->files->get("foodGroupFile"));
+                $imagick->readimage($file['tmp_name']);
 
                 //Delete current file if it exists
                 if($foodGroup->getImageName() != ''){
@@ -63,7 +64,7 @@ class FoodGroupController extends BaseController {
 
                     if(\file_exists($imgDir."/".$savedImageName)){
                         $foodGroup->setImageName($savedImageName);
-                        $foodGroup->setOriginalImageName($request->files->get("foodGroupFile")->getClientOriginalName());
+                        $foodGroup->setOriginalImageName($file['name']);
                         $foodGroup->update();
                         $txt = ($foodGroup->getOpStatus()) ? "Image was successfully uploaded" : "An error occurred. Could not upload the food group image";
                         $msg = HtmlHelper::composeToastMessage([$foodGroup->getOpStatus() => $txt]);
@@ -74,7 +75,7 @@ class FoodGroupController extends BaseController {
                     $msg = HtmlHelper::composeToastMessage([false => "Could not upload image file as it is neither in the jpeg or png formats"]);
                 }
             }else{
-                $msg = HtmlHelper::composeToastMessage([false => "File size is greater than 1024 kB(1 MB) (File size: ".($request->files->get("foodGroupFile")->getSize() / 1024)."kB)"]);
+                $msg = HtmlHelper::composeToastMessage([false => "File size is greater than 1024 kB(1 MB) (File size: ".($file['size'] / 1024)."kB)"]);
             }
         } catch (\Exception $e) {
             $msg = HtmlHelper::composeToastMessage([false => "Could not upload image file. It may be too big or corrupted."]);

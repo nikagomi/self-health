@@ -109,28 +109,9 @@ class HtmlHelper {
     //transform: translate(-50%, 0); left:50%;
     public static function generateToast ($flag, $msg) {
         $toast = "";
-        $toastType = ($flag) ? "successToast" : "errorToast";
-        $hiding  = ($flag) ? 'data-delay="3000"' : 'data-autohide="false"';
-        /*$img = ($flag) ? '<i class="fas fa-check-square" style="color:green;font-size:0.9rem;"></i>' : '<i class="fas fa-exclamation-triangle" style="color:red;font-size:0.9rem;"></i>';
-        $headerText = ($flag) ? "Success" : "Error";
-        //The toast header code follows:
-        <div class="toast-header" >'.$img.'
-              &ensp;
-              <strong class="mr-auto">'.$headerText.'</strong>
-              <small>&nbsp;</small>
-              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>*/
-        /*$toast .= '<div role="alert" aria-live="assertive" aria-atomic="true" class="toast '.$toastType.'" data-delay="2500" style="">
-            <div class="toast-body" style="position: relative !important;">
-                <button type="button" style="width: 40px !important;position:absolute !important; top: 0; right: -3px;" class="close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true" style="color: #FFFFFF !important;">&times;</span>
-                </button>'.
-                $msg
-            .'
-            </div>
-        </div>';*/
+        $toastType = ($flag || $flag == 1) ? "successToast" : "errorToast";
+        $hiding  = ($flag || $flag == 1) ? 'data-delay="3000"' : 'data-autohide="false"';
+        
         //<!-- Then put toasts within -->
         $toast .= '<div class="toast '.$toastType.'" role="alert" aria-live="assertive" aria-atomic="true" '.$hiding.' style="">
           <div class="toast-body" style="position: relative !important;">
@@ -163,13 +144,24 @@ class HtmlHelper {
         if (\count($messages) > 1) {
             foreach ($messages as $msgArr) {
                 foreach ($msgArr as $flg => $msg) {
-                    $toastContent .= (\trim($msg) != '') ? self::generateToast($flg, $msg) : '';
+                    $toastContent .= (\trim($msg) != '') ? self::generateToast(\boolval($flg), $msg) : '';
                 }
             }
             $toastMsg .= (\trim($toastContent) != '') ? self::toastWrapperStart() . $toastContent . self::toastWrapperEnd() : '';
         } elseif (\count($messages) == 1) {
-            foreach ($messages as $flg => $msg) {
-                $toastContent .= (\trim($msg) != '') ? self::generateToast($flg, $msg) : '';
+            if (\is_array($messages[0])) {
+                $msg = $messages[0];
+                $flg = \key($msg);
+                $txt = $msg[$flg];
+                $toastContent .= (\trim($txt) != '') ? self::generateToast(\boolval($flg), $txt) : '';
+            } else {
+                //Not a multi-dimensional array 
+                //$msg = $messages[0];
+                //echo "me"; print_r($messages);
+                $flg = \key($messages);
+                $txt = $messages[$flg];
+                
+                $toastContent .= (\trim($txt) != '') ? self::generateToast(\boolval($flg), $txt) : '';
             }
             $toastMsg .= (\trim($toastContent) != '') ? self::toastWrapperStart() . $toastContent . self::toastWrapperEnd() : ''; 
         }

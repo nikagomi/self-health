@@ -119,7 +119,7 @@ class UserController extends \Neptune\BaseController{
             $user->setPassword("");
         }
         $msg = HtmlHelper::composeToastMessage($msgArr);
-        print_r($msgArr);
+        
         $this->setUpTemplateVars($user, $msg);
         return new Response($this->_health->display($this->template));
     }

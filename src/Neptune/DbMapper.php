@@ -1430,7 +1430,7 @@ abstract class DbMapper{
                     }
                 }
                 
-                $newPKNum = \intval(max($resultado)) + 1;
+                $newPKNum = (\count($resultado) > 0) ? \intval(max($resultado)) + 1 : 1;
                 $newPk = \strtoupper($_SESSION['code']).$newPKNum;
                 
                 $currentId = $lowerLimit;

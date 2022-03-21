@@ -142,7 +142,8 @@ class UserGroup extends Logger {
                }
              }
              $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-             return $this->dbQuery($dbTransaction);
+             $result = $this->dbQuery($dbTransaction);
+             return ($result != false);
         }else{
             if(\count($usrGrps) > 0){
                 //they were previous groups assigned all were deselected
@@ -151,7 +152,8 @@ class UserGroup extends Logger {
                     $sql .= $usrGrp->generateDeleteSql();
                 }
                 $dbTransaction = "BEGIN TRANSACTION; ". $sql ." COMMIT;";
-                return $this->dbQuery($dbTransaction);
+                $result = $this->dbQuery($dbTransaction);
+                return ($result != false);
             }else{
                 return true;
             }

@@ -6,10 +6,10 @@ class SmartyHealth extends \Smarty{
     public function __construct(){
 	parent::__construct(); //llamando el constructor del pariente
                 		
-        $this->setTemplateDir("/var/www/oecs/src/smarty/templates/");
-        $this->setCompileDir("/var/www/oecs/src/smarty/templates_c/");
-        $this->setConfigDir("/var/www/oecs/src/smarty/configs/");
-        $this->setCacheDir("/var/www/oecs/src/smarty/cache/");
+        $this->setTemplateDir(Config::$SMARTY_DIR_PREFIX."/src/smarty/templates/");
+        $this->setCompileDir(Config::$SMARTY_DIR_PREFIX."/src/smarty/templates_c/");
+        $this->setConfigDir(Config::$SMARTY_DIR_PREFIX."/src/smarty/configs/");
+        $this->setCacheDir(Config::$SMARTY_DIR_PREFIX."/src/smarty/cache/");
 
         
         $this->caching = 0;

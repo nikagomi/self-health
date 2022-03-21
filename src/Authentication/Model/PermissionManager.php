@@ -105,6 +105,7 @@ class PermissionManager {
      * @param string $userId
      * @return array 
      */
+    
     public static function getUserPermissionIdList($userId){
         //get all user groups
         $userGroups = (new \Authentication\Model\UserGroup())->getGroupsByUserId($userId);
@@ -126,13 +127,16 @@ class PermissionManager {
      * @return array
      */
     public static function getPermissionConstArrayFromPermissionIds(array $permissionIds){
+      
         $constArr = array();
-        $sql = " SELECT upper(constant) FROM ".(new \Authentication\Model\Permission())->getTableName()." WHERE permission_id IN (".@implode(",",$permissionIds).")";
-        $sql .= " AND ". (new \Authentication\Model\Permission())->getSoftDeleteFieldName()." = true";
-        $result = DbMapperUtility::dbQuery($sql);
-        if(DbMapperUtility::dbNumRows($result) > 0){
-            while($res = DbMapperUtility::dbFetchArray($result)){
-                array_push($constArr,$res[0]);
+        if (\count($permissionIds) > 0) {
+            $sql = " SELECT upper(constant) FROM ".(new \Authentication\Model\Permission())->getTableName()." WHERE permission_id IN (".@implode(",",$permissionIds).")";
+            $sql .= " AND ". (new \Authentication\Model\Permission())->getSoftDeleteFieldName()." = true";
+            $result = DbMapperUtility::dbQuery($sql);
+            if(DbMapperUtility::dbNumRows($result) > 0){
+                while($res = DbMapperUtility::dbFetchArray($result)){
+                    array_push($constArr,$res[0]);
+                }
             }
         }
         return array_unique($constArr);

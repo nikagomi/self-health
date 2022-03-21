@@ -209,8 +209,8 @@ class AuthenticationController extends BaseController{
                        
 
                         //Set session variables and go to home page
-                        $appUser = serialize($this->usr);
-                        $_SESSION["appUser"] = $appUser;
+                        //$appUser = serialize($this->usr);
+                        //$_SESSION["appUser"] = $appUser;
                         //Put the logged in user in session. Facilitates logging.
                         $_SESSION["userId"] = $this->usr->getId();
                         $_SESSION["userName"] = $this->usr->getLabel();
@@ -224,7 +224,7 @@ class AuthenticationController extends BaseController{
                         $this->usr->updateIncludeEmptyFields();
 
                         if(!$this->usr->getOpStatus()){
-                            $_SESSION["appUser"] = null;
+                            //$_SESSION["appUser"] = null;
                             $_SESSION["userId"] = "";
                              throw new \Exception(MessageResources::i18n("err.msg.auth.update.user"));
                         }
@@ -305,8 +305,8 @@ class AuthenticationController extends BaseController{
                               
 
                                 //Set session variables and go to home page
-                                $appUser = serialize($this->usr);
-                                $_SESSION["appUser"] = $appUser;  
+                                //$appUser = serialize($this->usr);
+                                //$_SESSION["appUser"] = $appUser;  
                                 //Put the logged in user id in session. Facilitates logging.
                                 $_SESSION["userId"] = $this->usr->getId();
                                 $_SESSION["userName"] = $this->usr->getLabel();
