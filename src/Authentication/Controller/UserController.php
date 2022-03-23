@@ -460,12 +460,6 @@ class UserController extends \Neptune\BaseController{
         $usr->save();
         if ($usr->getOpStatus()) {
             
-            $emailSent = $this->generateNewUserEmailNotification($usr, $randomPasswd);
-            $emailSentMsg = ($emailSent) ? "Your account was successfully created.<br/>Please check your email: <b>".$usr->getEmail()."</b> for your login credentials." : "Registration failed. Please contact ".\Neptune\PropertyService::getProperty("app.helpdesk.contact", "(555) 555-5555")." for assistance.";
-            //$msg = HtmlHelper::toastWrapperStart() . HtmlHelper::generateToast($emailSent, $emailSentMsg) . HtmlHelper::toastWrapperEnd();
-            $msg = (new HtmlHelper())->printMessageText($emailSent, $emailSentMsg);
-        
-        
             $dobObj = \DateTime::createFromFormat("M d, Y", $request->request->get("regDob"));
             $now = \date("Y-m-d H:i:s");
             
@@ -482,6 +476,15 @@ class UserController extends \Neptune\BaseController{
             $patient->setCreatedTime($now);
             
             $patient->save();
+            if ($patient->getOpStatus()) {
+                $emailSent = $this->generateNewUserEmailNotification($usr, $randomPasswd);
+                $emailSentMsg = ($emailSent) ? "Your account was successfully created.<br/>Please check your email: <b>".$usr->getEmail()."</b> for your login credentials." : "Registration successful, but could not send registration email. Please contact ".\Neptune\PropertyService::getProperty("app.helpdesk.contact", "(555) 555-5555")." for assistance.";
+                //$msg = HtmlHelper::toastWrapperStart() . HtmlHelper::generateToast($emailSent, $emailSentMsg) . HtmlHelper::toastWrapperEnd();
+                $msg = (new HtmlHelper())->printMessageText($emailSent, $emailSentMsg);
+            } else {
+                $usr->delete();
+                $msg = (new HtmlHelper())->printMessageText(false, 'An error occurred. Could not register your user/patient account. Please try again later.');
+            }    
         } else {
             $msg = (new HtmlHelper())->printMessageText(false, "An error occurred. Could not complete registration at this time. Please try again later.");
         }
