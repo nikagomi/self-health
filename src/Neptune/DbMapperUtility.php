@@ -27,7 +27,7 @@ class DbMapperUtility{
          */
         public static function dBInstance(){
             if(!self::$instance){
-                #$conn_str = "host=localhost port=5432 dbname=health user=oecs_pehr password=O3C5_@pp";
+                //$conn_str = "host=localhost port=5432 dbname=health user=oecs_pehr password=O3C5_@pp";
                 $conn_str = "host=localhost port=5432 dbname=health user=postgres password=postgres";
                 self::$instance = pg_connect($conn_str);
                 if (!self::$instance) {

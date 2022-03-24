@@ -13,8 +13,8 @@ class PatientPhysicalActivity extends Logger implements Modifiable {
     protected $_tableName = "patient_physical_activities";
     protected $primaryKeyField = "patient_physical_activity_id";
 
-    protected $uniqueCombo = [["name"]];
-    protected $uniqueComboErrorMsg = "The physical activity has already been defined";
+    protected $uniqueCombo;
+    protected $uniqueComboErrorMsg;
 
     protected $fieldMapper = array(
         "id" => ["patient_physical_activity_id","T"],

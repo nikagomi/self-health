@@ -20,7 +20,9 @@
             format:"M dd, yyyy",
             autoclose: true,
             clearBtn: true,
-            endDate: '0d'
+            endDate: '0d',
+            todayBtn: 'linked',
+            todayHighlight: true
         }).data("datepicker");
         
         var timePickiOptions = {
@@ -28,7 +30,14 @@
             disable_keyboard_mobile: true
         };
         
-        $("#recordTime").timepicki(timePickiOptions);
+        //Clock time picker on game details page
+        $("#recordTime").mdtimepicker({
+            hourPadding: false, 
+            format: 'h:mm tt',
+            timeFormat: 'hh:mm tt',
+            theme: 'green'
+        });
+        //$("#recordTime").timepicki(timePickiOptions);
         $("#patientPosition").chosen();
         
         $("#calc").click(function(e){

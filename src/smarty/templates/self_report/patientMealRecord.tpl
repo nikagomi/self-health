@@ -20,7 +20,9 @@
             format:"M dd, yyyy",
             autoclose: true,
             clearBtn: true,
-            endDate: '0d'
+            endDate: '0d',
+            todayHighlight: true,
+            todayBtn: 'linked'
         }).data("datepicker");
         
         var timePickiOptions = {
@@ -28,7 +30,15 @@
             disable_keyboard_mobile: true
         };
         
-        $("#timeConsumed").timepicki(timePickiOptions);
+        //Clock time picker on game details page
+        $("#timeConsumed").mdtimepicker({
+            hourPadding: false, 
+            format: 'h:mm tt',
+            timeFormat: 'hh:mm tt',
+            theme: 'green'
+        });
+        
+        //$("#timeConsumed").timepicki(timePickiOptions);
         $("#mealTypeId").chosen();
         
         $("input.fg").click(function() {

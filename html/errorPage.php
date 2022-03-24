@@ -17,7 +17,7 @@
 <head profile="http://www.w3.org/2005/10/profile">
     <link rel="icon" 
       type="image/png" 
-      href="/images/page_icon.ico" />
+      href="/images/page_icon.ico?v=2" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

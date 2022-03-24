@@ -18,8 +18,8 @@
             autoclose: true,
             clearBtn: true,
             endDate: '0d',
-            highlightToday: true,
-            todayBtn: true
+            todayHighlight: true,
+            todayBtn: "linked"
         }).data("datepicker");
         
         var timePickiOptions = {
@@ -27,7 +27,15 @@
             disable_keyboard_mobile: true
         };
         
-        $("#timeStarted").timepicki(timePickiOptions);
+        //Clock time picker on game details page
+        $("#timeStarted").mdtimepicker({
+            hourPadding: false, 
+            format: 'h:mm tt',
+            timeFormat: 'hh:mm tt',
+            theme: 'green'
+        });
+        
+        //$("#timeStarted").timepicki(timePickiOptions);
         $("#physicalActivityId").chosen();
     {/literal}
 {/block}
@@ -75,7 +83,7 @@
                         <div class="row">
                             <div class="medium-12 end columns">
                                 <label><span class="">{Messages::i18n("patientPhysicalActivityForm.timeStarted")}</span>
-                                    <input tabindex="3" class="medium" type="text" id="timeStarted" name="timeStarted" value="{$patientPhysicalActivity->getTimeStarted()}">
+                                    <input tabindex="3" class="medium" type="text" id="timeStarted" name="timeStarted" value="{$patientPhysicalActivity->displayTimeStarted()}">
                                 </label>
                             </div>
                         </div>
