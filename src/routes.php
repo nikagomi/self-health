@@ -17,22 +17,6 @@ $routes->add('error_404', new Routing\Route('/resource/not/found', array(
 $routes->add('process_error_detail', new Routing\Route('/process/error/detail', array(
     '_controller' => 'Error\\Controller\\ErrorController::processErrorDetails')));
 
-/* Notification routes */
-$routes->add('ajax_notification_get', new Routing\Route('/ajax/notification/get', array(
-    '_controller' => 'Utility\\Controller\\NotificationController::ajaxGetNotifications')));
-$routes->add('ajax_notification_close', new Routing\Route('/ajax/notification/close', array(
-    '_controller' => 'Utility\\Controller\\NotificationController::ajaxAcknowledgeNotification')));
-
-$routes->add('ajax_user_notification_get', new Routing\Route('/ajax/user/notification/get', array(
-    '_controller' => 'Utility\\Controller\\NotificationMessageController::ajaxGetUserNotifications')));
-$routes->add('ajax_user_notification_close', new Routing\Route('/ajax/user/notification/close', array(
-    '_controller' => 'Utility\\Controller\\NotificationMessageController::ajaxAcknowledgeUserNotification')));
-
-$routes->add('ajax_get_email_broadcast_recipients', new Routing\Route('/ajax/email/broadcast/recipients', array(
-    '_controller' => 'Utility\\Controller\\NotificationMessageController::ajaxEmailBroadcastRecipients')));
-$routes->add('ajax_send_broadcast_email', new Routing\Route('/ajax/send/broadcast/email', array(
-    '_controller' => 'Utility\\Controller\\NotificationMessageController::ajaxSendEmailBroadcast')));
-
 /* Authentication actions */
 $routes->add('login', new Routing\Route('/login', array(
     '_controller' => 'Authentication\\Controller\\AuthenticationController::login',)));
@@ -694,18 +678,5 @@ $routes->add('about_link_form', new Routing\Route('/about',
     array('_controller' => 'Authentication\\Controller\\AuthenticationController::aboutLink')
 ));
 
-//Visualization Actions
-$routes->add('likert_heatmap_form', new Routing\Route('/viz/likert/heatmap/form', 
-    array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmapForm')
-));
-$routes->add('likert_heatmap', new Routing\Route('/viz/likert/heatmap', 
-    array('_controller' => 'Survey\\Controller\\VisualizationController::vizLikertHeatmap')
-));
-$routes->add('indicator_likert_heatmap_form', new Routing\Route('/viz/indicator/likert/heatmap/form', 
-    array('_controller' => 'Survey\\Controller\\VisualizationController::vizIndicatorLikertHeatmapForm')
-));
-$routes->add('indicator_likert_heatmap', new Routing\Route('/viz/indicator/likert/heatmap', 
-    array('_controller' => 'Survey\\Controller\\VisualizationController::vizIndicatorLikertHeatmap')
-));
 /*****************************/
 return $routes;

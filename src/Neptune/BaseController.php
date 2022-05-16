@@ -26,9 +26,6 @@ abstract class BaseController{
         
         $this->html = \Neptune\Config::htmHelper();
         $this->_health = \Neptune\Config::healthHandler();
-        
-        //$usrSerialize = $_SESSION['appUser'];
-        //$this->user =  \unserialize($usrSerialize);
     }
     
     public function getHealth() {
@@ -101,14 +98,12 @@ abstract class BaseController{
         $result = $this->doBeforeDelete($id);
         if($result["status"]){
             $obj->delete();
-            //$msg .= HtmlHelper::toastWrapperStart() . HtmlHelper::generateToast($obj->getOpStatus(),$obj->getOpMessage()) . HtmlHelper::toastWrapperEnd();
             $msg = HtmlHelper::composeToastMessage([$obj->getOpStatus() => $obj->getOpMessage()]);
             if($obj->getOpStatus()) {
                 $obj->clear();
             }
         }else{
             $msg = HtmlHelper::composeToastMessage([false => $result['message']]);
-            //$msg = HtmlHelper::toastWrapperStart() . HtmlHelper::generateToast(false, $result['message']) . HtmlHelper::toastWrapperEnd();
         }
         $this->setUpTemplateVars($obj, $msg);
         return new Response($this->_health->display($this->template));
@@ -120,7 +115,6 @@ abstract class BaseController{
         $obj->mapFormToEntity($request->request);
         if($result['proceed']){
             $obj->pushObjectToDB(true);     
-            //$msg = HtmlHelper::toastWrapperStart() . HtmlHelper::generateToast($obj->getOpStatus(),$obj->getOpMessage()) . HtmlHelper::toastWrapperEnd();   
             $msg = HtmlHelper::composeToastMessage([$obj->getOpStatus() => $obj->getOpMessage()]);
             if($obj->getOpStatus()){
                 $obj->clear(); 

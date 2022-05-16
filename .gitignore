@@ -2,3 +2,5 @@ templates_c/*
 cache/*
 vendor/*
 /nbproject/private/
+composer.lock
+composer.phar

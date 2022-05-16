@@ -19,8 +19,7 @@
         "robthree/twofactorauth": "~1.7",
         "twilio/sdk": "^5.0",
         "elasticsearch/elasticsearch": "~7.0",
-        "tpyo/amazon-s3-php-class": "@stable",
-        "phpoffice/phppresentation": "dev-master"
+        "tpyo/amazon-s3-php-class": "@stable"
     },
     "autoload": { 
         "psr-4": {"Neptune\\":"src/Neptune", "Authentication\\":"src/Authentication", "Admin\\":"src/Admin", 

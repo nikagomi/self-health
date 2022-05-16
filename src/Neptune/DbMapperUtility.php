@@ -3,7 +3,7 @@
 namespace Neptune;
 /**
  * @author Randal Neptune
- * Contact: randalneptune@gmail.com  (758) 719-1623 / (246) 835-1295
+ * Contact: randalneptune@gmail.com  (758) 728-9701
  * @copyright This notice MUST stay intact for legal use
  * DbMapperUtility class - OOP PHP implementation
  * @see DbMapper

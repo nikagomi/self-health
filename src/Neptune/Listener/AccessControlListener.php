@@ -5,7 +5,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Neptune\DbMapperUtility;
 
 /**
  * Description of AccessControlListener
@@ -16,7 +15,6 @@ class AccessControlListener implements EventSubscriberInterface{
     public function onKernelRequest(GetResponseEvent $event){
         $request = $event->getRequest();
         
-        
         $appUsr = (!empty($_SESSION['userId']) && isset($_SESSION['userId'])) ? (new \Authentication\Model\User())->getObjectById($_SESSION['userId']) : new \Authentication\Model\User();
         
         if(($request->getRequestUri() != "/login" && $request->getRequestUri() != "/" && $request->getRequestUri() != "/reset" && $request->getRequestUri() != "/register/user" 
@@ -25,9 +23,7 @@ class AccessControlListener implements EventSubscriberInterface{
                 && $request->getRequestUri() != "/user/registration/capture/check" && $request->getRequestUri() != "/utility/captcha.php" && $request->getRequestUri() != "/ajax/user/verify/unique/email") 
             && $_SESSION['userId'] == "" ){
                 $event->setResponse(new RedirectResponse("/"));
-        } /*elseif (empty($_SESSION['menu']) and $appUsr->getId() != "") { //user just logged in.
-            $_SESSION['menu'] = createMenu(\Neptune\DbMapperUtility::dBInstance(), $appUsr);
-        }*/ else {
+        }  else {
             //Get access map
             $accessMap = include __DIR__.'/../../access_control.php';
             $uri = $this->reconstructUri($request->getRequestUri());

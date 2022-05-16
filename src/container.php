@@ -7,10 +7,10 @@ use Symfony\Component\DependencyInjection\Reference;
 $sc = new DependencyInjection\ContainerBuilder();
 
 $sc->setParameter('port', 465);
-$sc->setParameter('mail.server', \gethostbyname('smtp.gmail.com'));
+$sc->setParameter('mail.server', \gethostbyname('smtp_server_name_or_address'));
 $sc->setParameter('mail.encryption','ssl');
-$sc->setParameter('mail.user', 'info@proteustechinc.com');
-$sc->setParameter('mail.password', 'Pr0t3u5123');
+$sc->setParameter('mail.user', '[email_address]');
+$sc->setParameter('mail.password', '[email_password]');
 $sc->setParameter('ssl.stream', ['ssl' => [
     'allow_self_signed' => true,
     'verify_peer' => false,

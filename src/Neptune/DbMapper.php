@@ -3,7 +3,7 @@
 namespace Neptune;
 /**
  * @author Randal Neptune
- * Contact: randalneptune@gmail.com  (758) 719-1623 / (246) 835-1295
+ * Contact: randalneptune@gmail.com  (758) 728-9701
  * @copyright This notice MUST stay intact for legal use
  * DbMapper class (previously DbEntity) - OOP PHP implementation
  * @version DbMapper_3.0 
@@ -40,7 +40,7 @@ abstract class DbMapper{
         protected $id; /** drill down inheritance */
 	private $_link;
         
-        /** $sequenceTable and $siteId are not being used in this implemenetation of DbMapper **/
+        /** $sequenceTable and $siteId are not being used in this implementation of DbMapper **/
 	private $sequenceTable = "sequences";
 	protected $className;
 	private $opStatus;

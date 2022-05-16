@@ -1,5 +1,0 @@
-curl --user rneptune:nikagomi -X DELETE "localhost:9200/[index_name]?pretty"
-
-curl --user rneptune:nikagomi -X DELETE "localhost:9200/survey_indicator_responses?pretty"
-
-
